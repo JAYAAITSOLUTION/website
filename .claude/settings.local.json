@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__shadcn__get_project_registries",
+      "mcp___magicuidesign_mcp__getUIComponents",
+      "mcp__shadcn__list_items_in_registries",
+      "Bash(npm install:*)",
+      "Bash(npx:*)",
+      "Bash(npm run build:*)",
+      "Bash(tree:*)"
+    ]
+  }
+}
