@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Shield, Mail, Phone, MapPin, Linkedin, Twitter } from "lucide-react";
+import Image from "next/image";
+import { Mail, Phone, MapPin, Linkedin, Twitter } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
 const footerLinks = {
@@ -29,12 +30,14 @@ export function Footer() {
           {/* Brand Column */}
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-xl bg-md-primary flex items-center justify-center">
-                <Shield className="w-6 h-6 text-md-on-primary" />
+              <div className="relative w-40 h-12">
+                <Image
+                  src="/logo-jayaa.png"
+                  alt="JAYAA IT Solution"
+                  fill
+                  className="object-contain"
+                />
               </div>
-              <span className="text-xl font-bold text-md-on-surface">
-                JAYAA<span className="text-md-primary">IT</span>
-              </span>
             </Link>
             <p className="text-sm text-md-on-surface-variant max-w-xs">
               Empowering enterprises with cutting-edge cybersecurity and IT

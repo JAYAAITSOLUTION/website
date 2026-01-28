@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
-import { Menu, X, Shield, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -47,12 +48,15 @@ export function Navbar() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-xl bg-md-primary flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-              <Shield className="w-6 h-6 text-md-on-primary" />
+            <div className="relative w-40 h-12 group-hover:scale-105 transition-transform duration-300">
+              <Image
+                src="/logo-jayaa.png"
+                alt="JAYAA IT Solution"
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
-            <span className="text-xl font-bold text-md-on-surface">
-              JAYAA<span className="text-md-primary">IT</span>
-            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -131,12 +135,15 @@ export function Navbar() {
                   className="flex items-center gap-2"
                   onClick={() => setIsOpen(false)}
                 >
-                  <div className="w-10 h-10 rounded-xl bg-md-primary flex items-center justify-center">
-                    <Shield className="w-6 h-6 text-md-on-primary" />
+                  <div className="relative w-36 h-10">
+                    <Image
+                      src="/logo-jayaa.png"
+                      alt="JAYAA IT Solution"
+                      fill
+                      className="object-contain"
+                      priority
+                    />
                   </div>
-                  <span className="text-xl font-bold text-md-on-surface">
-                    JAYAA<span className="text-md-primary">IT</span>
-                  </span>
                 </Link>
 
                 <nav className="flex flex-col gap-2">
