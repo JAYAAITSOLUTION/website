@@ -1,10 +1,18 @@
 import { BlurFade } from "@/components/ui/blur-fade";
 import { Separator } from "@/components/ui/separator";
+import { FileText, Shield, AlertTriangle, Scale } from "lucide-react";
 
 export const metadata = {
-  title: "Terms of Service | JAYAA IT Solution Pvt. Ltd.",
-  description: "Terms of Service for JAYAA IT Solution - Please read these terms carefully before using our website and services.",
+  title: "Terms of Service - Legal Agreements & Conditions",
+  description: "Understanding the terms and conditions that govern your use of our website and services.",
 };
+
+const coreTerms = [
+  { icon: FileText, title: "Service Agreement", description: "Clear terms of engagement" },
+  { icon: Shield, title: "User Responsibilities", description: "Your obligations and rights" },
+  { icon: AlertTriangle, title: "Intellectual Property", description: "Content and trademark protection" },
+  { icon: Scale, title: "Limitation of Liability", description: "Legal boundaries and disclaimers" },
+];
 
 export default function TermsOfServicePage() {
   return (
@@ -15,14 +23,30 @@ export default function TermsOfServicePage() {
           <BlurFade delay={0.1} inView>
             <div className="max-w-4xl mx-auto text-center">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-md-primary-container text-md-on-primary-container text-sm font-medium mb-6">
-                <span>Legal</span>
+                <span>Legal Agreements</span>
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-md-on-surface mb-6">
-                Terms of <span className="text-md-primary">Service</span>
+                Terms of{" "}
+                <span className="text-md-primary">Service</span>
               </h1>
-              <p className="text-md-on-surface-variant">
-                Last updated: January 2025
+              <p className="text-lg text-md-on-surface-variant max-w-2xl mx-auto">
+                Understanding the terms and conditions that govern your use of our website and services. Please read these terms carefully before accessing or using our platform.
               </p>
+            </div>
+          </BlurFade>
+
+          {/* Core Terms */}
+          <BlurFade delay={0.2} inView>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mt-12">
+              {coreTerms.map((term) => (
+                <div key={term.title} className="p-4 rounded-2xl bg-md-surface border border-md-outline-variant text-center">
+                  <div className="w-10 h-10 rounded-xl bg-md-primary-container flex items-center justify-center mx-auto mb-3">
+                    <term.icon className="w-5 h-5 text-md-primary" />
+                  </div>
+                  <h3 className="text-sm font-semibold text-md-on-surface mb-1">{term.title}</h3>
+                  <p className="text-xs text-md-on-surface-variant">{term.description}</p>
+                </div>
+              ))}
             </div>
           </BlurFade>
         </div>
@@ -36,49 +60,46 @@ export default function TermsOfServicePage() {
               <div className="space-y-8">
                 <section>
                   <h2 className="text-2xl font-bold text-md-on-surface mb-4">
-                    1. Acceptance of Terms
+                    1. Introduction
                   </h2>
                   <p className="text-md-on-surface-variant mb-4">
-                    By accessing or using the website and services of JAYAA IT Solution
-                    Pvt. Ltd. (&quot;Company,&quot; &quot;we,&quot; &quot;our,&quot; or &quot;us&quot;), you agree to be bound by
-                    these Terms of Service. If you do not agree to these terms,
-                    please do not use our website or services.
-                  </p>
-                </section>
-
-                <Separator className="bg-md-outline-variant" />
-
-                <section>
-                  <h2 className="text-2xl font-bold text-md-on-surface mb-4">
-                    2. Services Description
-                  </h2>
-                  <p className="text-md-on-surface-variant mb-4">
-                    JAYAA IT Solution provides cybersecurity consulting, IT solutions,
-                    digital transformation services, and related professional
-                    services. The specific scope of services will be defined in
-                    individual service agreements with clients.
-                  </p>
-                </section>
-
-                <Separator className="bg-md-outline-variant" />
-
-                <section>
-                  <h2 className="text-2xl font-bold text-md-on-surface mb-4">
-                    3. Use of Website
-                  </h2>
-                  <p className="text-md-on-surface-variant mb-4">
-                    You agree to use our website only for lawful purposes and in
-                    a way that does not infringe the rights of others or
-                    restrict their use and enjoyment of the website.
+                    These Terms of Service constitute a legally binding agreement made between you and JAYAA IT Solution Pvt. Ltd. concerning your access to and use of the website as well as any other media form, media channel, mobile website or mobile application related, linked, or otherwise connected thereto (collectively, the &quot;Site&quot;).
                   </p>
                   <p className="text-md-on-surface-variant">
-                    Prohibited activities include:
+                    You agree that by accessing the Site, you have read, understood, and agree to be bound by all of these Terms of Service. If you do not agree with all of these Terms of Service, then you are expressly prohibited from using the Site and you must discontinue use immediately.
                   </p>
-                  <ul className="list-disc list-inside space-y-2 text-md-on-surface-variant ml-4 mt-2">
-                    <li>Attempting to gain unauthorized access to our systems</li>
-                    <li>Transmitting malware or malicious code</li>
-                    <li>Scraping or data mining our website content</li>
-                    <li>Using our website for fraudulent purposes</li>
+                </section>
+
+                <Separator className="bg-md-outline-variant" />
+
+                <section>
+                  <h2 className="text-2xl font-bold text-md-on-surface mb-4">
+                    2. Intellectual Property Rights
+                  </h2>
+                  <p className="text-md-on-surface-variant mb-4">
+                    Unless otherwise indicated, the Site is our proprietary property and all source code, databases, functionality, software, website designs, audio, video, text, photographs, and graphics on the Site (collectively, the &quot;Content&quot;) and the trademarks, service marks, and logos contained therein (the &quot;Marks&quot;) are owned or controlled by us or licensed to us.
+                  </p>
+                  <p className="text-md-on-surface-variant">
+                    The Content and the Marks are provided on the Site &quot;AS IS&quot; for your information and personal use only. Except as expressly provided in these Terms of Service, no part of the Site and no Content or Marks may be copied, reproduced, aggregated, republished, uploaded, posted, publicly displayed, encoded, translated, transmitted, distributed, sold, licensed, or otherwise exploited for any commercial purpose whatsoever.
+                  </p>
+                </section>
+
+                <Separator className="bg-md-outline-variant" />
+
+                <section>
+                  <h2 className="text-2xl font-bold text-md-on-surface mb-4">
+                    3. User Representations
+                  </h2>
+                  <p className="text-md-on-surface-variant mb-4">
+                    By using the Site, you represent and warrant that:
+                  </p>
+                  <ul className="list-disc list-inside space-y-2 text-md-on-surface-variant ml-4">
+                    <li>All registration information you submit will be true, accurate, current, and complete</li>
+                    <li>You will maintain the accuracy of such information and promptly update such registration information as necessary</li>
+                    <li>You have the legal capacity and you agree to comply with these Terms of Service</li>
+                    <li>You are not under the age of 13</li>
+                    <li>You are not a minor in the jurisdiction in which you reside</li>
+                    <li>You will not access the Site through automated or non-human means</li>
                   </ul>
                 </section>
 
@@ -86,32 +107,29 @@ export default function TermsOfServicePage() {
 
                 <section>
                   <h2 className="text-2xl font-bold text-md-on-surface mb-4">
-                    4. Intellectual Property
+                    4. Prohibited Activities
                   </h2>
                   <p className="text-md-on-surface-variant mb-4">
-                    All content on this website, including text, graphics, logos,
-                    images, and software, is the property of JAYAA IT Solution or
-                    its licensors and is protected by copyright, trademark, and
-                    other intellectual property laws.
+                    You may not access or use the Site for any purpose other than that for which we make the Site available. The Site may not be used in connection with any commercial endeavors except those that are specifically endorsed or approved by us.
                   </p>
-                  <p className="text-md-on-surface-variant">
-                    You may not reproduce, distribute, modify, or create
-                    derivative works from any content without our express
-                    written permission.
-                  </p>
+                  <p className="text-md-on-surface-variant font-medium mb-2">As a user of the Site, you agree not to:</p>
+                  <ul className="list-disc list-inside space-y-2 text-md-on-surface-variant ml-4">
+                    <li>Systematically retrieve data or other content from the Site</li>
+                    <li>Make any unauthorized use of the Site</li>
+                    <li>Use a buying agent or purchasing agent to make purchases on the Site</li>
+                    <li>Use the Site to advertise or offer to sell goods and services</li>
+                    <li>Circumvent, disable, or otherwise interfere with security-related features</li>
+                  </ul>
                 </section>
 
                 <Separator className="bg-md-outline-variant" />
 
                 <section>
                   <h2 className="text-2xl font-bold text-md-on-surface mb-4">
-                    5. Confidentiality
+                    5. Termination
                   </h2>
                   <p className="text-md-on-surface-variant">
-                    Any confidential information shared during the course of our
-                    services will be protected according to the confidentiality
-                    provisions in our service agreements and applicable laws. We
-                    maintain strict confidentiality of all client information.
+                    These Terms of Service shall remain in full force and effect while you use the Site. Without limiting any other provision of these Terms of Service, we reserve the right to, in our sole discretion and without notice or liability, deny access to and use of the Site (including blocking certain IP addresses), to any person for any reason or for no reason.
                   </p>
                 </section>
 
@@ -119,74 +137,45 @@ export default function TermsOfServicePage() {
 
                 <section>
                   <h2 className="text-2xl font-bold text-md-on-surface mb-4">
-                    6. Limitation of Liability
+                    6. Governing Law
+                  </h2>
+                  <p className="text-md-on-surface-variant">
+                    These Terms of Service and your use of the Site are governed by and construed in accordance with the laws of India applicable to agreements made and to be entirely performed within India, without regard to its conflict of law principles.
+                  </p>
+                </section>
+
+                <Separator className="bg-md-outline-variant" />
+
+                <section>
+                  <h2 className="text-2xl font-bold text-md-on-surface mb-4">
+                    7. Contact Information
+                  </h2>
+                  <p className="text-md-on-surface-variant">
+                    In order to resolve a complaint regarding the Site or to receive further information regarding use of the Site, please contact us at: info@jayaaitsolution.com
+                  </p>
+                </section>
+
+                <Separator className="bg-md-outline-variant" />
+
+                <section className="p-6 rounded-2xl bg-md-primary-container/30 border border-md-primary/20">
+                  <h2 className="text-2xl font-bold text-md-on-surface mb-4">
+                    Questions About Legal Terms?
                   </h2>
                   <p className="text-md-on-surface-variant mb-4">
-                    To the fullest extent permitted by law, JAYAA IT Solution shall
-                    not be liable for any indirect, incidental, special,
-                    consequential, or punitive damages arising out of or
-                    relating to your use of our website or services.
+                    If you have questions or concerns about these terms of service, or need clarification about our legal practices, we&apos;re here to help. Your understanding is important to us.
                   </p>
-                </section>
-
-                <Separator className="bg-md-outline-variant" />
-
-                <section>
-                  <h2 className="text-2xl font-bold text-md-on-surface mb-4">
-                    7. Indemnification
-                  </h2>
-                  <p className="text-md-on-surface-variant">
-                    You agree to indemnify and hold harmless JAYAA IT Solution and
-                    its officers, directors, employees, and agents from any
-                    claims, damages, losses, or expenses arising out of your use
-                    of our website or services or your violation of these terms.
-                  </p>
-                </section>
-
-                <Separator className="bg-md-outline-variant" />
-
-                <section>
-                  <h2 className="text-2xl font-bold text-md-on-surface mb-4">
-                    8. Governing Law
-                  </h2>
-                  <p className="text-md-on-surface-variant">
-                    These Terms of Service shall be governed by and construed in
-                    accordance with the laws of India. Any disputes arising
-                    under these terms shall be subject to the exclusive
-                    jurisdiction of the courts in Hyderabad, Telangana.
-                  </p>
-                </section>
-
-                <Separator className="bg-md-outline-variant" />
-
-                <section>
-                  <h2 className="text-2xl font-bold text-md-on-surface mb-4">
-                    9. Changes to Terms
-                  </h2>
-                  <p className="text-md-on-surface-variant">
-                    We reserve the right to modify these Terms of Service at any
-                    time. Changes will be effective immediately upon posting to
-                    the website. Your continued use of the website after any
-                    changes constitutes acceptance of the modified terms.
-                  </p>
-                </section>
-
-                <Separator className="bg-md-outline-variant" />
-
-                <section>
-                  <h2 className="text-2xl font-bold text-md-on-surface mb-4">
-                    10. Contact Information
-                  </h2>
-                  <p className="text-md-on-surface-variant">
-                    If you have any questions about these Terms of Service,
-                    please contact us at:{" "}
-                    <a
-                      href="mailto:legal@jayaait.com"
-                      className="text-md-primary hover:underline"
-                    >
-                      legal@jayaait.com
-                    </a>
-                  </p>
+                  <div className="space-y-2">
+                    <p className="text-md-on-surface">
+                      <strong>Email:</strong>{" "}
+                      <a href="mailto:info@jayaaitsolution.com" className="text-md-primary hover:underline">
+                        info@jayaaitsolution.com
+                      </a>
+                    </p>
+                    <p className="text-md-on-surface">
+                      <strong>Office Address:</strong><br />
+                      803/8, Ekatva Onyx, Wagle Estate Thane West-400604
+                    </p>
+                  </div>
                 </section>
               </div>
             </div>

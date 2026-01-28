@@ -1,58 +1,39 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowLeft, Shield, Lock, Eye, Fingerprint, Network, CheckCircle2, Sparkles, TrendingUp, ShieldCheck, Clock } from "lucide-react";
+import { Shield, Lock, Eye, Network, CheckCircle2, Sparkles, TrendingUp, ShieldCheck, Clock, Key, UserCheck, FileCheck, Monitor } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { motion } from "motion/react";
 
-const features = [
-  {
-    icon: Fingerprint,
-    title: "Identity Verification",
-    description: "Multi-factor authentication and continuous identity verification for all users and devices.",
-    size: "col-span-1 row-span-1",
-  },
-  {
-    icon: Network,
-    title: "Micro-Segmentation",
-    description: "Network segmentation that limits lateral movement and contains potential breaches.",
-    size: "col-span-1 row-span-1",
-  },
-  {
-    icon: Eye,
-    title: "Continuous Monitoring",
-    description: "Real-time monitoring and analytics to detect and respond to threats instantly.",
-    size: "col-span-1 row-span-2",
-    highlight: true,
-  },
-  {
-    icon: Lock,
-    title: "Least Privilege Access",
-    description: "Grant minimum necessary access based on user roles and contextual factors.",
-    size: "col-span-1 row-span-1",
-  },
+const services = [
+  { icon: Key, title: "Identity & Access Management (IAM)", description: "Comprehensive identity management and access control solutions" },
+  { icon: UserCheck, title: "Continuous Risk-Based Authentication", description: "Dynamic authentication based on user behavior and risk factors" },
+  { icon: Network, title: "Network Micro-Segmentation", description: "Isolate and secure network segments to limit lateral movement" },
+  { icon: Monitor, title: "Device Compliance Enforcement", description: "Ensure all devices meet security standards before access" },
+  { icon: Eye, title: "End-to-End Threat Visibility", description: "Complete visibility across your entire infrastructure" },
+  { icon: Lock, title: "Privileged Access Management", description: "Secure and monitor privileged user accounts" },
+  { icon: ShieldCheck, title: "Multi-Factor Authentication Implementation", description: "Advanced MFA solutions for enhanced security" },
+  { icon: Shield, title: "Zero Trust Network Access (ZTNA)", description: "Secure remote access without traditional VPN limitations" },
+  { icon: FileCheck, title: "Security Policy Engine", description: "Automated policy enforcement and management" },
 ];
 
 const benefits = [
-  { text: "Reduce attack surface by 80%", icon: Shield },
-  { text: "Prevent lateral movement", icon: Lock },
-  { text: "Improve compliance posture", icon: ShieldCheck },
+  { text: "Prevent lateral movement", icon: Network },
+  { text: "Reduce insider threats", icon: Shield },
+  { text: "Ensure compliance readiness", icon: FileCheck },
+  { text: "Protect remote and hybrid work environments", icon: Lock },
   { text: "Enhanced visibility and control", icon: Eye },
+  { text: "Reduced attack surface", icon: ShieldCheck },
 ];
 
 const stats = [
-  { value: "80%", label: "Attack Surface Reduction", icon: TrendingUp },
-  { value: "24/7", label: "Continuous Monitoring", icon: Clock },
-  { value: "99.9%", label: "Threat Detection Rate", icon: ShieldCheck },
+  { value: "Zero", label: "Trust Model", icon: Shield },
+  { value: "100%", label: "Access Verification", icon: CheckCircle2 },
+  { value: "Continuous", label: "Monitoring", icon: Clock },
+  { value: "Real-time", label: "Threat Response", icon: TrendingUp },
 ];
 
-const process = [
-  { step: "01", title: "Assess", description: "Evaluate current security posture and identify vulnerabilities" },
-  { step: "02", title: "Plan", description: "Design comprehensive Zero Trust architecture roadmap" },
-  { step: "03", title: "Implement", description: "Deploy identity verification and network segmentation" },
-  { step: "04", title: "Monitor", description: "Continuous monitoring and threat response" },
-];
 
 export default function ZeroTrustPageClient() {
   return (
@@ -78,18 +59,7 @@ export default function ZeroTrustPageClient() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <BlurFade delay={0.1} inView>
             <div className="max-w-4xl">
-              <Button
-                asChild
-                variant="ghost"
-                className="mb-6 text-md-on-surface-variant hover:text-md-primary"
-              >
-                <Link href="/services">
-                  <ArrowLeft className="mr-2 w-4 h-4" />
-                  Back to Services
-                </Link>
-              </Button>
-
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
@@ -100,24 +70,22 @@ export default function ZeroTrustPageClient() {
               </motion.div>
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-md-on-surface mb-6">
-                Zero Trust <span className="bg-gradient-to-r from-red-600 to-red-500 bg-clip-text text-transparent">Security</span>
+                Zero Trust{" "}
+                <span className="bg-gradient-to-r from-red-600 to-red-500 bg-clip-text text-transparent">Security Services</span>
               </h1>
 
-              <p className="text-lg text-md-on-surface-variant max-w-2xl mb-8">
-                Implement a comprehensive Zero Trust architecture that assumes
-                no trust by default. Verify every access request, regardless of
-                origin, to protect your critical assets.
+              <p className="text-lg text-md-on-surface-variant max-w-2xl mb-4">
+                <strong>Never Trust, Always Verify</strong> — Secure Every Access Point. In today&apos;s perimeter-less digital world, traditional security models are obsolete.
               </p>
 
-              <div className="flex gap-4 flex-wrap">
-                <Button className="h-12 px-8 rounded-full bg-md-primary text-md-on-primary hover:bg-md-primary/90 shadow-lg hover:shadow-xl transition-all duration-300">
-                  Get Started
-                  <ArrowLeft className="ml-2 w-5 h-5 rotate-180" />
-                </Button>
-                <Button variant="outline" className="h-12 px-8 rounded-full border-md-outline hover:bg-md-primary-container hover:text-md-on-primary-container transition-all duration-300">
-                  Schedule Demo
-                </Button>
-              </div>
+              <p className="text-md-on-surface-variant max-w-2xl mb-8">
+                Our Zero Trust Security Services enforce strict identity verification, micro-segmentation, and least-privilege access across users, devices, and networks. We implement a comprehensive security framework that eliminates implicit trust and continuously validates every transaction.
+              </p>
+
+              <Button className="h-12 px-8 rounded-full bg-md-primary text-md-on-primary hover:bg-md-primary/90 shadow-lg hover:shadow-xl transition-all duration-300">
+                Implement Zero Trust
+                <ArrowLeft className="ml-2 w-5 h-5 rotate-180" />
+              </Button>
             </div>
           </BlurFade>
         </div>
@@ -126,7 +94,7 @@ export default function ZeroTrustPageClient() {
       {/* Stats Section */}
       <section className="py-20 bg-md-surface">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <BlurFade key={index} delay={0.1 + index * 0.1} inView>
                 <motion.div
@@ -136,7 +104,7 @@ export default function ZeroTrustPageClient() {
                   <div className="w-16 h-16 rounded-full bg-red-500/10 flex items-center justify-center mx-auto mb-4">
                     <stat.icon className="w-8 h-8 text-red-600" />
                   </div>
-                  <div className="text-4xl font-bold text-md-on-surface mb-2">{stat.value}</div>
+                  <div className="text-3xl font-bold text-md-on-surface mb-2">{stat.value}</div>
                   <div className="text-md-on-surface-variant">{stat.label}</div>
                 </motion.div>
               </BlurFade>
@@ -145,83 +113,37 @@ export default function ZeroTrustPageClient() {
         </div>
       </section>
 
-      {/* Features Bento Grid */}
+      {/* Services Grid */}
       <section className="py-20 lg:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <BlurFade delay={0.1} inView>
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-3xl sm:text-4xl font-bold text-md-on-surface mb-4">
-                Core <span className="bg-gradient-to-r from-red-600 to-red-500 bg-clip-text text-transparent">Components</span>
+                Our{" "}
+                <span className="bg-gradient-to-r from-red-600 to-red-500 bg-clip-text text-transparent">Zero Trust Services</span>
               </h2>
               <p className="text-md-on-surface-variant">
-                Our Zero Trust implementation covers all critical aspects of
-                modern security architecture.
+                Comprehensive Zero Trust implementation covering all critical aspects of modern security architecture.
               </p>
             </div>
           </BlurFade>
 
-          <div className="grid grid-cols-2 gap-6 auto-rows-[200px]">
-            {features.map((feature, index) => (
-              <BlurFade key={feature.title} delay={0.1 + index * 0.1} inView>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((service, index) => (
+              <BlurFade key={service.title} delay={0.1 + index * 0.05} inView>
                 <motion.div
                   whileHover={{ y: -4 }}
-                  className={`
-                    p-6 rounded-3xl bg-md-surface-container border border-md-outline-variant 
-                    relative overflow-hidden group
-                    ${feature.highlight ? 'col-span-1 row-span-2' : ''}
-                    ${feature.size}
-                  `}
+                  className="p-6 rounded-2xl bg-md-surface-container border border-md-outline-variant hover:border-red-500/30 hover:shadow-lg transition-all duration-300 h-full"
                 >
-                  {feature.highlight && (
-                    <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-transparent" />
-                  )}
-                  
-                  <div className="relative z-10">
-                    <div className="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-4">
-                      <feature.icon className="w-6 h-6 text-red-600" />
-                    </div>
-                    <h3 className="text-xl font-semibold text-md-on-surface mb-3">
-                      {feature.title}
-                    </h3>
-                    <p className="text-md-on-surface-variant">
-                      {feature.description}
-                    </p>
+                  <div className="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-4">
+                    <service.icon className="w-6 h-6 text-red-600" />
                   </div>
-                </motion.div>
-              </BlurFade>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Process Timeline */}
-      <section className="py-20 lg:py-32 bg-md-surface-container">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <BlurFade delay={0.1} inView>
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-3xl sm:text-4xl font-bold text-md-on-surface mb-4">
-                Implementation <span className="bg-gradient-to-r from-red-600 to-red-500 bg-clip-text text-transparent">Process</span>
-              </h2>
-              <p className="text-md-on-surface-variant">
-                A structured approach to deploying Zero Trust architecture in your organization.
-              </p>
-            </div>
-          </BlurFade>
-
-          <div className="grid md:grid-cols-4 gap-6">
-            {process.map((item, index) => (
-              <BlurFade key={item.step} delay={0.1 + index * 0.1} inView>
-                <motion.div
-                  whileHover={{ y: -4 }}
-                  className="relative p-6 rounded-2xl bg-md-surface border border-md-outline-variant"
-                >
-                  <div className="text-5xl font-bold text-red-600/20 mb-4">{item.step}</div>
-                  <h3 className="text-xl font-semibold text-md-on-surface mb-2">{item.title}</h3>
-                  <p className="text-md-on-surface-variant text-sm">{item.description}</p>
-                  
-                  {index < process.length - 1 && (
-                    <div className="hidden md:block absolute top-1/2 -right-3 w-6 h-0.5 bg-red-500/30" />
-                  )}
+                  <h3 className="text-lg font-semibold text-md-on-surface mb-2">
+                    {service.title}
+                  </h3>
+                  <p className="text-sm text-md-on-surface-variant">
+                    {service.description}
+                  </p>
                 </motion.div>
               </BlurFade>
             ))}
@@ -245,9 +167,10 @@ export default function ZeroTrustPageClient() {
                     <span>Why Zero Trust</span>
                   </div>
                 </motion.div>
-                
+
                 <h2 className="text-3xl sm:text-4xl font-bold text-md-on-surface">
-                  Benefits of <span className="bg-gradient-to-r from-red-600 to-red-500 bg-clip-text text-transparent">Zero Trust</span>
+                  Benefits of{" "}
+                  <span className="bg-gradient-to-r from-red-600 to-red-500 bg-clip-text text-transparent">Zero Trust</span>
                 </h2>
                 <p className="text-md-on-surface-variant">
                   Adopting Zero Trust architecture provides significant security

@@ -1,6 +1,8 @@
-import { Building2, Handshake, Award, ShieldCheck } from "lucide-react";
+import Link from "next/link";
+import { Building2, Handshake, Award, ShieldCheck, ArrowRight } from "lucide-react";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { Marquee } from "@/components/ui/marquee";
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { clients, partners, regulatoryBodies } from "@/data/clients-partners";
 
@@ -33,8 +35,8 @@ function PartnerCard({ name, logo }: { name: string; logo: string }) {
 }
 
 export const metadata = {
-  title: "Clients & Partners | JAYAA IT Solution",
-  description: "Trusted by leading organizations across BFSI, Healthcare, Retail, and Government sectors.",
+  title: "Clients & Partners - Our Valued Collaborators",
+  description: "Discover JAYAA IT Solution's valued clients and strategic technology partners. We collaborate with industry leaders to deliver exceptional results.",
 };
 
 export default function ClientsPartnersPage() {
@@ -52,10 +54,31 @@ export default function ClientsPartnersPage() {
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-md-on-surface mb-6">
                 Trusted by <span className="text-md-primary">Industry Leaders</span>
               </h1>
-              <p className="text-lg text-md-on-surface-variant max-w-2xl mx-auto">
-                We are proud to work with leading organizations across BFSI,
-                Healthcare, Retail, and Government sectors.
+              <p className="text-lg text-md-on-surface-variant max-w-2xl mx-auto mb-8">
+                Discover JAYAA IT Solution&apos;s valued clients and strategic technology partners. We collaborate with industry leaders to deliver exceptional results and drive innovation across sectors.
               </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <Button asChild className="h-12 px-8 bg-md-primary text-white hover:bg-md-primary/90 rounded-full">
+                  <Link href="/contact" className="flex items-center gap-2">
+                    Partner With Us
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          </BlurFade>
+
+          {/* Stats */}
+          <BlurFade delay={0.2} inView>
+            <div className="grid grid-cols-2 gap-4 max-w-xl mx-auto mt-12">
+              <div className="p-6 rounded-2xl bg-md-surface border border-md-outline-variant text-center">
+                <div className="text-3xl font-bold text-md-primary mb-1">50+</div>
+                <p className="text-sm text-md-on-surface-variant">Satisfied Clients</p>
+              </div>
+              <div className="p-6 rounded-2xl bg-md-surface border border-md-outline-variant text-center">
+                <div className="text-3xl font-bold text-md-primary mb-1">99.9%</div>
+                <p className="text-sm text-md-on-surface-variant">Client Satisfaction</p>
+              </div>
             </div>
           </BlurFade>
         </div>
@@ -70,9 +93,12 @@ export default function ClientsPartnersPage() {
                 <Building2 className="w-4 h-4" />
                 <span>Our Clients</span>
               </div>
-              <h2 className="text-2xl font-bold text-md-on-surface">
-                Organizations We Serve
+              <h2 className="text-2xl font-bold text-md-on-surface mb-2">
+                Trusted by Leading Organizations
               </h2>
+              <p className="text-md-on-surface-variant text-sm max-w-xl mx-auto">
+                Axis Bank, Bajaj, Kotak, SBI, Indusland, Arohi, ICICI Lombard, DCB Bank, HDFC Sales, ICICI Bank, Greater Bank, Oman Development Bank
+              </p>
             </div>
           </BlurFade>
         </div>
@@ -101,6 +127,9 @@ export default function ClientsPartnersPage() {
               <p className="text-md-on-surface-variant">
                 We partner with leading technology providers to deliver
                 best-in-class solutions to our clients.
+              </p>
+              <p className="text-sm text-md-on-surface-variant mt-4">
+                Cisco, Fortinet, Palo Alto Networks, CyberArk, RSA Security, Forcepoint, ManageEngine, Commvault, Citrix, Broadcom, BMC, AppDynamics, Arcon, Versa Networks, Beyond Trust, Vyomlab, Seclore, Silver Peak, Accops
               </p>
             </div>
           </BlurFade>

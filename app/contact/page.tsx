@@ -2,76 +2,71 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Mail, Phone, MapPin, Clock, Send, CheckCircle2, Sparkles, ArrowRight, MessageCircle, HelpCircle, Shield } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Send, CheckCircle2, Sparkles, ArrowRight, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 
 const contactInfo = [
   {
-    icon: Mail,
-    title: "Email",
-    value: "info@jayaait.com",
-    href: "mailto:info@jayaait.com",
+    icon: Phone,
+    title: "Phone Support",
+    value: "+91 8268949507",
+    href: "tel:+918268949507",
+    available: "24/7 Available",
   },
   {
-    icon: Phone,
-    title: "Phone",
-    value: "+91 123 456 7890",
-    href: "tel:+911234567890",
+    icon: Mail,
+    title: "Email Support",
+    value: "info@jayaaitsolution.com",
+    href: "mailto:info@jayaaitsolution.com",
+    available: "Response within 24hrs",
   },
   {
     icon: MapPin,
-    title: "Address",
-    value: "Hyderabad, Telangana, India",
+    title: "Our Office",
+    value: "803/8, Ekatva Onyx, Wagle Estate Thane West-400604, Maharashtra, India",
     href: "#",
-  },
-  {
-    icon: Clock,
-    title: "Working Hours",
-    value: "Mon - Fri: 9:00 AM - 6:00 PM",
-    href: "#",
+    available: "Visit us",
   },
 ];
 
-const faqs = [
-  {
-    question: "What services does JAYAA IT Solution offer?",
-    answer: "We offer comprehensive cybersecurity services including Zero Trust Security, Digital Transformation, Advanced IT Solutions, and Professional Services. Our solutions cover threat detection, compliance management, cloud security, and more.",
-  },
-  {
-    question: "How can I request a security assessment?",
-    answer: "You can request a free security assessment by filling out the contact form on this page or calling us directly. Our team will get back to you within 24 hours to schedule a consultation.",
-  },
-  {
-    question: "Do you offer 24/7 support?",
-    answer: "Yes, we provide 24/7 support and monitoring for our managed security services clients. Our SOC team is always available to respond to security incidents and provide assistance.",
-  },
-  {
-    question: "What industries do you serve?",
-    answer: "We serve organizations across BFSI, Healthcare, Retail, Government, and other sectors. Our solutions are tailored to meet industry-specific compliance requirements and security challenges.",
-  },
-  {
-    question: "How long does implementation typically take?",
-    answer: "Implementation timelines vary based on the scope and complexity of the project. A typical security assessment takes 1-2 weeks, while full implementation can range from 4-12 weeks depending on your requirements.",
-  },
+const quickStats = [
+  { value: "24/7", label: "Support Available" },
+  { value: "<2hrs", label: "Response Time" },
+  { value: "500+", label: "Projects Delivered" },
+  { value: "99.9%", label: "Client Satisfaction" },
+];
+
+const officeHours = [
+  { day: "Monday - Friday", hours: "9:00 AM - 6:00 PM" },
+  { day: "Saturday", hours: "10:00 AM - 4:00 PM" },
+  { day: "Sunday", hours: "Emergency Support Only" },
+];
+
+const whyChooseUs = [
+  "Expert IT Professionals",
+  "24/7 Technical Support",
+  "Proven Track Record",
+  "Competitive Pricing",
+  "Quick Response Time",
+  "Customized Solutions",
 ];
 
 const socialLinks = [
-  { name: "LinkedIn", href: "#" },
-  { name: "Twitter", href: "#" },
-  { name: "Facebook", href: "#" },
-  { name: "Instagram", href: "#" },
+  { name: "LinkedIn", href: "https://in.linkedin.com/company/jayaaitsolution" },
+  { name: "Twitter", href: "https://twitter.com/jayaaitsolution" },
+  { name: "Instagram", href: "https://www.instagram.com/jayaaitsolution/" },
+  { name: "Facebook", href: "https://www.facebook.com/JayaaITSolution/" },
 ];
+
+export const metadata = {
+  title: "Contact Us - Get Expert IT Support & Consultation",
+  description: "Get in touch with JAYAA IT Solution for expert IT support and consultation. We're here to help transform your business.",
+};
 
 export default function ContactPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -80,6 +75,7 @@ export default function ContactPage() {
     email: "",
     company: "",
     phone: "",
+    subject: "",
     message: "",
   });
 
@@ -88,7 +84,7 @@ export default function ContactPage() {
     setIsSubmitted(true);
     setTimeout(() => {
       setIsSubmitted(false);
-      setFormData({ name: "", email: "", company: "", phone: "", message: "" });
+      setFormData({ name: "", email: "", company: "", phone: "", subject: "", message: "" });
     }, 3000);
   };
 
@@ -107,17 +103,39 @@ export default function ContactPage() {
           <BlurFade delay={0.1} inView>
             <div className="max-w-4xl mx-auto text-center">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-md-primary-container text-md-on-primary-container text-sm font-medium border border-md-primary/20 mb-6">
-                <Sparkles className="w-4 h-4" />
-                <span>Contact Us</span>
+                <span>Get in Touch</span>
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-md-on-surface mb-6 leading-[1.1] tracking-tight">
-                Let&apos;s Start a{" "}
-                <span className="gradient-text">Conversation</span>
+                Let&apos;s Start Your{" "}
+                <span className="gradient-text">Digital Journey</span>
               </h1>
-              <p className="text-lg text-md-on-surface-variant max-w-2xl mx-auto leading-relaxed">
-                Ready to secure your digital future? Get in touch with our team
-                for a free consultation and security assessment.
+              <p className="text-lg text-md-on-surface-variant max-w-2xl mx-auto leading-relaxed mb-8">
+                Ready to transform your business with cutting-edge IT solutions? Our expert team is here to help you every step of the way. Reach out today for a free consultation.
               </p>
+              <Button
+                asChild
+                className="h-12 px-8 bg-md-primary text-white hover:bg-md-primary/90 rounded-full"
+              >
+                <Link href="tel:+918268949507" className="flex items-center gap-2">
+                  <Phone className="w-4 h-4" />
+                  Call Now: +91 8268949507
+                </Link>
+              </Button>
+            </div>
+          </BlurFade>
+
+          {/* Quick Stats */}
+          <BlurFade delay={0.2} inView>
+            <div className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-3xl mx-auto">
+              {quickStats.map((stat, index) => (
+                <div
+                  key={index}
+                  className="p-4 rounded-2xl bg-md-surface border border-md-outline-variant text-center"
+                >
+                  <div className="text-2xl font-bold text-md-primary mb-1">{stat.value}</div>
+                  <p className="text-sm text-md-on-surface-variant">{stat.label}</p>
+                </div>
+              ))}
             </div>
           </BlurFade>
         </div>
@@ -133,17 +151,12 @@ export default function ContactPage() {
             <BlurFade delay={0.1} inView>
               <div className="space-y-8">
                 <div>
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase bg-md-secondary-container text-md-on-secondary-container mb-4">
-                    <span>Get in Touch</span>
-                  </div>
-                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-md-on-surface mb-4 leading-tight">
+                  <h2 className="text-3xl sm:text-4xl font-bold text-md-on-surface mb-4">
                     Contact{" "}
                     <span className="gradient-text">Information</span>
                   </h2>
                   <p className="text-md-on-surface-variant leading-relaxed">
-                    Have questions about our services? Need a security
-                    assessment? Our team is here to help you navigate your
-                    cybersecurity journey.
+                    Have questions about our services? Need a security assessment? Our team is here to help you navigate your cybersecurity journey.
                   </p>
                 </div>
 
@@ -157,16 +170,29 @@ export default function ContactPage() {
                       <div className="w-12 h-12 rounded-xl bg-md-primary-container flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                         <item.icon className="w-6 h-6 text-md-primary" />
                       </div>
-                      <div>
-                        <p className="text-sm text-md-on-surface-variant">
-                          {item.title}
-                        </p>
-                        <p className="font-medium text-md-on-surface">
-                          {item.value}
-                        </p>
+                      <div className="flex-1">
+                        <p className="text-sm text-md-on-surface-variant">{item.title}</p>
+                        <p className="font-medium text-md-on-surface">{item.value}</p>
+                        <p className="text-xs text-md-primary">{item.available}</p>
                       </div>
                     </a>
                   ))}
+                </div>
+
+                {/* Office Hours */}
+                <div className="p-6 rounded-2xl bg-md-surface-container border border-md-outline-variant">
+                  <h3 className="text-lg font-semibold text-md-on-surface mb-4 flex items-center gap-2">
+                    <Clock className="w-5 h-5 text-md-primary" />
+                    Office Hours
+                  </h3>
+                  <div className="space-y-2">
+                    {officeHours.map((schedule) => (
+                      <div key={schedule.day} className="flex justify-between text-sm">
+                        <span className="text-md-on-surface-variant">{schedule.day}</span>
+                        <span className="text-md-on-surface font-medium">{schedule.hours}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
                 {/* Social Links */}
@@ -177,10 +203,25 @@ export default function ContactPage() {
                       <a
                         key={link.name}
                         href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="px-4 py-2 rounded-full bg-md-surface-container border border-md-outline-variant text-md-on-surface-variant hover:border-md-primary/50 hover:text-md-primary transition-all duration-300 text-sm"
                       >
                         {link.name}
                       </a>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Why Choose Us */}
+                <div className="p-6 rounded-2xl bg-md-primary-container/30 border border-md-primary/20">
+                  <h3 className="text-lg font-semibold text-md-on-surface mb-4">Why Choose JAYAA IT</h3>
+                  <div className="grid grid-cols-2 gap-2">
+                    {whyChooseUs.map((item) => (
+                      <div key={item} className="flex items-center gap-2 text-sm text-md-on-surface-variant">
+                        <Shield className="w-4 h-4 text-md-primary" />
+                        {item}
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -204,63 +245,48 @@ export default function ContactPage() {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid sm:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <Label htmlFor="name" className="text-md-on-surface">
-                          Full Name *
-                        </Label>
-                        <Input
-                          id="name"
-                          placeholder="John Doe"
-                          required
-                          value={formData.name}
-                          onChange={(e) =>
-                            setFormData({ ...formData, name: e.target.value })
-                          }
-                          className="h-12 rounded-xl border-md-outline bg-md-surface focus-visible:ring-md-primary"
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="email" className="text-md-on-surface">
-                          Email *
-                        </Label>
-                        <Input
-                          id="email"
-                          type="email"
-                          placeholder="john@company.com"
-                          required
-                          value={formData.email}
-                          onChange={(e) =>
-                            setFormData({ ...formData, email: e.target.value })
-                          }
-                          className="h-12 rounded-xl border-md-outline bg-md-surface focus-visible:ring-md-primary"
-                        />
-                      </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="name" className="text-md-on-surface">
+                        Your Name *
+                      </Label>
+                      <Input
+                        id="name"
+                        placeholder="Enter your name"
+                        required
+                        value={formData.name}
+                        onChange={(e) =>
+                          setFormData({ ...formData, name: e.target.value })
+                        }
+                        className="h-12 rounded-xl border-md-outline bg-md-surface focus-visible:ring-md-primary"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="email" className="text-md-on-surface">
+                        Your Email *
+                      </Label>
+                      <Input
+                        id="email"
+                        type="email"
+                        placeholder="Enter your email"
+                        required
+                        value={formData.email}
+                        onChange={(e) =>
+                          setFormData({ ...formData, email: e.target.value })
+                        }
+                        className="h-12 rounded-xl border-md-outline bg-md-surface focus-visible:ring-md-primary"
+                      />
                     </div>
 
                     <div className="grid sm:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <Label htmlFor="company" className="text-md-on-surface">
-                          Company
-                        </Label>
-                        <Input
-                          id="company"
-                          placeholder="Company Name"
-                          value={formData.company}
-                          onChange={(e) =>
-                            setFormData({ ...formData, company: e.target.value })
-                          }
-                          className="h-12 rounded-xl border-md-outline bg-md-surface focus-visible:ring-md-primary"
-                        />
-                      </div>
-                      <div className="space-y-2">
                         <Label htmlFor="phone" className="text-md-on-surface">
-                          Phone
+                          Phone Number
                         </Label>
                         <Input
                           id="phone"
                           type="tel"
-                          placeholder="+91 123 456 7890"
+                          placeholder="Optional"
                           value={formData.phone}
                           onChange={(e) =>
                             setFormData({ ...formData, phone: e.target.value })
@@ -268,15 +294,45 @@ export default function ContactPage() {
                           className="h-12 rounded-xl border-md-outline bg-md-surface focus-visible:ring-md-primary"
                         />
                       </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="company" className="text-md-on-surface">
+                          Company Name
+                        </Label>
+                        <Input
+                          id="company"
+                          placeholder="Optional"
+                          value={formData.company}
+                          onChange={(e) =>
+                            setFormData({ ...formData, company: e.target.value })
+                          }
+                          className="h-12 rounded-xl border-md-outline bg-md-surface focus-visible:ring-md-primary"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="subject" className="text-md-on-surface">
+                        Subject *
+                      </Label>
+                      <Input
+                        id="subject"
+                        placeholder="Enter subject"
+                        required
+                        value={formData.subject}
+                        onChange={(e) =>
+                          setFormData({ ...formData, subject: e.target.value })
+                        }
+                        className="h-12 rounded-xl border-md-outline bg-md-surface focus-visible:ring-md-primary"
+                      />
                     </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="message" className="text-md-on-surface">
-                        Message *
+                        Tell us about your project requirements... *
                       </Label>
                       <Textarea
                         id="message"
-                        placeholder="Tell us about your project or requirements..."
+                        placeholder="Describe your requirements..."
                         required
                         rows={5}
                         value={formData.message}
@@ -326,64 +382,16 @@ export default function ContactPage() {
 
           <BlurFade delay={0.2} inView>
             <div className="relative rounded-3xl overflow-hidden border border-md-outline-variant shadow-lg bg-md-surface">
-              {/* Placeholder for Map - In production, integrate Google Maps or similar */}
               <div className="aspect-[21/9] bg-gradient-to-br from-md-primary-container to-md-secondary-container/30 flex items-center justify-center">
                 <div className="text-center p-8">
                   <div className="w-16 h-16 rounded-2xl bg-md-surface flex items-center justify-center mx-auto mb-4 shadow-lg">
                     <MapPin className="w-8 h-8 text-md-primary" />
                   </div>
                   <h3 className="text-xl font-semibold text-md-on-surface mb-2">JAYAA IT Solution Pvt. Ltd.</h3>
-                  <p className="text-md-on-surface-variant">Hyderabad, Telangana, India</p>
-                  <p className="text-sm text-md-on-surface-variant mt-2">Get directions on Google Maps</p>
+                  <p className="text-md-on-surface-variant">803/8, Ekatva Onyx, Wagle Estate Thane West-400604, Maharashtra, India</p>
+                  <p className="text-sm text-md-on-surface-variant mt-2">www.jayaaitsolution.com</p>
                 </div>
               </div>
-            </div>
-          </BlurFade>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-20 lg:py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid-pattern opacity-20" />
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <BlurFade delay={0.1} inView>
-            <div className="text-center max-w-3xl mx-auto mb-12">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase bg-md-secondary-container text-md-on-secondary-container mb-6">
-                <HelpCircle className="w-4 h-4" />
-                <span>FAQ</span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-md-on-surface mb-6">
-                Frequently Asked{" "}
-                <span className="gradient-text">Questions</span>
-              </h2>
-              <p className="text-md-on-surface-variant text-lg">
-                Find answers to common questions about our services.
-              </p>
-            </div>
-          </BlurFade>
-
-          <BlurFade delay={0.2} inView>
-            <div className="max-w-3xl mx-auto">
-              <Accordion type="single" collapsible className="space-y-4">
-                {faqs.map((faq, index) => (
-                  <AccordionItem
-                    key={index}
-                    value={`item-${index}`}
-                    className="border border-md-outline-variant rounded-2xl px-6 data-[state=open]:border-md-primary/50 bg-md-surface-container"
-                  >
-                    <AccordionTrigger className="text-left text-md-on-surface hover:no-underline py-4">
-                      <div className="flex items-center gap-3">
-                        <MessageCircle className="w-5 h-5 text-md-primary flex-shrink-0" />
-                        <span>{faq.question}</span>
-                      </div>
-                    </AccordionTrigger>
-                    <AccordionContent className="text-md-on-surface-variant pb-4 pl-8">
-                      {faq.answer}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
             </div>
           </BlurFade>
         </div>
@@ -410,21 +418,20 @@ export default function ContactPage() {
             <BlurFade inView>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 text-white text-sm font-medium mb-8 backdrop-blur-sm">
                 <Shield className="w-4 h-4" />
-                <span>Secure Your Business</span>
+                <span>Start Today</span>
               </div>
             </BlurFade>
 
             <BlurFade inView delay={0.1}>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 leading-tight">
-                Ready to Get{" "}
-                <span className="text-white/90">Started</span>?
+                Ready to Transform Your{" "}
+                <span className="text-white/90">Business</span>?
               </h2>
             </BlurFade>
 
             <BlurFade inView delay={0.2}>
               <p className="text-lg lg:text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
-                Take the first step towards securing your digital assets.
-                Schedule a free consultation with our security experts today.
+                Don&apos;t wait to start your digital transformation journey. Our expert team is ready to provide you with a free consultation and customized IT solutions that drive real results.
               </p>
             </BlurFade>
 
@@ -437,20 +444,14 @@ export default function ContactPage() {
                   borderRadius="9999px"
                 >
                   <Link
-                    href="tel:+911234567890"
+                    href="/contact"
                     className="flex items-center gap-2 text-white"
                   >
-                    Call Us Now
-                    <Phone className="w-5 h-5" />
+                    Schedule Free Consultation
+                    <ArrowRight className="w-5 h-5" />
                   </Link>
                 </ShimmerButton>
               </div>
-            </BlurFade>
-
-            <BlurFade inView delay={0.4}>
-              <p className="mt-8 text-sm text-white/60">
-                Free security assessment for new clients. No commitment required.
-              </p>
             </BlurFade>
           </div>
         </div>

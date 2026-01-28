@@ -1,7 +1,8 @@
 "use client";
 
-import { Building2, HeartPulse, ShoppingCart, Landmark } from "lucide-react";
+import { Building2, HeartPulse, ShoppingCart, Landmark, ArrowRight } from "lucide-react";
 import { BlurFade } from "@/components/ui/blur-fade";
+import Link from "next/link";
 
 const industries = [
   {
@@ -9,32 +10,56 @@ const industries = [
     title: "BFSI",
     fullName: "Banking, Financial Services & Insurance",
     description:
-      "Compliant security solutions for RBI, SEBI, and IRDAI regulations. Protect financial data and ensure transaction security.",
-    features: ["RBI Compliance", "Fraud Detection", "Secure Transactions"],
+      "We ensure regulatory compliance and secure data exchange for financial institutions with RBI-ready documentation, real-time VAPT, and 24/7 SOC monitoring for fraud detection.",
+    features: [
+      "RBI-ready documentation",
+      "Real-time VAPT",
+      "24/7 SOC monitoring",
+      "Fraud detection systems",
+      "Regulatory compliance",
+    ],
   },
   {
     icon: HeartPulse,
     title: "Healthcare",
     fullName: "Healthcare & Pharmaceuticals",
     description:
-      "HIPAA-compliant security for patient data protection and healthcare infrastructure. Secure medical devices and EMR systems.",
-    features: ["HIPAA Compliance", "EMR Security", "Medical IoT"],
+      "With the rise of digital patient records, we support HIPAA and NDHM security compliance, EMR/HIMS testing, and phishing training for medical staff.",
+    features: [
+      "HIPAA compliance",
+      "NDHM security compliance",
+      "EMR/HIMS testing",
+      "Phishing training for medical staff",
+      "Patient data protection",
+    ],
   },
   {
     icon: ShoppingCart,
-    title: "Retail",
+    title: "Retail & SaaS",
     fullName: "Retail & E-Commerce",
     description:
-      "Protect customer data and payment systems. Secure e-commerce platforms and supply chain operations.",
-    features: ["PCI DSS", "Payment Security", "Supply Chain"],
+      "We help fast-growing online businesses secure user data and transactions through PCI-DSS gap analysis, DevSecOps services, and bot mitigation strategies.",
+    features: [
+      "PCI-DSS gap analysis",
+      "DevSecOps services",
+      "Bot mitigation strategies",
+      "User data protection",
+      "Transaction security",
+    ],
   },
   {
     icon: Landmark,
-    title: "Government",
+    title: "Government/Public Sector",
     fullName: "Government & Public Sector",
     description:
-      "Meet stringent government security standards. Protect critical infrastructure and citizen data.",
-    features: ["Data Sovereignty", "Critical Infrastructure", "Citizen Services"],
+      "Our team has conducted portal and infrastructure testing for state and central projects, aligning with CERT-IN methodologies and SCADA security guidelines.",
+    features: [
+      "Portal testing for government",
+      "Infrastructure testing",
+      "CERT-IN methodologies",
+      "SCADA security guidelines",
+      "Public sector compliance",
+    ],
   },
 ];
 
@@ -50,18 +75,17 @@ export function Industries() {
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-md-on-surface mb-6">
               Specialized Solutions for{" "}
-              <span className="text-md-primary">Every Sector</span>
+              <span className="text-md-primary">Every Industry</span>
             </h2>
             <p className="text-lg text-md-on-surface-variant">
-              We understand the unique challenges of different industries and
-              deliver tailored security solutions that meet sector-specific
-              compliance requirements.
+              We deliver tailored cybersecurity and IT solutions across diverse industries,
+              ensuring regulatory compliance and robust protection for your specific sector needs.
             </p>
           </div>
         </BlurFade>
 
         {/* Industries Grid */}
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid md:grid-cols-2 gap-6 lg:gap-8 mb-12">
           {industries.map((industry, index) => (
             <BlurFade key={industry.title} delay={0.2 + index * 0.1} inView>
               <div className="group p-8 rounded-3xl bg-md-surface-container border border-md-outline-variant hover:border-md-primary/50 hover:shadow-lg transition-all duration-300 h-full">
@@ -95,6 +119,19 @@ export function Industries() {
             </BlurFade>
           ))}
         </div>
+
+        {/* CTA Button */}
+        <BlurFade delay={0.5} inView>
+          <div className="flex justify-center">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 h-14 px-8 rounded-full bg-md-primary text-md-on-primary hover:bg-md-primary/90 shadow-lg hover:shadow-xl transition-all duration-300 font-medium"
+            >
+              Discuss Your Industry Needs
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+        </BlurFade>
       </div>
     </section>
   );

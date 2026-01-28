@@ -23,7 +23,8 @@
       "Bash(identify:*)",
       "Bash(done)",
       "Bash(timeout 30 npm run dev:*)",
-      "Bash(findstr:*)"
+      "Bash(findstr:*)",
+      "mcp___magicuidesign_mcp__getTextAnimations"
     ]
   }
 }

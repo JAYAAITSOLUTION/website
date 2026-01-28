@@ -1,200 +1,154 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Shield, Lock, Zap, Star, CheckCircle2, Globe, Users, Server } from "lucide-react";
+import { ArrowRight, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ShimmerButton } from "@/components/ui/shimmer-button";
-import { NumberTicker } from "@/components/ui/number-ticker";
-import { BlurFade } from "@/components/ui/blur-fade";
-import { FlickeringGrid } from "@/components/ui/flickering-grid";
-import Image from "next/image";
-
-const floatingCards = [
-  {
-    icon: Globe,
-    value: "100+",
-    label: "Global Clients",
-    position: "top-8 -right-4",
-    delay: "delay-100",
-  },
-  {
-    icon: CheckCircle2,
-    value: "24/7",
-    label: "Security Monitoring",
-    position: "bottom-24 -left-8",
-    delay: "delay-300",
-  },
-  {
-    icon: Shield,
-    value: "99.9%",
-    label: "Threat Blocked",
-    position: "-bottom-4 right-8",
-    delay: "delay-500",
-  },
-];
 
 const stats = [
-  { value: 100, suffix: "%", label: "Satisfaction Rate" },
-  { value: 12, suffix: "+", label: "Years Experience" },
-  { value: 500, suffix: "Cr+", label: "Assets Protected" },
+  { value: "24/7/365", label: "Real-Time Threat Monitoring" },
+  { value: "50+", label: "Enterprise Clients Protected" },
+  { value: "99.9%", label: "Compliance-Driven Uptime SLA" },
 ];
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-md-surface pt-20">
-      {/* Flickering Grid Background */}
-      <FlickeringGrid
-        className="absolute inset-0 z-0 [mask-image:radial-gradient(800px_circle_at_center,white,transparent)]"
-        squareSize={4}
-        gridGap={6}
-        color="#9A1B21"
-        maxOpacity={0.15}
-        flickerChance={0.1}
-        height={1200}
-        width={1200}
-      />
+    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-[#FAFAFA] pt-20">
+      {/* Geometric Background Shapes */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Large peach/orange block - top left */}
+        <div
+          className="absolute -left-20 top-0 w-[500px] h-[600px] opacity-60"
+          style={{
+            background: 'linear-gradient(135deg, #F5E6D3 0%, #E8D5C4 50%, #F0DDD0 100%)',
+            transform: 'skewX(-8deg) rotate(-5deg)',
+          }}
+        />
 
-      {/* Gradient Orbs */}
-      <div className="absolute top-20 right-20 w-[600px] h-[600px] bg-md-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 left-10 w-[400px] h-[400px] bg-md-secondary/5 rounded-full blur-3xl" />
+        {/* Lavender/purple block - top center-right */}
+        <div
+          className="absolute left-[35%] -top-20 w-[400px] h-[500px] opacity-50"
+          style={{
+            background: 'linear-gradient(180deg, #E8E0F0 0%, #DDD5E8 50%, #E5DDF0 100%)',
+            transform: 'skewX(5deg) rotate(3deg)',
+          }}
+        />
 
-      {/* Content */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-12 lg:py-20">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left Column - Text */}
-          <div className="space-y-6">
-            <BlurFade delay={0.1}>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-md-primary-container/50 text-md-on-primary-container text-sm font-medium border border-md-primary/20">
-                <Star className="w-4 h-4 fill-current" />
-                <span>Trusted by 100+ Enterprises</span>
-              </div>
-            </BlurFade>
+        {/* Light blue block - right side */}
+        <div
+          className="absolute right-0 top-20 w-[350px] h-[550px] opacity-50"
+          style={{
+            background: 'linear-gradient(225deg, #E0E8F5 0%, #D5E0F0 50%, #E5EDF8 100%)',
+            transform: 'skewX(-3deg) rotate(5deg)',
+          }}
+        />
 
-            <BlurFade delay={0.2}>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-md-on-surface leading-[1.1] tracking-tight">
-                Secure Your{" "}
-                <span className="text-md-primary italic font-serif">Business</span>
-                <br />
-                With Confidence
-              </h1>
-            </BlurFade>
+        {/* Additional geometric accents */}
+        <div
+          className="absolute left-[20%] top-[40%] w-[200px] h-[300px] opacity-30"
+          style={{
+            background: 'linear-gradient(135deg, #F0E8D8 0%, #E5DDD0 100%)',
+            transform: 'skewX(8deg)',
+          }}
+        />
 
-            <BlurFade delay={0.3}>
-              <p className="text-lg text-md-on-surface-variant max-w-lg leading-relaxed">
-                Protect your critical assets with enterprise-grade cybersecurity solutions.
-                Tailored for BFSI, Healthcare, and Government sectors.
-              </p>
-            </BlurFade>
+        <div
+          className="absolute right-[25%] top-[10%] w-[150px] h-[200px] opacity-40"
+          style={{
+            background: 'linear-gradient(180deg, #E5E0F0 0%, #D8D3E8 100%)',
+            transform: 'skewX(-5deg) rotate(-3deg)',
+          }}
+        />
 
-            {/* Skill Tags */}
-            <BlurFade delay={0.35}>
-              <div className="flex flex-wrap gap-2">
-                {["Cloud Security", "Compliance", "SOC"].map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-3 py-1.5 rounded-full bg-md-surface-container border border-md-outline-variant text-sm text-md-on-surface-variant hover:border-md-primary/30 transition-colors"
-                  >
-                    + {tag}
-                  </span>
+        {/* Subtle grid overlay for texture */}
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)
+            `,
+            backgroundSize: '60px 60px',
+          }}
+        />
+      </div>
+
+      {/* Main Content */}
+      <div className="container mx-auto px-6 sm:px-8 lg:px-16 relative z-10">
+        <div className="max-w-6xl">
+          {/* Headline with Gradient Styling */}
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-[1.1] tracking-tight mb-8">
+            <span className="bg-gradient-to-r from-[#9A1B21] via-[#B83236] to-[#9A1B21] bg-clip-text text-transparent">
+              Protect, Prevent,
+            </span>
+            <br />
+            <span className="bg-gradient-to-r from-[#7A5C00] via-[#9A1B21] to-[#7A5C00] bg-clip-text text-transparent">
+              and Prevail
+            </span>
+          </h1>
+
+          {/* Two-column subtext with arrow */}
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 mb-12 max-w-3xl">
+            <p className="text-base sm:text-lg text-[#4A4A4A] leading-relaxed max-w-sm">
+              At JAYAA IT Solution, we empower businesses to stay ahead of evolving cyber threats
+            </p>
+
+            <ArrowRight className="w-5 h-5 text-[#9A1B21] hidden sm:block flex-shrink-0" />
+
+            <p className="text-base sm:text-lg text-[#4A4A4A] leading-relaxed max-w-sm">
+              through intelligent, proactive, and compliance-driven security solutions
+            </p>
+          </div>
+
+          {/* Rating / Social Proof */}
+          <div className="flex items-center gap-6 mb-12">
+            <div className="flex items-center gap-2">
+              <span className="text-2xl font-semibold text-[#1A1A1A]">4.9/5</span>
+              <div className="flex gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-[#9A1B21] text-[#9A1B21]" />
                 ))}
               </div>
-            </BlurFade>
-
-            <BlurFade delay={0.4}>
-              <div className="flex flex-wrap gap-4 pt-2">
-                <ShimmerButton
-                  className="h-12 px-6 rounded-full text-base font-medium"
-                  shimmerColor="#ffffff"
-                  background="#9A1B21"
-                >
-                  <Link href="/contact" className="flex items-center gap-2">
-                    Get Started - Free Consultation
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </ShimmerButton>
-                <Button
-                  asChild
-                  variant="ghost"
-                  className="h-12 px-6 text-md-on-surface hover:bg-md-primary-container hover:text-md-on-primary-container transition-all duration-300 text-base"
-                >
-                  <Link href="/services">View Solutions</Link>
-                </Button>
-              </div>
-            </BlurFade>
+            </div>
+            <span className="text-sm text-[#6A6A6A]">Trusted by enterprises across BFSI, Healthcare, Government, and Technology</span>
           </div>
 
-          {/* Right Column - Hero Image with Floating Cards */}
-          <BlurFade delay={0.3} direction="left">
-            <div className="relative">
-              {/* Decorative Circle */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-[320px] h-[320px] sm:w-[400px] sm:h-[400px] rounded-full border border-md-primary/10" />
-                <div className="absolute w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] rounded-full border border-md-primary/5" />
-              </div>
+          {/* CTA Buttons */}
+          <div className="flex flex-wrap gap-4 mb-20">
+            <Button
+              asChild
+              className="h-12 px-8 rounded-full bg-[#9A1B21] hover:bg-[#7A1519] text-white text-base font-medium transition-all duration-300"
+            >
+              <Link href="/solutions" className="flex items-center gap-2">
+                Explore Solutions
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              className="h-12 px-8 rounded-full border-[#D1D1D1] text-[#1A1A1A] hover:bg-[#F0F0F0] hover:border-[#9A1B21] transition-all duration-300 text-base"
+            >
+              <Link href="/contact">Get Free Assessment</Link>
+            </Button>
+          </div>
 
-              {/* Main Image Container */}
-              <div className="relative mx-auto w-[280px] h-[350px] sm:w-[340px] sm:h-[420px] rounded-[2rem] overflow-hidden shadow-2xl">
-                <div className="absolute inset-0 bg-gradient-to-b from-md-primary/5 to-transparent" />
-                <Image
-                  src="/hero-security.jpg"
-                  alt="Cybersecurity Professional"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-                {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-md-surface/20 to-transparent" />
-              </div>
-
-              {/* Floating Cards */}
-              {floatingCards.map((card, index) => (
-                <div
-                  key={index}
-                  className={`absolute ${card.position} bg-md-surface/95 backdrop-blur-sm rounded-2xl p-4 shadow-xl border border-md-outline-variant animate-float-${index === 0 ? 'delayed' : index === 2 ? 'slow' : ''} hidden sm:block`}
-                  style={{ animationDelay: `${index * 200}ms` }}
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-md-primary-container flex items-center justify-center">
-                      <card.icon className="w-5 h-5 text-md-primary" />
-                    </div>
-                    <div>
-                      <p className="text-lg font-bold text-md-on-surface">{card.value}</p>
-                      <p className="text-xs text-md-on-surface-variant">{card.label}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-
-              {/* Additional Small Pills */}
-              <div className="absolute top-4 -left-4 bg-md-surface rounded-full px-4 py-2 shadow-lg border border-md-outline-variant hidden sm:flex items-center gap-2">
-                <Users className="w-4 h-4 text-md-primary" />
-                <span className="text-sm font-medium text-md-on-surface">Expert Team</span>
-              </div>
-
-              <div className="absolute bottom-12 -right-4 bg-md-primary text-white rounded-full px-4 py-2 shadow-lg hidden sm:flex items-center gap-2">
-                <Server className="w-4 h-4" />
-                <span className="text-sm font-medium">SOC Ready</span>
-              </div>
-            </div>
-          </BlurFade>
-        </div>
-
-        {/* Bottom Stats Row */}
-        <BlurFade delay={0.5}>
-          <div className="mt-16 lg:mt-24 pt-8 border-t border-md-outline-variant/50">
-            <div className="flex flex-wrap justify-center lg:justify-start gap-8 lg:gap-16">
+          {/* Stats Section */}
+          <div className="border-t border-[#E0E0E0] pt-10">
+            <p className="text-xs uppercase tracking-[0.2em] text-[#8A8A8A] mb-8 text-center">
+              Trusted by Industry Leaders Worldwide
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
               {stats.map((stat, index) => (
-                <div key={index} className="text-center lg:text-left">
-                  <div className="text-3xl lg:text-4xl font-bold text-md-on-surface">
-                    <NumberTicker value={stat.value} />
-                    <span className="text-md-primary">{stat.suffix}</span>
+                <div key={index} className="text-center sm:text-left">
+                  <div className="text-3xl lg:text-4xl font-semibold text-[#1A1A1A] mb-1">
+                    {stat.value}
                   </div>
-                  <p className="text-sm text-md-on-surface-variant mt-1">{stat.label}</p>
+                  <p className="text-sm text-[#6A6A6A]">{stat.label}</p>
                 </div>
               ))}
             </div>
           </div>
-        </BlurFade>
+        </div>
       </div>
     </section>
   );

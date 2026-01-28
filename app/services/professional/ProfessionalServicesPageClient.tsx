@@ -1,57 +1,37 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowLeft, Users, ClipboardCheck, GraduationCap, FileSearch, CheckCircle2, Sparkles, TrendingUp, Award, Zap } from "lucide-react";
+import { ArrowLeft, Users, ClipboardCheck, GraduationCap, FileSearch, CheckCircle2, Sparkles, TrendingUp, Award, Zap, Briefcase, UserPlus, RefreshCw, Shield, Lightbulb, FolderKanban } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { motion } from "motion/react";
 
-const features = [
-  {
-    icon: ClipboardCheck,
-    title: "IT Consulting",
-    description: "Strategic technology consulting to align your IT investments with business objectives.",
-    size: "col-span-1 row-span-1",
-  },
-  {
-    icon: FileSearch,
-    title: "Compliance Advisory",
-    description: "Expert guidance on regulatory compliance including ISO 27001, GDPR, HIPAA, and industry standards.",
-    size: "col-span-1 row-span-2",
-    highlight: true,
-  },
-  {
-    icon: GraduationCap,
-    title: "Security Audits",
-    description: "Comprehensive security assessments and penetration testing to identify vulnerabilities.",
-    size: "col-span-1 row-span-1",
-  },
-  {
-    icon: Users,
-    title: "Managed Services",
-    description: "End-to-end managed security and IT services with 24/7 support and monitoring.",
-    size: "col-span-1 row-span-1",
-  },
+const services = [
+  { icon: Lightbulb, title: "Strategic IT Consulting", description: "Expert guidance on technology strategy and digital roadmap" },
+  { icon: UserPlus, title: "Staff Augmentation & Project Support", description: "Skilled professionals to complement your team" },
+  { icon: RefreshCw, title: "System Integrations & Migrations", description: "Seamless migration and integration services" },
+  { icon: ClipboardCheck, title: "IT Audits & Compliance Readiness", description: "Comprehensive audits and compliance preparation" },
+  { icon: Shield, title: "Managed Services & SLA-Based Support", description: "Reliable ongoing support with guaranteed SLAs" },
+  { icon: TrendingUp, title: "Technology Advisory Services", description: "Strategic technology investment guidance" },
+  { icon: Briefcase, title: "Digital Strategy Consulting", description: "Digital transformation strategy and planning" },
+  { icon: FolderKanban, title: "Project Management & Delivery", description: "End-to-end project execution and delivery" },
+  { icon: Users, title: "Change Management Support", description: "Support for organizational change initiatives" },
 ];
 
 const benefits = [
-  { text: "Access to certified experts", icon: Award },
-  { text: "Reduced operational overhead", icon: Zap },
-  { text: "Improved compliance posture", icon: CheckCircle2 },
-  { text: "Proactive risk management", icon: TrendingUp },
+  { text: "Proven implementation track record", icon: Award },
+  { text: "Transparent engagement models", icon: CheckCircle2 },
+  { text: "Local presence, national reach", icon: TrendingUp },
+  { text: "Flexible resource allocation", icon: Zap },
+  { text: "Industry-specific expertise", icon: Briefcase },
+  { text: "Results-driven approach", icon: TrendingUp },
 ];
 
 const stats = [
-  { value: "100+", label: "Certified Experts", icon: Users },
-  { value: "24/7", label: "Support Available", icon: TrendingUp },
-  { value: "ISO", label: "Certified Standards", icon: Award },
-];
-
-const process = [
-  { step: "01", title: "Analyze", description: "Assess your current IT environment and requirements" },
-  { step: "02", title: "Recommend", description: "Provide tailored solutions and strategic recommendations" },
-  { step: "03", title: "Implement", description: "Deploy services with minimal disruption" },
-  { step: "04", title: "Support", description: "Ongoing monitoring and expert support" },
+  { value: "Expert", label: "Consultants", icon: Users },
+  { value: "Proven", label: "Track Record", icon: Award },
+  { value: "Transparent", label: "Engagement", icon: CheckCircle2 },
+  { value: "National", label: "Reach", icon: TrendingUp },
 ];
 
 export default function ProfessionalServicesPageClient() {
@@ -101,13 +81,15 @@ export default function ProfessionalServicesPageClient() {
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-md-on-surface mb-6">
                 Professional{" "}
-                <span className="bg-gradient-to-r from-red-600 to-red-500 bg-clip-text text-transparent">Services</span>
+                <span className="bg-gradient-to-r from-red-600 to-red-500 bg-clip-text text-transparent">IT Services</span>
               </h1>
 
-              <p className="text-lg text-md-on-surface-variant max-w-2xl mb-8">
-                Strategic IT consulting, compliance advisory, and managed
-                security services tailored to your organization&apos;s unique
-                needs and objectives.
+              <p className="text-lg text-md-on-surface-variant max-w-2xl mb-4">
+                <strong>IT Expertise, Delivered On-Demand</strong>
+              </p>
+
+              <p className="text-md-on-surface-variant max-w-2xl mb-8">
+                Deep technical expertise and project execution excellence with strategic consulting and comprehensive managed services support. We provide the expertise you need, when you need it.
               </p>
 
               <div className="flex gap-4 flex-wrap">
@@ -127,7 +109,7 @@ export default function ProfessionalServicesPageClient() {
       {/* Stats Section */}
       <section className="py-20 bg-md-surface">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <BlurFade key={index} delay={0.1 + index * 0.1} inView>
                 <motion.div
@@ -137,7 +119,7 @@ export default function ProfessionalServicesPageClient() {
                   <div className="w-16 h-16 rounded-full bg-red-500/10 flex items-center justify-center mx-auto mb-4">
                     <stat.icon className="w-8 h-8 text-red-600" />
                   </div>
-                  <div className="text-4xl font-bold text-md-on-surface mb-2">{stat.value}</div>
+                  <div className="text-3xl font-bold text-md-on-surface mb-2">{stat.value}</div>
                   <div className="text-md-on-surface-variant">{stat.label}</div>
                 </motion.div>
               </BlurFade>
@@ -146,48 +128,37 @@ export default function ProfessionalServicesPageClient() {
         </div>
       </section>
 
-      {/* Features Bento Grid */}
+      {/* Services Grid */}
       <section className="py-20 lg:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <BlurFade delay={0.1} inView>
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-3xl sm:text-4xl font-bold text-md-on-surface mb-4">
-                Service <span className="bg-gradient-to-r from-red-600 to-red-500 bg-clip-text text-transparent">Offerings</span>
+                Our{" "}
+                <span className="bg-gradient-to-r from-red-600 to-red-500 bg-clip-text text-transparent">Professional Services</span>
               </h2>
               <p className="text-md-on-surface-variant">
-                Expert professional services delivered by certified consultants
-                with deep industry experience.
+                Expert professional services delivered by certified consultants with deep industry experience.
               </p>
             </div>
           </BlurFade>
 
-          <div className="grid grid-cols-2 gap-6 auto-rows-[200px]">
-            {features.map((feature, index) => (
-              <BlurFade key={feature.title} delay={0.1 + index * 0.1} inView>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((service, index) => (
+              <BlurFade key={service.title} delay={0.1 + index * 0.05} inView>
                 <motion.div
                   whileHover={{ y: -4 }}
-                  className={`
-                    p-6 rounded-3xl bg-md-surface-container border border-md-outline-variant 
-                    relative overflow-hidden group
-                    ${feature.highlight ? 'col-span-1 row-span-2' : ''}
-                    ${feature.size}
-                  `}
+                  className="p-6 rounded-2xl bg-md-surface-container border border-md-outline-variant hover:border-red-500/30 hover:shadow-lg transition-all duration-300 h-full"
                 >
-                  {feature.highlight && (
-                    <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-transparent" />
-                  )}
-                  
-                  <div className="relative z-10">
-                    <div className="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-4">
-                      <feature.icon className="w-6 h-6 text-red-600" />
-                    </div>
-                    <h3 className="text-xl font-semibold text-md-on-surface mb-3">
-                      {feature.title}
-                    </h3>
-                    <p className="text-md-on-surface-variant">
-                      {feature.description}
-                    </p>
+                  <div className="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-4">
+                    <service.icon className="w-6 h-6 text-red-600" />
                   </div>
+                  <h3 className="text-lg font-semibold text-md-on-surface mb-2">
+                    {service.title}
+                  </h3>
+                  <p className="text-sm text-md-on-surface-variant">
+                    {service.description}
+                  </p>
                 </motion.div>
               </BlurFade>
             ))}

@@ -1,10 +1,9 @@
 import { Hero } from "@/components/home/hero";
 import { LogoBar } from "@/components/home/logo-bar";
-import { PainPoints } from "@/components/home/pain-points";
-import { HowItWorks } from "@/components/home/how-it-works";
-import { FeaturesBento } from "@/components/home/features-bento";
-import { Testimonials } from "@/components/home/testimonials";
-import { Impact } from "@/components/home/impact";
+import { CybersecuritySolutions } from "@/components/home/cybersecurity-solutions";
+import { Industries } from "@/components/home/industries";
+import { RegulatoryCompliance } from "@/components/home/regulatory-compliance";
+import { WhyChooseUs } from "@/components/home/why-choose-us";
 import { FinalCTA } from "@/components/home/final-cta";
 
 export default function Home() {
@@ -12,11 +11,10 @@ export default function Home() {
     <>
       <Hero />
       <LogoBar />
-      <PainPoints />
-      <HowItWorks />
-      <FeaturesBento />
-      <Testimonials />
-      <Impact />
+      <CybersecuritySolutions />
+      <Industries />
+      <RegulatoryCompliance />
+      <WhyChooseUs />
       <FinalCTA />
     </>
   );

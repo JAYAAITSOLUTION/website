@@ -1,9 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { BlurFade } from "@/components/ui/blur-fade";
+import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
+
+const indicators = [
+  { text: "READY", delay: 0 },
+  { text: "TRANSFORM", delay: 0.5 },
+  { text: "CONNECTING...", delay: 1 },
+];
 
 export function FinalCTA() {
   return (
@@ -25,25 +33,33 @@ export function FinalCTA() {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
+
+          {/* Animated Indicators */}
           <BlurFade inView>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 text-white text-sm font-medium mb-8 backdrop-blur-sm">
-              <Sparkles className="w-4 h-4" />
-              <span>Start Your Security Journey Today</span>
+            <div className="flex justify-center gap-4 mb-8">
+              {indicators.map((indicator, index) => (
+                <div
+                  key={index}
+                  className="px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20"
+                >
+                  <AnimatedShinyText className="text-sm font-medium text-white">
+                    {indicator.text}
+                  </AnimatedShinyText>
+                </div>
+              ))}
             </div>
           </BlurFade>
 
           <BlurFade inView delay={0.1}>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 leading-tight">
-              Ready to Secure Your{" "}
-              <span className="text-white/90">Digital Future</span>?
+              Ready to Transform Your{" "}
+              <span className="text-white/90">Business</span>?
             </h2>
           </BlurFade>
 
           <BlurFade inView delay={0.2}>
             <p className="text-lg lg:text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
-              Join hundreds of enterprises that trust JAYAA IT for their
-              cybersecurity needs. Get a free security assessment and discover
-              how we can protect your business.
+              Join hundreds of satisfied clients who trust JAYAA IT Solution for their digital transformation journey.
             </p>
           </BlurFade>
 
@@ -59,18 +75,20 @@ export function FinalCTA() {
                   href="/contact"
                   className="flex items-center gap-2 text-white"
                 >
-                  Schedule a Consultation
+                  Start Your Journey
                   <ArrowRight className="w-5 h-5" />
                 </Link>
               </ShimmerButton>
+              <Button
+                asChild
+                variant="ghost"
+                className="h-14 px-10 text-white hover:bg-white/10 border border-white/30 rounded-full text-base"
+              >
+                <Link href="/services">
+                  Explore Services
+                </Link>
+              </Button>
             </div>
-          </BlurFade>
-
-          <BlurFade inView delay={0.4}>
-            <p className="mt-8 text-sm text-white/60">
-              Free security assessment for new clients. No commitment required.
-              Response within 24 hours.
-            </p>
           </BlurFade>
         </div>
       </div>

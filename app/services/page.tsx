@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import ServicesPageClient from "./ServicesPageClient";
 
 export const metadata: Metadata = {
-  title: "Our Services | JAYAA IT Solution Pvt. Ltd.",
-  description: "Explore our comprehensive range of cybersecurity and IT services including Zero Trust Security, Digital Transformation, Advanced IT Solutions, and Professional Services.",
+  title: "IT Services - Comprehensive Technology Solutions",
+  description: "Empowering businesses with cutting-edge technology, robust security, and expert guidance. Our comprehensive suite of services covers everything from zero trust security to digital transformation.",
 };
 
 export default ServicesPageClient;
