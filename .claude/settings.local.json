@@ -19,7 +19,9 @@
       "Bash(ls -la:*)",
       "WebSearch",
       "WebFetch(domain:unsplash.com)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(identify:*)",
+      "Bash(done)"
     ]
   }
 }
