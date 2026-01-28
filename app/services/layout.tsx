@@ -1,9 +1,12 @@
-import { Metadata } from "next";
-import ServicesPageClient from "./ServicesPageClient";
-
-export const metadata: Metadata = {
+export const metadata = {
   title: "Our Services | JAYAA IT Solution Pvt. Ltd.",
   description: "Explore our comprehensive range of cybersecurity and IT services including Zero Trust Security, Digital Transformation, Advanced IT Solutions, and Professional Services.",
 };
 
-export default ServicesPageClient;
+export default function ServicesLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return children;
+}

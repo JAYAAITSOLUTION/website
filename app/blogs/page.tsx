@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FileText, Sparkles, ArrowRight, Calendar, Clock, User, BookOpen } from "lucide-react";
@@ -8,6 +8,9 @@ import { BlurFade } from "@/components/ui/blur-fade";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { FlickeringGrid } from "@/components/ui/flickering-grid";
+import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern";
+import { cn } from "@/lib/utils";
 import { BlogCard } from "@/components/blog/BlogCard";
 import { BlogCardSkeleton } from "@/components/blog/BlogCardSkeleton";
 import { Blog } from "@/lib/blog";
@@ -22,7 +25,7 @@ const categories = [
   "Industry Insights",
 ];
 
-export default function BlogPage() {
+function BlogPageContent() {
   const [blogs, setBlogs] = useState<(Blog & { _id: string })[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -75,7 +78,17 @@ export default function BlogPage() {
     <div className="min-h-screen bg-md-surface">
       {/* Hero Section */}
       <section className="relative py-20 lg:py-32 bg-md-surface-container overflow-hidden">
-        <div className="absolute inset-0 bg-grid-pattern opacity-30" />
+        {/* Flickering Grid Background */}
+        <FlickeringGrid
+          className="absolute inset-0 z-0 [mask-image:radial-gradient(700px_circle_at_center,white,transparent)]"
+          squareSize={4}
+          gridGap={6}
+          color="#9A1B21"
+          maxOpacity={0.12}
+          flickerChance={0.1}
+          height={1000}
+          width={1000}
+        />
         <div className="absolute top-20 right-10 w-[500px] h-[500px] bg-md-primary/10 rounded-full blur-3xl" />
         <div className="absolute bottom-20 left-10 w-[400px] h-[400px] bg-md-secondary/10 rounded-full blur-3xl" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -123,7 +136,17 @@ export default function BlogPage() {
       {/* Featured Post */}
       {featuredPost && !loading && (
         <section className="py-20 lg:py-32 relative overflow-hidden">
-          <div className="absolute inset-0 bg-grid-pattern opacity-20" />
+          {/* Animated Grid Pattern Background */}
+          <AnimatedGridPattern
+            numSquares={25}
+            maxOpacity={0.08}
+            duration={4}
+            repeatDelay={0.5}
+            className={cn(
+              "[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]",
+              "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12"
+            )}
+          />
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <BlurFade delay={0.1} inView>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase bg-md-primary-container text-md-on-primary-container mb-8">
@@ -215,7 +238,17 @@ export default function BlogPage() {
 
       {/* Blog Grid Section */}
       <section className="py-20 lg:py-32 bg-md-surface-container relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid-pattern opacity-20" />
+        {/* Flickering Grid Background */}
+        <FlickeringGrid
+          className="absolute inset-0 z-0 [mask-image:radial-gradient(600px_circle_at_center,white,transparent)]"
+          squareSize={4}
+          gridGap={6}
+          color="#9A1B21"
+          maxOpacity={0.08}
+          flickerChance={0.1}
+          height={800}
+          width={800}
+        />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <BlurFade delay={0.1} inView>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase bg-md-primary-container text-md-on-primary-container mb-8">
@@ -275,7 +308,17 @@ export default function BlogPage() {
 
       {/* Newsletter Section */}
       <section className="py-20 lg:py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid-pattern opacity-20" />
+        {/* Animated Grid Pattern Background */}
+        <AnimatedGridPattern
+          numSquares={30}
+          maxOpacity={0.1}
+          duration={3}
+          repeatDelay={1}
+          className={cn(
+            "[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]",
+            "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12"
+          )}
+        />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <BlurFade delay={0.1} inView>
             <div className="max-w-2xl mx-auto text-center">
@@ -361,5 +404,13 @@ export default function BlogPage() {
         </div>
       </section>
     </div>
+  );
+}
+
+export default function BlogPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <BlogPageContent />
+    </Suspense>
   );
 }

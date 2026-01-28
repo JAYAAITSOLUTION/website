@@ -4,6 +4,9 @@ import { BlurFade } from "@/components/ui/blur-fade";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { BorderBeam } from "@/components/ui/border-beam";
 import { NumberTicker } from "@/components/ui/number-ticker";
+import { FlickeringGrid } from "@/components/ui/flickering-grid";
+import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern";
+import { cn } from "@/lib/utils";
 
 const solutions = [
   { icon: Shield, title: "Threat Detection & Response", description: "AI-powered threat detection with 24/7 SOC monitoring" },
@@ -68,8 +71,17 @@ export default function SolutionsPage() {
     <div className="min-h-screen bg-md-surface">
       {/* Hero Section */}
       <section className="relative py-20 lg:py-32 bg-md-surface-container overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 bg-grid-pattern opacity-30" />
+        {/* Flickering Grid Background */}
+        <FlickeringGrid
+          className="absolute inset-0 z-0 [mask-image:radial-gradient(700px_circle_at_center,white,transparent)]"
+          squareSize={4}
+          gridGap={6}
+          color="#9A1B21"
+          maxOpacity={0.12}
+          flickerChance={0.1}
+          height={1000}
+          width={1000}
+        />
 
         {/* Gradient Orbs */}
         <div className="absolute top-20 right-10 w-[500px] h-[500px] bg-md-primary/10 rounded-full blur-3xl" />
@@ -189,7 +201,17 @@ export default function SolutionsPage() {
 
       {/* Solutions Bento Grid */}
       <section id="solutions" className="py-20 lg:py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid-pattern opacity-20" />
+        {/* Animated Grid Pattern Background */}
+        <AnimatedGridPattern
+          numSquares={40}
+          maxOpacity={0.08}
+          duration={4}
+          repeatDelay={0.5}
+          className={cn(
+            "[mask-image:radial-gradient(600px_circle_at_center,white,transparent)]",
+            "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12"
+          )}
+        />
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <BlurFade delay={0.1} inView>
@@ -289,7 +311,17 @@ export default function SolutionsPage() {
 
       {/* Testimonials */}
       <section className="py-20 lg:py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid-pattern opacity-20" />
+        {/* Flickering Grid Background */}
+        <FlickeringGrid
+          className="absolute inset-0 z-0 [mask-image:radial-gradient(600px_circle_at_center,white,transparent)]"
+          squareSize={4}
+          gridGap={6}
+          color="#9A1B21"
+          maxOpacity={0.08}
+          flickerChance={0.1}
+          height={800}
+          width={800}
+        />
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <BlurFade delay={0.1} inView>

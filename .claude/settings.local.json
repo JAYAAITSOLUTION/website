@@ -22,7 +22,8 @@
       "Bash(curl:*)",
       "Bash(identify:*)",
       "Bash(done)",
-      "Bash(timeout 30 npm run dev:*)"
+      "Bash(timeout 30 npm run dev:*)",
+      "Bash(findstr:*)"
     ]
   }
 }

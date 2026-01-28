@@ -4,13 +4,14 @@ import { ObjectId } from "mongodb";
 
 export async function GET(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const { db } = await connectToDatabase();
     const blog = await db
       .collection("blogs")
-      .findOne({ _id: new ObjectId(params.id) });
+      .findOne({ _id: new ObjectId(id) });
 
     if (!blog) {
       return NextResponse.json({ message: "Blog not found" }, { status: 404 });

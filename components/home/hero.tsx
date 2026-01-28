@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { NumberTicker } from "@/components/ui/number-ticker";
 import { BlurFade } from "@/components/ui/blur-fade";
+import { FlickeringGrid } from "@/components/ui/flickering-grid";
 import Image from "next/image";
 
 const floatingCards = [
@@ -41,8 +42,17 @@ const stats = [
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-md-surface pt-20">
-      {/* Subtle Background Pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,theme(colors.md.primary\/0.08)_1px,transparent_0)] [background-size:24px_24px]" />
+      {/* Flickering Grid Background */}
+      <FlickeringGrid
+        className="absolute inset-0 z-0 [mask-image:radial-gradient(800px_circle_at_center,white,transparent)]"
+        squareSize={4}
+        gridGap={6}
+        color="#9A1B21"
+        maxOpacity={0.15}
+        flickerChance={0.1}
+        height={1200}
+        width={1200}
+      />
 
       {/* Gradient Orbs */}
       <div className="absolute top-20 right-20 w-[600px] h-[600px] bg-md-primary/5 rounded-full blur-3xl" />
