@@ -1,48 +1,78 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { BlurFade } from "@/components/ui/blur-fade";
 
 export function FinalCTA() {
   return (
-    <section className="py-20 lg:py-32 bg-md-surface relative overflow-hidden">
-      {/* Background Decorations */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-md-primary/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-md-tertiary/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+    <section className="relative py-20 lg:py-32 overflow-hidden bg-gradient-to-br from-[#9A1B21] via-[#c41e25] to-[#7A5C00]">
+
+      {/* Pattern Overlay */}
+      <div className="absolute inset-0 opacity-10">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }}
+        />
+      </div>
+
+      {/* Glow Effects */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <BlurFade delay={0.1} inView>
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-md-on-surface mb-6">
-              Ready to Secure Your{" "}
-              <span className="text-md-primary">Digital Future</span>?
-            </h2>
-            <p className="text-lg text-md-on-surface-variant mb-10 max-w-2xl mx-auto">
-              Partner with JAYAA IT Solution for enterprise-grade cybersecurity
-              and IT transformation. Let&apos;s discuss how we can protect and
-              optimize your business.
-            </p>
+        <div className="max-w-4xl mx-auto text-center">
+          <BlurFade inView>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 text-white text-sm font-medium mb-8 backdrop-blur-sm">
+              <Sparkles className="w-4 h-4" />
+              <span>Start Your Security Journey Today</span>
+            </div>
+          </BlurFade>
 
+          <BlurFade inView delay={0.1}>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 leading-tight">
+              Ready to Secure Your{" "}
+              <span className="text-white/90">Digital Future</span>?
+            </h2>
+          </BlurFade>
+
+          <BlurFade inView delay={0.2}>
+            <p className="text-lg lg:text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
+              Join hundreds of enterprises that trust JAYAA IT for their
+              cybersecurity needs. Get a free security assessment and discover
+              how we can protect your business.
+            </p>
+          </BlurFade>
+
+          <BlurFade inView delay={0.3}>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <ShimmerButton
-                className="h-14 px-8 rounded-full text-base font-medium"
+                className="h-14 px-10 rounded-full text-base font-medium"
                 shimmerColor="#ffffff"
-                background="#6750A4"
+                background="rgba(255,255,255,0.2)"
+                borderRadius="9999px"
               >
-                <Link href="/contact" className="flex items-center gap-2">
+                <Link
+                  href="/contact"
+                  className="flex items-center gap-2 text-white"
+                >
                   Schedule a Consultation
                   <ArrowRight className="w-5 h-5" />
                 </Link>
               </ShimmerButton>
             </div>
+          </BlurFade>
 
-            <p className="mt-6 text-sm text-md-on-surface-variant">
+          <BlurFade inView delay={0.4}>
+            <p className="mt-8 text-sm text-white/60">
               Free security assessment for new clients. No commitment required.
+              Response within 24 hours.
             </p>
-          </div>
-        </BlurFade>
+          </BlurFade>
+        </div>
       </div>
     </section>
   );

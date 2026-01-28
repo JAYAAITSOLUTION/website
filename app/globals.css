@@ -341,6 +341,91 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Section Styles for Bravix-inspired Design */
+@layer utilities {
+  /* Dark section background */
+  .section-dark {
+    @apply bg-[#1a1a2e] dark:bg-[#0f0c0c];
+  }
+
+  /* Gradient CTA banner */
+  .gradient-cta {
+    background: linear-gradient(135deg, #9A1B21 0%, #c41e25 50%, #7A5C00 100%);
+  }
+
+  /* Card glow effect */
+  .card-glow {
+    @apply transition-all duration-300;
+  }
+  .card-glow:hover {
+    box-shadow: 0 0 30px rgba(154, 27, 33, 0.15), 0 10px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #9A1B21 0%, #7A5C00 100%);
+  }
+
+  /* Subtle grid pattern for backgrounds */
+  .bg-grid-pattern {
+    background-image:
+      linear-gradient(rgba(154, 27, 33, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(154, 27, 33, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* Floating animation */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+  .animate-float-delayed {
+    animation: float 4s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+  .animate-float-slow {
+    animation: float 5s ease-in-out infinite;
+    animation-delay: 1s;
+  }
+
+  /* Pulse glow animation */
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(154, 27, 33, 0.2); }
+    50% { box-shadow: 0 0 40px rgba(154, 27, 33, 0.4); }
+  }
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  /* Border gradient */
+  .border-gradient {
+    border: 1px solid transparent;
+    background: linear-gradient(var(--md-surface), var(--md-surface)) padding-box,
+                linear-gradient(135deg, #9A1B21, #7A5C00) border-box;
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply backdrop-blur-xl bg-white/80 dark:bg-black/50;
+  }
+
+  /* Section label/badge style */
+  .section-label {
+    @apply inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase;
+    @apply bg-md-primary-container text-md-on-primary-container;
+  }
+
+  /* Dark section label */
+  .section-label-dark {
+    @apply inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase;
+    @apply bg-white/10 text-white/80;
+  }
+}
+
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   *,

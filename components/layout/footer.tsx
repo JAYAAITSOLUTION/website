@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Phone, MapPin, Linkedin, Twitter } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Twitter, Youtube, Instagram } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
 const footerLinks = {
@@ -9,6 +9,12 @@ const footerLinks = {
     { href: "/services/digital-transformation", label: "Digital Transformation" },
     { href: "/services/advanced-it", label: "Advanced IT Solutions" },
     { href: "/services/professional", label: "Professional Services" },
+  ],
+  solutions: [
+    { href: "/solutions", label: "Cloud Security" },
+    { href: "/solutions", label: "Threat Detection" },
+    { href: "/solutions", label: "Compliance" },
+    { href: "/solutions", label: "SOC Services" },
   ],
   company: [
     { href: "/about", label: "About Us" },
@@ -19,61 +25,91 @@ const footerLinks = {
   legal: [
     { href: "/privacy-policy", label: "Privacy Policy" },
     { href: "/terms-of-service", label: "Terms of Service" },
+    { href: "/cookie-policy", label: "Cookie Policy" },
   ],
 };
 
+const socialLinks = [
+  { href: "https://linkedin.com", icon: Linkedin, label: "LinkedIn" },
+  { href: "https://twitter.com", icon: Twitter, label: "Twitter" },
+  { href: "https://youtube.com", icon: Youtube, label: "YouTube" },
+  { href: "https://instagram.com", icon: Instagram, label: "Instagram" },
+];
+
 export function Footer() {
   return (
-    <footer className="bg-md-surface-container border-t border-md-outline-variant">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+    <footer className="bg-[#1a1a2e] border-t border-white/10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-8">
           {/* Brand Column */}
-          <div className="space-y-4">
+          <div className="lg:col-span-2 space-y-6">
             <Link href="/" className="flex items-center gap-2">
               <div className="relative w-40 h-12">
                 <Image
                   src="/logo-jayaa.png"
                   alt="JAYAA IT Solution"
                   fill
-                  className="object-contain"
+                  className="object-contain brightness-0 invert"
                 />
               </div>
             </Link>
-            <p className="text-sm text-md-on-surface-variant max-w-xs">
+            <p className="text-sm text-white/60 max-w-xs leading-relaxed">
               Empowering enterprises with cutting-edge cybersecurity and IT
               solutions. Your trusted partner in digital transformation.
             </p>
-            <div className="flex gap-3">
+            {/* Contact Info */}
+            <div className="space-y-3">
               <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-md-surface-variant flex items-center justify-center text-md-on-surface-variant hover:bg-md-primary hover:text-md-on-primary transition-colors"
+                href="mailto:info@jayaait.com"
+                className="flex items-center gap-3 text-sm text-white/60 hover:text-white transition-colors"
               >
-                <Linkedin className="w-5 h-5" />
+                <Mail className="w-4 h-4 text-red-400" />
+                info@jayaait.com
               </a>
               <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-md-surface-variant flex items-center justify-center text-md-on-surface-variant hover:bg-md-primary hover:text-md-on-primary transition-colors"
+                href="tel:+911234567890"
+                className="flex items-center gap-3 text-sm text-white/60 hover:text-white transition-colors"
               >
-                <Twitter className="w-5 h-5" />
+                <Phone className="w-4 h-4 text-red-400" />
+                +91 123 456 7890
               </a>
+              <div className="flex items-start gap-3 text-sm text-white/60">
+                <MapPin className="w-4 h-4 text-red-400 mt-0.5" />
+                <span>Hyderabad, Telangana, India</span>
+              </div>
             </div>
           </div>
 
           {/* Services Column */}
           <div>
-            <h3 className="text-sm font-semibold text-md-on-surface mb-4">
+            <h3 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">
               Services
             </h3>
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
-                <li key={link.href}>
+                <li key={link.href + link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-md-on-surface-variant hover:text-md-primary transition-colors"
+                    className="text-sm text-white/60 hover:text-white transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Solutions Column */}
+          <div>
+            <h3 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">
+              Solutions
+            </h3>
+            <ul className="space-y-3">
+              {footerLinks.solutions.map((link) => (
+                <li key={link.href + link.label}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-white/60 hover:text-white transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -84,15 +120,15 @@ export function Footer() {
 
           {/* Company Column */}
           <div>
-            <h3 className="text-sm font-semibold text-md-on-surface mb-4">
+            <h3 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">
               Company
             </h3>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
-                <li key={link.href}>
+                <li key={link.href + link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-md-on-surface-variant hover:text-md-primary transition-colors"
+                    className="text-sm text-white/60 hover:text-white transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -101,56 +137,48 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Contact Column */}
+          {/* Legal Column */}
           <div>
-            <h3 className="text-sm font-semibold text-md-on-surface mb-4">
-              Contact
+            <h3 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">
+              Legal
             </h3>
             <ul className="space-y-3">
-              <li className="flex items-start gap-3">
-                <Mail className="w-5 h-5 text-md-primary mt-0.5" />
-                <a
-                  href="mailto:info@jayaait.com"
-                  className="text-sm text-md-on-surface-variant hover:text-md-primary transition-colors"
-                >
-                  info@jayaait.com
-                </a>
-              </li>
-              <li className="flex items-start gap-3">
-                <Phone className="w-5 h-5 text-md-primary mt-0.5" />
-                <a
-                  href="tel:+911234567890"
-                  className="text-sm text-md-on-surface-variant hover:text-md-primary transition-colors"
-                >
-                  +91 123 456 7890
-                </a>
-              </li>
-              <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-md-primary mt-0.5" />
-                <span className="text-sm text-md-on-surface-variant">
-                  Hyderabad, Telangana, India
-                </span>
-              </li>
+              {footerLinks.legal.map((link) => (
+                <li key={link.href + link.label}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-white/60 hover:text-white transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
 
-        <Separator className="my-8 bg-md-outline-variant" />
+        <Separator className="my-10 bg-white/10" />
 
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-md-on-surface-variant">
+        {/* Bottom Row */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          <p className="text-sm text-white/50">
             © {new Date().getFullYear()} JAYAA IT Solution Pvt. Ltd. All rights
             reserved.
           </p>
-          <div className="flex gap-6">
-            {footerLinks.legal.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm text-md-on-surface-variant hover:text-md-primary transition-colors"
+
+          {/* Social Links */}
+          <div className="flex items-center gap-3">
+            {socialLinks.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.label}
+                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/60 hover:bg-red-500 hover:text-white transition-all duration-300"
               >
-                {link.label}
-              </Link>
+                <social.icon className="w-5 h-5" />
+              </a>
             ))}
           </div>
         </div>
