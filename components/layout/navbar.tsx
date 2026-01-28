@@ -21,6 +21,7 @@ import {
   GraduationCap,
   Monitor,
   ChevronDown,
+  Box,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -75,6 +76,17 @@ const serviceCategories = [
         bgColor: "bg-red-500/10",
       },
     ],
+  },
+];
+
+// Products data for mega menu
+const productItems = [
+  {
+    icon: Box,
+    title: "Vulsphere",
+    description: "Enterprise-grade Vulnerability Lifecycle Management System (VMS) with advanced orchestration and Nessus integration.",
+    href: "#",
+    logo: "/logos/products/vulsphere.png",
   },
 ];
 
@@ -375,6 +387,75 @@ export function Navbar() {
               )}
             </div>
 
+            {/* Products Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => handleDropdownEnter('products')}
+              onMouseLeave={handleDropdownLeave}
+            >
+              <button
+                className={cn(
+                  "flex items-center gap-1 text-sm font-medium transition-colors duration-200 py-2",
+                  isScrolled
+                    ? "text-md-on-surface hover:text-md-primary"
+                    : "text-md-on-surface hover:text-md-primary",
+                  activeDropdown === 'products' && "text-md-primary"
+                )}
+              >
+                Products
+                <ChevronDown className={cn(
+                  "w-4 h-4 transition-transform duration-200",
+                  activeDropdown === 'products' && "rotate-180"
+                )} />
+              </button>
+
+              {/* Products Mega Menu */}
+              {activeDropdown === 'products' && (
+                <div
+                  className="absolute top-full left-1/2 -translate-x-1/2 pt-2"
+                  onMouseEnter={() => handleDropdownEnter('products')}
+                  onMouseLeave={handleDropdownLeave}
+                >
+                  <div className="bg-md-surface rounded-2xl shadow-2xl border border-md-outline-variant overflow-hidden min-w-[400px] p-6">
+                    <h3 className="text-xs font-semibold text-md-on-surface-variant uppercase tracking-wider mb-4">
+                      Our Products
+                    </h3>
+                    <div className="space-y-3">
+                      {productItems.map((item) => (
+                        <div
+                          key={item.title}
+                          className="flex items-start gap-4 p-4 rounded-xl bg-md-primary-container/50 border border-md-outline-variant/50"
+                        >
+                          <div className="relative w-16 h-16 rounded-xl bg-white flex items-center justify-center flex-shrink-0 overflow-hidden">
+                            <Image
+                              src={item.logo}
+                              alt={item.title}
+                              width={56}
+                              height={56}
+                              className="object-contain"
+                            />
+                          </div>
+                          <div className="flex-1">
+                            <h4 className="text-base font-semibold text-md-on-surface">
+                              {item.title}
+                            </h4>
+                            <p className="text-sm text-md-on-surface-variant mt-1 leading-relaxed">
+                              {item.description}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="mt-4 pt-4 border-t border-md-outline-variant">
+                      <span className="flex items-center justify-center gap-2 text-sm font-medium text-md-on-surface-variant">
+                        More products coming soon
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
             {/* Regular Nav Links */}
             {navLinks.map((link) => (
               <Link
@@ -496,6 +577,39 @@ export function Navbar() {
                         <ChevronDown className="w-4 h-4 -rotate-90" />
                       </Link>
                     </SheetClose>
+                  </nav>
+                </div>
+
+                {/* Mobile Products Section */}
+                <div className="space-y-3">
+                  <h3 className="px-4 text-xs font-semibold text-md-on-surface-variant uppercase tracking-wider">
+                    Products
+                  </h3>
+                  <nav className="flex flex-col gap-1">
+                    {productItems.map((item) => (
+                      <div
+                        key={item.title}
+                        className="flex items-center gap-3 px-4 py-3 rounded-xl bg-md-primary-container/30"
+                      >
+                        <div className="relative w-10 h-10 rounded-lg bg-white flex items-center justify-center flex-shrink-0 overflow-hidden">
+                          <Image
+                            src={item.logo}
+                            alt={item.title}
+                            width={32}
+                            height={32}
+                            className="object-contain"
+                          />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h4 className="text-sm font-semibold text-md-on-surface">
+                            {item.title}
+                          </h4>
+                          <p className="text-xs text-md-on-surface-variant truncate">
+                            {item.description}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
                   </nav>
                 </div>
 

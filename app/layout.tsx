@@ -21,6 +21,14 @@ export const metadata: Metadata = {
   description: "JAYAA IT Solution delivers enterprise-grade cybersecurity, Zero Trust architecture, digital transformation, and IT consulting services for BFSI, Healthcare, and Government sectors.",
   keywords: ["cybersecurity", "Zero Trust", "IT solutions", "digital transformation", "enterprise security", "JAYAA IT"],
   authors: [{ name: "JAYAA IT Solution" }],
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+    ],
+    shortcut: "/favicon.ico",
+  },
   openGraph: {
     title: "JAYAA IT Solution Pvt. Ltd.",
     description: "Enterprise Cybersecurity & IT Solutions Partner",
