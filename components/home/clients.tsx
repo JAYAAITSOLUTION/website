@@ -2,26 +2,19 @@
 
 import { BlurFade } from "@/components/ui/blur-fade";
 import { Marquee } from "@/components/ui/marquee";
+import Image from "next/image";
+import { clients } from "@/data/clients-partners";
 
-const clients = [
-  "Bank of India",
-  "HDFC Bank",
-  "Apollo Hospitals",
-  "Max Healthcare",
-  "Reliance Retail",
-  "Tata Motors",
-  "Infosys",
-  "Wipro",
-  "Tech Mahindra",
-  "State Bank of India",
-];
-
-function ClientLogo({ name }: { name: string }) {
+function ClientLogo({ name, logo }: { name: string; logo: string }) {
   return (
-    <div className="mx-8 flex items-center justify-center px-8 py-4 rounded-xl bg-md-surface-container border border-md-outline-variant">
-      <span className="text-lg font-semibold text-md-on-surface-variant whitespace-nowrap">
-        {name}
-      </span>
+    <div className="mx-8 flex items-center justify-center px-8 py-6 rounded-xl bg-md-surface-container border border-md-outline-variant min-w-[180px]">
+      <Image
+        src={logo}
+        alt={name}
+        width={120}
+        height={60}
+        className="object-contain"
+      />
     </div>
   );
 }
@@ -42,7 +35,7 @@ export function Clients() {
       <BlurFade delay={0.2} inView>
         <Marquee pauseOnHover className="[--duration:30s]">
           {clients.map((client) => (
-            <ClientLogo key={client} name={client} />
+            <ClientLogo key={client.id} name={client.name} logo={client.logo} />
           ))}
         </Marquee>
       </BlurFade>

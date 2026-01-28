@@ -2,18 +2,8 @@
 
 import { Marquee } from "@/components/ui/marquee";
 import { BlurFade } from "@/components/ui/blur-fade";
-import { Building2, Landmark, HeartPulse, ShieldCheck, Briefcase, Factory } from "lucide-react";
-
-const clients = [
-  { name: "Bank of India", icon: Landmark },
-  { name: "HDFC Bank", icon: Landmark },
-  { name: "Apollo Hospitals", icon: HeartPulse },
-  { name: "Government of Telangana", icon: ShieldCheck },
-  { name: "Tata Consultancy", icon: Briefcase },
-  { name: "Infosys", icon: Building2 },
-  { name: "Wipro", icon: Factory },
-  { name: "Tech Mahindra", icon: Building2 },
-];
+import Image from "next/image";
+import { clients } from "@/data/clients-partners";
 
 export function LogoBar() {
   return (
@@ -33,15 +23,18 @@ export function LogoBar() {
           <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-md-surface to-transparent z-10" />
 
           <Marquee pauseOnHover className="[--duration:30s]" repeat={6}>
-            {clients.map((client, index) => (
+            {clients.map((client) => (
               <div
-                key={index}
-                className="flex items-center gap-3 px-8 py-4 mx-4 rounded-xl bg-md-surface-container/50 border border-md-outline-variant/50 hover:border-md-primary/30 transition-all duration-300 hover:shadow-md"
+                key={client.id}
+                className="flex items-center justify-center px-8 py-6 mx-4 rounded-xl bg-md-surface-container/50 border border-md-outline-variant/50 hover:border-md-primary/30 transition-all duration-300 hover:shadow-md min-w-[180px]"
               >
-                <client.icon className="w-6 h-6 text-md-primary" />
-                <span className="text-md-on-surface font-medium whitespace-nowrap">
-                  {client.name}
-                </span>
+                <Image
+                  src={client.logo}
+                  alt={client.name}
+                  width={120}
+                  height={60}
+                  className="object-contain"
+                />
               </div>
             ))}
           </Marquee>

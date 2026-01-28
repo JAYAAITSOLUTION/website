@@ -1,39 +1,33 @@
-import { Building2, Handshake, Award } from "lucide-react";
+import { Building2, Handshake, Award, ShieldCheck } from "lucide-react";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { Marquee } from "@/components/ui/marquee";
+import Image from "next/image";
+import { clients, partners, regulatoryBodies } from "@/data/clients-partners";
 
-const clients = [
-  "Bank of India",
-  "HDFC Bank",
-  "Apollo Hospitals",
-  "Max Healthcare",
-  "Reliance Retail",
-  "Tata Motors",
-  "Infosys",
-  "Wipro",
-  "Tech Mahindra",
-  "State Bank of India",
-  "ICICI Bank",
-  "Axis Bank",
-];
-
-const partners = [
-  "Microsoft",
-  "AWS",
-  "Google Cloud",
-  "Cisco",
-  "Palo Alto Networks",
-  "CrowdStrike",
-  "Splunk",
-  "SentinelOne",
-];
-
-function ClientLogo({ name }: { name: string }) {
+function ClientLogo({ name, logo }: { name: string; logo: string }) {
   return (
-    <div className="mx-4 flex items-center justify-center px-8 py-4 rounded-xl bg-md-surface-container border border-md-outline-variant">
-      <span className="text-lg font-semibold text-md-on-surface-variant whitespace-nowrap">
-        {name}
-      </span>
+    <div className="mx-4 flex items-center justify-center px-8 py-6 rounded-xl bg-md-surface-container border border-md-outline-variant min-w-[180px]">
+      <Image
+        src={logo}
+        alt={name}
+        width={120}
+        height={60}
+        className="object-contain"
+      />
+    </div>
+  );
+}
+
+function PartnerCard({ name, logo }: { name: string; logo: string }) {
+  return (
+    <div className="p-6 rounded-2xl bg-md-surface border border-md-outline-variant text-center hover:border-md-tertiary/50 transition-colors flex items-center justify-center min-h-[100px]">
+      <Image
+        src={logo}
+        alt={name}
+        width={120}
+        height={60}
+        className="object-contain"
+      />
     </div>
   );
 }
@@ -86,7 +80,7 @@ export default function ClientsPartnersPage() {
         <BlurFade delay={0.2} inView>
           <Marquee pauseOnHover className="[--duration:40s]">
             {clients.map((client) => (
-              <ClientLogo key={client} name={client} />
+              <ClientLogo key={client.id} name={client.name} logo={client.logo} />
             ))}
           </Marquee>
         </BlurFade>
@@ -113,11 +107,45 @@ export default function ClientsPartnersPage() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {partners.map((partner, index) => (
-              <BlurFade key={partner} delay={0.1 + index * 0.05} inView>
-                <div className="p-6 rounded-2xl bg-md-surface border border-md-outline-variant text-center hover:border-md-tertiary/50 transition-colors">
-                  <span className="text-lg font-semibold text-md-on-surface">
-                    {partner}
-                  </span>
+              <BlurFade key={partner.id} delay={0.1 + index * 0.05} inView>
+                <PartnerCard name={partner.name} logo={partner.logo} />
+              </BlurFade>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Regulatory Bodies Section */}
+      <section className="py-20 lg:py-32 bg-md-surface">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <BlurFade delay={0.1} inView>
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-md-primary-container text-md-on-primary-container text-sm font-medium mb-6">
+                <ShieldCheck className="w-4 h-4" />
+                <span>Compliance & Certifications</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-bold text-md-on-surface mb-4">
+                Regulatory <span className="text-md-primary">Standards</span>
+              </h2>
+              <p className="text-md-on-surface-variant">
+                We adhere to industry-leading regulatory frameworks and
+                certification standards to ensure the highest level of
+                security and compliance.
+              </p>
+            </div>
+          </BlurFade>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {regulatoryBodies.map((body, index) => (
+              <BlurFade key={body.id} delay={0.1 + index * 0.05} inView>
+                <div className="p-6 rounded-2xl bg-md-surface-container border border-md-outline-variant text-center hover:border-md-primary/50 transition-colors flex items-center justify-center min-h-[100px]">
+                  <Image
+                    src={body.logo}
+                    alt={body.name}
+                    width={100}
+                    height={60}
+                    className="object-contain"
+                  />
                 </div>
               </BlurFade>
             ))}
