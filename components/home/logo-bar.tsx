@@ -1,45 +1,61 @@
 "use client";
 
-import { Marquee } from "@/components/ui/marquee";
 import { BlurFade } from "@/components/ui/blur-fade";
 import Image from "next/image";
 import { clients } from "@/data/clients-partners";
 
-export function LogoBar() {
+// Client logo for the grid
+function ClientLogoGrid({ name, logo }: { name: string; logo: string }) {
   return (
-    <section className="py-12 lg:py-16 bg-md-surface border-y border-md-outline-variant/50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+    <div className="flex items-center justify-center p-6 h-20 group">
+      <Image
+        src={logo}
+        alt={name}
+        width={120}
+        height={40}
+        className="object-contain max-h-8 w-auto grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+      />
+    </div>
+  );
+}
+
+export function LogoBar() {
+  // Take first 10 clients for the grid display
+  const displayClients = clients.slice(0, 10);
+
+  return (
+    <section className="py-16 lg:py-24 bg-white border-t border-slate-100">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <BlurFade inView>
-          <p className="text-center text-sm font-medium text-md-on-surface-variant uppercase tracking-wider">
+          <p className="text-center text-xs font-semibold tracking-widest text-slate-400 uppercase mb-12">
             Trusted by Leading Organizations
           </p>
         </BlurFade>
+
+        {/* Logo grid with borders */}
+        <BlurFade inView delay={0.1}>
+          <div className="max-w-5xl mx-auto">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
+              {displayClients.map((client, index) => (
+                <div
+                  key={client.id}
+                  className={`
+                    relative
+                    ${index < 5 ? "border-b border-slate-100" : ""}
+                    ${index % 5 !== 4 ? "lg:border-r lg:border-slate-100" : ""}
+                    ${index % 3 !== 2 ? "sm:border-r sm:border-slate-100 lg:border-r-0" : ""}
+                    ${index % 2 !== 1 ? "border-r border-slate-100 sm:border-r-0" : ""}
+                    ${index < 3 ? "sm:border-b sm:border-slate-100" : ""}
+                    ${index < 2 ? "border-b border-slate-100 sm:border-b-0" : ""}
+                  `}
+                >
+                  <ClientLogoGrid name={client.name} logo={client.logo} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </BlurFade>
       </div>
-
-      <BlurFade inView delay={0.1}>
-        <div className="relative">
-          {/* Gradient Masks */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-md-surface to-transparent z-10" />
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-md-surface to-transparent z-10" />
-
-          <Marquee pauseOnHover className="[--duration:30s]" repeat={6}>
-            {clients.map((client) => (
-              <div
-                key={client.id}
-                className="flex items-center justify-center px-8 py-6 mx-4 rounded-xl bg-md-surface-container/50 border border-md-outline-variant/50 hover:border-md-primary/30 transition-all duration-300 hover:shadow-md min-w-[180px]"
-              >
-                <Image
-                  src={client.logo}
-                  alt={client.name}
-                  width={120}
-                  height={60}
-                  className="object-contain"
-                />
-              </div>
-            ))}
-          </Marquee>
-        </div>
-      </BlurFade>
     </section>
   );
 }

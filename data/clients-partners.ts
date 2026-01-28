@@ -38,7 +38,7 @@ export const clients: Client[] = [
   { id: 13, name: "Client Partner 1", logo: "/logos/clients/page9-img5.jpeg" },
   { id: 14, name: "Client Partner 2", logo: "/logos/clients/page9-img6.jpeg" },
   { id: 15, name: "Client Partner 3", logo: "/logos/clients/page9-img7.jpeg" },
-  { id: 16, name: "Client Partner 4", logo: "/logos/clients/page9-img8.jpeg" },
+  // { id: 16, name: "Client Partner 4", logo: "/logos/clients/page9-img8.jpeg" },
   { id: 17, name: "Client Partner 5", logo: "/logos/clients/page9-img9.png" },
   { id: 18, name: "Client Partner 6", logo: "/logos/clients/page9-img10.png" },
   { id: 19, name: "Client Partner 7", logo: "/logos/clients/page9-img17.png" },

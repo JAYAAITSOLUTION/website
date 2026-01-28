@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowRight, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Globe } from "@/components/ui/globe";
 
 const stats = [
   { value: "24/7/365", label: "Real-Time Threat Monitoring" },
@@ -13,8 +14,8 @@ const stats = [
 export function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-[#FAFAFA] pt-20">
-      {/* Geometric Background Shapes */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Geometric Background Shapes - z-0 to stay behind */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         {/* Large peach/orange block - top left */}
         <div
           className="absolute -left-20 top-0 w-[500px] h-[600px] opacity-60"
@@ -74,79 +75,88 @@ export function Hero() {
 
       {/* Main Content */}
       <div className="container mx-auto px-6 sm:px-8 lg:px-16 relative z-10">
-        <div className="max-w-6xl">
-          {/* Headline with Gradient Styling */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-[1.1] tracking-tight mb-8">
-            <span className="bg-gradient-to-r from-[#9A1B21] via-[#B83236] to-[#9A1B21] bg-clip-text text-transparent">
-              Protect, Prevent,
-            </span>
-            <br />
-            <span className="bg-gradient-to-r from-[#7A5C00] via-[#9A1B21] to-[#7A5C00] bg-clip-text text-transparent">
-              and Prevail
-            </span>
-          </h1>
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Column - Content */}
+          <div className="max-w-2xl">
+            {/* Headline with Gradient Styling */}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.1] tracking-tight mb-8">
+              <span className="bg-gradient-to-r from-[#9A1B21] via-[#B83236] to-[#9A1B21] bg-clip-text text-transparent">
+                Protect, Prevent,
+              </span>
+              <br />
+              <span className="bg-gradient-to-r from-[#7A5C00] via-[#9A1B21] to-[#7A5C00] bg-clip-text text-transparent">
+                and Prevail
+              </span>
+            </h1>
 
-          {/* Two-column subtext with arrow */}
-          <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 mb-12 max-w-3xl">
-            <p className="text-base sm:text-lg text-[#4A4A4A] leading-relaxed max-w-sm">
-              At JAYAA IT Solution, we empower businesses to stay ahead of evolving cyber threats
-            </p>
+            {/* Two-column subtext with arrow */}
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 mb-8">
+              <p className="text-base text-[#4A4A4A] leading-relaxed max-w-xs">
+                At JAYAA IT Solution, we empower businesses to stay ahead of evolving cyber threats
+              </p>
 
-            <ArrowRight className="w-5 h-5 text-[#9A1B21] hidden sm:block flex-shrink-0" />
+              <ArrowRight className="w-5 h-5 text-[#9A1B21] hidden sm:block flex-shrink-0" />
 
-            <p className="text-base sm:text-lg text-[#4A4A4A] leading-relaxed max-w-sm">
-              through intelligent, proactive, and compliance-driven security solutions
-            </p>
-          </div>
-
-          {/* Rating / Social Proof */}
-          <div className="flex items-center gap-6 mb-12">
-            <div className="flex items-center gap-2">
-              <span className="text-2xl font-semibold text-[#1A1A1A]">4.9/5</span>
-              <div className="flex gap-0.5">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-[#9A1B21] text-[#9A1B21]" />
-                ))}
-              </div>
+              <p className="text-base text-[#4A4A4A] leading-relaxed max-w-xs">
+                through intelligent, proactive, and compliance-driven security solutions
+              </p>
             </div>
-            <span className="text-sm text-[#6A6A6A]">Trusted by enterprises across BFSI, Healthcare, Government, and Technology</span>
-          </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-4 mb-20">
-            <Button
-              asChild
-              className="h-12 px-8 rounded-full bg-[#9A1B21] hover:bg-[#7A1519] text-white text-base font-medium transition-all duration-300"
-            >
-              <Link href="/solutions" className="flex items-center gap-2">
-                Explore Solutions
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              className="h-12 px-8 rounded-full border-[#D1D1D1] text-[#1A1A1A] hover:bg-[#F0F0F0] hover:border-[#9A1B21] transition-all duration-300 text-base"
-            >
-              <Link href="/contact">Get Free Assessment</Link>
-            </Button>
-          </div>
-
-          {/* Stats Section */}
-          <div className="border-t border-[#E0E0E0] pt-10">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#8A8A8A] mb-8 text-center">
-              Trusted by Industry Leaders Worldwide
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-              {stats.map((stat, index) => (
-                <div key={index} className="text-center sm:text-left">
-                  <div className="text-3xl lg:text-4xl font-semibold text-[#1A1A1A] mb-1">
-                    {stat.value}
-                  </div>
-                  <p className="text-sm text-[#6A6A6A]">{stat.label}</p>
+            {/* Rating / Social Proof */}
+            <div className="flex items-center gap-4 mb-8">
+              <div className="flex items-center gap-2">
+                <span className="text-xl font-semibold text-[#1A1A1A]">4.9/5</span>
+                <div className="flex gap-0.5">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-[#9A1B21] text-[#9A1B21]" />
+                  ))}
                 </div>
-              ))}
+              </div>
+              <span className="text-xs text-[#6A6A6A] hidden sm:inline">Trusted by enterprises across BFSI, Healthcare, Government, and Technology</span>
             </div>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap gap-4 mb-12">
+              <Button
+                asChild
+                className="h-12 px-8 rounded-full bg-[#9A1B21] hover:bg-[#7A1519] text-white text-base font-medium transition-all duration-300"
+              >
+                <Link href="/solutions" className="flex items-center gap-2">
+                  Explore Solutions
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                className="h-12 px-8 rounded-full border-[#D1D1D1] text-[#1A1A1A] hover:bg-[#F0F0F0] hover:border-[#9A1B21] transition-all duration-300 text-base"
+              >
+                <Link href="/contact">Get Free Assessment</Link>
+              </Button>
+            </div>
+          </div>
+
+          {/* Right Column - Globe */}
+          <div className="relative h-[400px] lg:h-[500px] flex items-start justify-center z-20">
+            <Globe className="top-0 z-50"  />
+            <div className="pointer-events-none absolute inset-0 h-full bg-[radial-gradient(circle_at_50%_50%,rgba(250,250,250,0)_0%,rgba(250,250,250,0.8)_100%)] z-30" />
+          </div>
+        </div>
+
+        {/* Stats Section */}
+        <div className="border-t border-[#E0E0E0] pt-10 mt-8">
+          <p className="text-xs uppercase tracking-[0.2em] text-[#8A8A8A] mb-8 text-center">
+            Trusted by Industry Leaders Worldwide
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+            {stats.map((stat, index) => (
+              <div key={index} className="text-center">
+                <div className="text-3xl lg:text-4xl font-semibold text-[#1A1A1A] mb-1">
+                  {stat.value}
+                </div>
+                <p className="text-sm text-[#6A6A6A]">{stat.label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

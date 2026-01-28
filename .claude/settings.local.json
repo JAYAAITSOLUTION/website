@@ -24,7 +24,11 @@
       "Bash(done)",
       "Bash(timeout 30 npm run dev:*)",
       "Bash(findstr:*)",
-      "mcp___magicuidesign_mcp__getTextAnimations"
+      "mcp___magicuidesign_mcp__getTextAnimations",
+      "mcp___magicuidesign_mcp__getBackgrounds",
+      "mcp___magicuidesign_mcp__getComponents",
+      "WebFetch(domain:magicui.design)",
+      "WebFetch(domain:cobe.vercel.app)"
     ]
   }
 }
