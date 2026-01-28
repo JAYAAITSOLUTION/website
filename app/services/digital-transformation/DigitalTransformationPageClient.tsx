@@ -8,12 +8,12 @@ import { motion } from "motion/react";
 
 const services = [
   { icon: Cloud, title: "Legacy-to-Cloud Modernization", description: "Migrate legacy systems to modern cloud infrastructure" },
-  { icon: Workflow, title: "Robotic Process Automation (RPA)", description: "Automate repetitive business processes with intelligent bots" },
+  { icon: Workflow, title: "Robotic Process Automation (RPA)", description: "Automate repetitive business processStepses with intelligent bots" },
   { icon: Settings, title: "Smart Workflow Engineering", description: "Design and optimize intelligent business workflows" },
   { icon: BarChart3, title: "Business Intelligence Dashboards", description: "Real-time analytics and visualization solutions" },
   { icon: RefreshCw, title: "API & System Integration", description: "Seamless integration of disparate systems and applications" },
-  { icon: FileText, title: "Digital Process Optimization", description: "Streamline and optimize digital business processes" },
-  { icon: Database, title: "Intelligent Document Processing", description: "AI-powered document capture and processing" },
+  { icon: FileText, title: "Digital Process Optimization", description: "Streamline and optimize digital business processStepses" },
+  { icon: Database, title: "Intelligent Document Processing", description: "AI-powered document capture and processStepsing" },
   { icon: Code, title: "Cloud-Native Application Development", description: "Build scalable applications for cloud environments" },
   { icon: CloudCog, title: "DevOps & CI/CD Implementation", description: "Streamlined development and deployment pipelines" },
 ];
@@ -32,6 +32,12 @@ const stats = [
   { value: "Scalable", label: "Infrastructure", icon: Cloud },
 ];
 
+const processSteps = [
+  { step: "01", title: "Discover", description: "Analyze current processes and identify digital opportunities" },
+  { step: "02", title: "Design", description: "Create a tailored digital transformation roadmap" },
+  { step: "03", title: "Deploy", description: "Implement solutions with agile methodology" },
+  { step: "04", title: "Optimize", description: "Continuously improve based on data and feedback" },
+];
 
 export default function DigitalTransformationPageClient() {
   return (
@@ -181,7 +187,7 @@ export default function DigitalTransformationPageClient() {
           </BlurFade>
 
           <div className="grid md:grid-cols-4 gap-6">
-            {process.map((item, index) => (
+            {processSteps.map((item, index) => (
               <BlurFade key={item.step} delay={0.1 + index * 0.1} inView>
                 <motion.div
                   whileHover={{ y: -4 }}
@@ -191,7 +197,7 @@ export default function DigitalTransformationPageClient() {
                   <h3 className="text-xl font-semibold text-md-on-surface mb-2">{item.title}</h3>
                   <p className="text-md-on-surface-variant text-sm">{item.description}</p>
 
-                  {index < process.length - 1 && (
+                  {index < processSteps.length - 1 && (
                     <div className="hidden md:block absolute top-1/2 -right-3 w-6 h-0.5 bg-amber-500/30" />
                   )}
                 </motion.div>

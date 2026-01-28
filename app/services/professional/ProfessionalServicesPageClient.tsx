@@ -34,6 +34,13 @@ const stats = [
   { value: "National", label: "Reach", icon: TrendingUp },
 ];
 
+const processSteps = [
+  { step: "01", title: "Consult", description: "Understand your business needs and challenges" },
+  { step: "02", title: "Strategize", description: "Develop a tailored solution strategy" },
+  { step: "03", title: "Implement", description: "Execute with precision and expertise" },
+  { step: "04", title: "Support", description: "Provide ongoing support and optimization" },
+];
+
 export default function ProfessionalServicesPageClient() {
   return (
     <div className="min-h-screen bg-md-surface">
@@ -181,7 +188,7 @@ export default function ProfessionalServicesPageClient() {
           </BlurFade>
 
           <div className="grid md:grid-cols-4 gap-6">
-            {process.map((item, index) => (
+            {processSteps.map((item, index) => (
               <BlurFade key={item.step} delay={0.1 + index * 0.1} inView>
                 <motion.div
                   whileHover={{ y: -4 }}
@@ -191,7 +198,7 @@ export default function ProfessionalServicesPageClient() {
                   <h3 className="text-xl font-semibold text-md-on-surface mb-2">{item.title}</h3>
                   <p className="text-md-on-surface-variant text-sm">{item.description}</p>
                   
-                  {index < process.length - 1 && (
+                  {index < processSteps.length - 1 && (
                     <div className="hidden md:block absolute top-1/2 -right-3 w-6 h-0.5 bg-red-500/30" />
                   )}
                 </motion.div>

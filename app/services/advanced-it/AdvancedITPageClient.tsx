@@ -34,6 +34,13 @@ const stats = [
   { value: "Scalable", label: "Solutions", icon: Zap },
 ];
 
+const processSteps = [
+  { step: "01", title: "Assessment", description: "Evaluate your current IT infrastructure and identify improvement areas" },
+  { step: "02", title: "Planning", description: "Design a customized solution tailored to your business needs" },
+  { step: "03", title: "Implementation", description: "Deploy solutions with minimal disruption to your operations" },
+  { step: "04", title: "Support", description: "Provide ongoing monitoring, maintenance, and optimization" },
+];
+
 export default function AdvancedITPageClient() {
   return (
     <div className="min-h-screen bg-md-surface">
@@ -182,7 +189,7 @@ export default function AdvancedITPageClient() {
           </BlurFade>
 
           <div className="grid md:grid-cols-4 gap-6">
-            {process.map((item, index) => (
+            {processSteps.map((item, index) => (
               <BlurFade key={item.step} delay={0.1 + index * 0.1} inView>
                 <motion.div
                   whileHover={{ y: -4 }}
@@ -192,7 +199,7 @@ export default function AdvancedITPageClient() {
                   <h3 className="text-xl font-semibold text-md-on-surface mb-2">{item.title}</h3>
                   <p className="text-md-on-surface-variant text-sm">{item.description}</p>
 
-                  {index < process.length - 1 && (
+                  {index < processSteps.length - 1 && (
                     <div className="hidden md:block absolute top-1/2 -right-3 w-6 h-0.5 bg-orange-500/30" />
                   )}
                 </motion.div>

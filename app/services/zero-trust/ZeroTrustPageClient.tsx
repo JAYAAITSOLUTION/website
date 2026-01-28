@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Shield, Lock, Eye, Network, CheckCircle2, Sparkles, TrendingUp, ShieldCheck, Clock, Key, UserCheck, FileCheck, Monitor } from "lucide-react";
+import { Shield, Lock, Eye, Network, CheckCircle2, Sparkles, TrendingUp, ShieldCheck, Clock, Key, UserCheck, FileCheck, Monitor, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { motion } from "motion/react";
