@@ -23,6 +23,7 @@ interface Blog {
   readTime?: string;
   authorImage?: string;
   authorRole?: string;
+  updatedAt?: string;
 }
 
 const getBlog = async (id: string) => {
@@ -46,6 +47,8 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { id } = await params;
   const blog = await getBlog(id);
+  const baseUrl = "https://www.jayaaitsolution.com";
+  const url = `${baseUrl}/blogs/${id}`;
 
   if (!blog) {
     return {
@@ -53,13 +56,51 @@ export async function generateMetadata(
     };
   }
 
+  const description = blog.description || blog.content.substring(0, 160);
+
   return {
-    title: blog.title,
-    description: blog.description || blog.content.substring(0, 160),
+    title: `${blog.title} | JAYAA IT Solution`,
+    description,
+    alternates: {
+      canonical: url,
+    },
     openGraph: {
       title: blog.title,
-      description: blog.description || blog.content.substring(0, 160),
+      description,
+      url,
+      siteName: "JAYAA IT Solution",
+      locale: "en_US",
+      type: "article",
+      publishedTime: blog.date,
+      modifiedTime: blog.updatedAt || blog.date,
+      authors: [blog.author],
+      images: blog.image ? [
+        {
+          url: blog.image,
+          width: 1200,
+          height: 630,
+          alt: blog.title,
+        },
+      ] : [],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: blog.title,
+      description,
+      site: "@jayaaitsolution",
+      creator: "@jayaaitsolution",
       images: blog.image ? [blog.image] : [],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
     },
   };
 }
@@ -71,6 +112,40 @@ const BlogPostPage = async ({ params }: { params: Promise<{ id: string }> }) => 
   if (!blog) {
     notFound();
   }
+
+  const baseUrl = "https://www.jayaaitsolution.com";
+  const url = `${baseUrl}/blogs/${id}`;
+
+  // Article Schema for JSON-LD
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": blog.title,
+    "description": blog.description || blog.content.substring(0, 160),
+    "image": blog.image || `${baseUrl}/og-image.jpg`,
+    "datePublished": blog.date,
+    "dateModified": blog.updatedAt || blog.date,
+    "author": {
+      "@type": "Person",
+      "name": blog.author,
+      "image": blog.authorImage || undefined,
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "JAYAA IT Solution Pvt. Ltd.",
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${baseUrl}/logo-jayaa.png`,
+      },
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": url,
+    },
+    "url": url,
+    ...(blog.category && { "articleSection": blog.category }),
+    ...(blog.tags && { "keywords": blog.tags.join(", ") }),
+  };
 
   const markdownComponents: Components = {
     h1: ({ ...props }) => <h1 className="text-4xl md:text-5xl font-bold mt-8 mb-6 text-[#1A1A1A] tracking-tight" {...props} />,
@@ -101,7 +176,14 @@ const BlogPostPage = async ({ params }: { params: Promise<{ id: string }> }) => 
   };
 
   return (
-    <article className="min-h-screen bg-[#FAFAFA]">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(articleSchema),
+        }}
+      />
+      <article className="min-h-screen bg-[#FAFAFA]">
       {/* Hero with gradient orbs */}
       <section className="relative h-[500px] md:h-[600px] bg-gradient-to-br from-white to-[#FAFAFA]">
         {/* Soft Gradient Orbs */}
@@ -217,6 +299,7 @@ const BlogPostPage = async ({ params }: { params: Promise<{ id: string }> }) => 
         </div>
       </section>
     </article>
+    </>
   );
 };
 

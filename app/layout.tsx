@@ -16,6 +16,34 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// Organization Schema for JSON-LD
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "JAYAA IT Solution Pvt. Ltd.",
+  "url": "https://www.jayaaitsolution.com",
+  "logo": "https://www.jayaaitsolution.com/logo-jayaa.png",
+  "description": "Enterprise cybersecurity and IT solutions provider specializing in Zero Trust architecture, digital transformation, and advanced IT consulting for BFSI, Healthcare, and Government sectors.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Pune",
+    "addressRegion": "Maharashtra",
+    "addressCountry": "IN"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+91-8268949507",
+    "contactType": "customer service",
+    "availableLanguage": "English"
+  },
+  "sameAs": [
+    "https://in.linkedin.com/company/jayaaitsolution",
+    "https://twitter.com/jayaaitsolution",
+    "https://www.facebook.com/JayaaITSolution/"
+  ],
+  "areaServed": ["India", "Global"]
+};
+
 export const metadata: Metadata = {
   title: "JAYAA IT Solution Pvt. Ltd. | Enterprise Cybersecurity & IT Solutions",
   description: "JAYAA IT Solution delivers enterprise-grade cybersecurity, Zero Trust architecture, digital transformation, and IT consulting services for BFSI, Healthcare, and Government sectors.",
@@ -29,10 +57,34 @@ export const metadata: Metadata = {
     ],
     shortcut: "/favicon.ico",
   },
+  alternates: {
+    canonical: "https://www.jayaaitsolution.com",
+  },
   openGraph: {
     title: "JAYAA IT Solution Pvt. Ltd.",
     description: "Enterprise Cybersecurity & IT Solutions Partner",
     type: "website",
+    url: "https://www.jayaaitsolution.com",
+    siteName: "JAYAA IT Solution",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "JAYAA IT Solution Pvt. Ltd.",
+    description: "Enterprise Cybersecurity & IT Solutions Partner",
+    site: "@jayaaitsolution",
+    creator: "@jayaaitsolution",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
@@ -43,6 +95,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
+      </head>
       <body
         className={`${roboto.variable} ${geistMono.variable} font-sans antialiased min-h-screen flex flex-col`}
       >
