@@ -239,3 +239,4 @@ For sections that need contrast (like Regulatory Compliance bottom):
 - [ ] Buttons: Gradient primary + outlined secondary pattern
 - [ ] Animations: `motion.div` with consistent initial/whileInView props
 - [ ] Text colors: Use text-[#1A1A1A], text-[#4A4A4A], text-[#6A6A6A] hierarchy
+
