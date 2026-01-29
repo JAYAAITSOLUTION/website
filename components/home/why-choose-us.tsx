@@ -1,11 +1,8 @@
 "use client";
 
-import {
-  Award,
-  Layers,
-  HeadphonesIcon,
-} from "lucide-react";
-import { BlurFade } from "@/components/ui/blur-fade";
+import { Award, Layers, HeadphonesIcon, ArrowRight, CheckCircle } from "lucide-react";
+import { motion } from "framer-motion";
+import Link from "next/link";
 
 const benefits = [
   {
@@ -13,56 +10,119 @@ const benefits = [
     title: "Expertise & Experience",
     description:
       "Decades of industry experience and a team of certified professionals delivering world-class solutions.",
+    highlights: ["Certified Experts", "Industry Leaders", "Proven Track Record"],
   },
   {
     icon: Layers,
     title: "Comprehensive Solutions",
     description:
       "End-to-end IT services covering security, infrastructure, and consultancy with seamless integration.",
+    highlights: ["Full Spectrum", "Seamless Integration", "Scalable Architecture"],
   },
   {
     icon: HeadphonesIcon,
     title: "Client-Focused Support",
     description:
       "Dedicated 24/7 support and tailored solutions designed to meet your unique business challenges.",
+    highlights: ["24/7 Availability", "Dedicated Teams", "Rapid Response"],
   },
 ];
 
 export function WhyChooseUs() {
   return (
-    <section className="py-20 lg:py-32 bg-md-surface-container">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 lg:py-32 bg-gradient-to-b from-[#FAFAFA] via-white to-[#FAFAFA] relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/3 left-0 w-96 h-96 bg-gradient-to-br from-[#9A1B21]/5 to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-1/3 right-0 w-96 h-96 bg-gradient-to-tl from-[#7A5C00]/5 to-transparent rounded-full blur-3xl" />
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <BlurFade delay={0.1} inView>
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-md-primary-container text-md-on-primary-container text-sm font-medium mb-6">
-              <span>Our Difference</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-md-on-surface mb-6">
-              Why Partner with{" "}
-              <span className="text-md-primary">JAYAA IT</span>
-            </h2>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#9A1B21]/10 to-[#9A1B21]/5 text-[#9A1B21] text-sm font-medium mb-6 border border-[#9A1B21]/20">
+            <span>Our Difference</span>
           </div>
-        </BlurFade>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1A1A1A] mb-6">
+            Why Partner with{" "}
+            <span className="bg-gradient-to-r from-[#9A1B21] to-[#B83236] bg-clip-text text-transparent">
+              JAYAA IT
+            </span>
+          </h2>
+          <p className="text-lg text-[#6A6A6A] leading-relaxed">
+            We combine deep technical expertise with unwavering commitment to deliver
+            solutions that drive real business outcomes and lasting security.
+          </p>
+        </motion.div>
 
         {/* Benefits Grid */}
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
           {benefits.map((benefit, index) => (
-            <BlurFade key={benefit.title} delay={0.1 + index * 0.1} inView>
-              <div className="group p-8 rounded-3xl bg-md-surface border border-md-outline-variant hover:border-md-primary/50 hover:shadow-lg transition-all duration-300 h-full text-center">
-                <div className="w-16 h-16 rounded-2xl bg-md-primary-container flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <benefit.icon className="w-8 h-8 text-md-primary" />
+            <motion.div
+              key={benefit.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              whileHover={{ y: -8 }}
+              className="group"
+            >
+              <div className="p-8 rounded-3xl bg-white border border-[#E8E8E8] hover:border-[#9A1B21]/30 shadow-sm hover:shadow-xl hover:shadow-[#9A1B21]/5 transition-all duration-500 h-full">
+                {/* Icon */}
+                <div className="w-16 h-16 rounded-2xl bg-[#9A1B21]/10 border border-[#9A1B21]/20 flex items-center justify-center mb-6 group-hover:bg-[#9A1B21] group-hover:border-[#9A1B21] transition-all duration-300">
+                  <benefit.icon className="w-8 h-8 text-[#9A1B21] group-hover:text-white transition-colors duration-300" />
                 </div>
-                <h3 className="text-xl font-bold text-md-on-surface mb-4">
+
+                {/* Title & Description */}
+                <h3 className="text-xl font-bold text-[#1A1A1A] mb-3">
                   {benefit.title}
                 </h3>
-                <p className="text-md-on-surface-variant">
+                <p className="text-[#6A6A6A] leading-relaxed mb-6">
                   {benefit.description}
                 </p>
+
+                {/* Highlights */}
+                <div className="space-y-2">
+                  {benefit.highlights.map((highlight) => (
+                    <div key={highlight} className="flex items-center gap-2">
+                      <CheckCircle className="w-4 h-4 text-[#9A1B21] flex-shrink-0" />
+                      <span className="text-sm text-[#4A4A4A] font-medium">{highlight}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </BlurFade>
+            </motion.div>
           ))}
         </div>
+
+        {/* Bottom CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4, duration: 0.5 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+        >
+          <Link
+            href="/about"
+            className="inline-flex items-center gap-2 h-14 px-8 rounded-full bg-gradient-to-r from-[#9A1B21] to-[#B83236] text-white hover:from-[#7A1519] hover:to-[#9A1B21] shadow-lg hover:shadow-xl hover:shadow-[#9A1B21]/25 transition-all duration-300 font-medium"
+          >
+            Learn More About Us
+            <ArrowRight className="w-5 h-5" />
+          </Link>
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 h-14 px-8 rounded-full border-2 border-[#E8E8E8] text-[#1A1A1A] hover:border-[#9A1B21]/50 hover:bg-[#9A1B21]/5 transition-all duration-300 font-medium"
+          >
+            Schedule a Consultation
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

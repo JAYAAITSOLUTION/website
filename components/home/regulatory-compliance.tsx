@@ -1,8 +1,9 @@
 "use client";
 
-import { Shield, CheckCircle2 } from "lucide-react";
-import { BlurFade } from "@/components/ui/blur-fade";
+import { Shield, CheckCircle2, ArrowRight, FileCheck, Users, Award } from "lucide-react";
+import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 const regulatoryBodies = [
   {
@@ -55,35 +56,61 @@ const regulatoryBodies = [
   },
 ];
 
+const trustIndicators = [
+  { icon: FileCheck, label: "100% Compliance Rate", description: "Across all audits" },
+  { icon: Users, label: "50+ Enterprise Clients", description: "Trust our expertise" },
+  { icon: Award, label: "Certified Experts", description: "Industry recognized" },
+];
+
 export function RegulatoryCompliance() {
   return (
-    <section className="py-20 lg:py-32 bg-md-surface-container">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 lg:py-32 bg-gradient-to-b from-[#FAFAFA] via-white to-[#FAFAFA] relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-gradient-to-bl from-[#9A1B21]/5 to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-gradient-to-tr from-[#7A5C00]/5 to-transparent rounded-full blur-3xl" />
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <BlurFade delay={0.1} inView>
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-md-primary-container text-md-on-primary-container text-sm font-medium mb-6">
-              <Shield className="w-4 h-4" />
-              <span>Regulatory Compliance</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-md-on-surface mb-6">
-              Aligned with Leading{" "}
-              <span className="text-md-primary">Regulatory Standards</span>
-            </h2>
-            <p className="text-lg text-md-on-surface-variant">
-              We ensure our services and solutions meet the highest regulatory standards
-              across various industries, providing you with confidence and compliance assurance.
-            </p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#9A1B21]/10 to-[#9A1B21]/5 text-[#9A1B21] text-sm font-medium mb-6 border border-[#9A1B21]/20">
+            <Shield className="w-4 h-4" />
+            <span>Regulatory Compliance</span>
           </div>
-        </BlurFade>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1A1A1A] mb-6">
+            Aligned with Leading{" "}
+            <span className="bg-gradient-to-r from-[#9A1B21] to-[#B83236] bg-clip-text text-transparent">
+              Regulatory Standards
+            </span>
+          </h2>
+          <p className="text-lg text-[#6A6A6A] leading-relaxed">
+            We ensure our services and solutions meet the highest regulatory standards
+            across various industries, providing you with confidence and compliance assurance.
+          </p>
+        </motion.div>
 
         {/* Regulatory Bodies Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
           {regulatoryBodies.map((body, index) => (
-            <BlurFade key={body.name} delay={0.1 + index * 0.05} inView>
-              <div className="group p-6 rounded-2xl bg-md-surface border border-md-outline-variant hover:border-md-primary/50 hover:shadow-lg transition-all duration-300 h-full">
+            <motion.div
+              key={body.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.05, duration: 0.5 }}
+              whileHover={{ y: -4 }}
+              className="group"
+            >
+              <div className="p-6 rounded-2xl bg-white border border-[#E8E8E8] hover:border-[#9A1B21]/30 shadow-sm hover:shadow-xl hover:shadow-[#9A1B21]/5 transition-all duration-500 h-full">
                 {/* Logo */}
-                <div className="relative w-full h-20 mb-4 flex items-center justify-center bg-white rounded-xl p-2">
+                <div className="relative w-full h-20 mb-4 flex items-center justify-center bg-[#FAFAFA] rounded-xl p-2 border border-[#E8E8E8] group-hover:border-[#9A1B21]/10 transition-colors duration-300">
                   <Image
                     src={body.logo}
                     alt={body.fullName}
@@ -95,43 +122,93 @@ export function RegulatoryCompliance() {
 
                 {/* Content */}
                 <div className="text-center">
-                  <h3 className="text-lg font-bold text-md-on-surface mb-1">
+                  <h3 className="text-lg font-bold text-[#1A1A1A] mb-1">
                     {body.name}
                   </h3>
-                  <p className="text-xs text-md-primary font-medium mb-3">
+                  <p className="text-xs text-[#9A1B21] font-medium mb-3">
                     {body.fullName}
                   </p>
-                  <p className="text-sm text-md-on-surface-variant leading-relaxed">
+                  <p className="text-sm text-[#6A6A6A] leading-relaxed">
                     {body.description}
                   </p>
                 </div>
               </div>
-            </BlurFade>
+            </motion.div>
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <BlurFade delay={0.5} inView>
-          <div className="p-8 rounded-3xl bg-gradient-to-br from-md-primary-container to-md-secondary-container/30 border border-md-primary/20">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-              <div className="flex items-start gap-4">
-                <div className="w-14 h-14 rounded-2xl bg-md-primary flex items-center justify-center flex-shrink-0">
-                  <CheckCircle2 className="w-7 h-7 text-md-on-primary" />
+        {/* Bottom Section - Trust Indicators + CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="relative"
+        >
+          <div className="p-8 lg:p-12 rounded-3xl bg-[#1A1A1A] relative overflow-hidden">
+            {/* Background pattern */}
+            <div className="absolute inset-0 opacity-5">
+              <div className="absolute inset-0" style={{
+                backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
+                backgroundSize: '40px 40px'
+              }} />
+            </div>
+
+            <div className="relative z-10">
+              {/* Top Row - Icon + Headline */}
+              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 mb-10">
+                <div className="flex items-start gap-5">
+                  <div className="w-16 h-16 rounded-2xl bg-[#9A1B21] flex items-center justify-center flex-shrink-0">
+                    <CheckCircle2 className="w-8 h-8 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl lg:text-3xl font-bold text-white mb-2">
+                      Comprehensive Compliance Assurance
+                    </h3>
+                    <p className="text-[#9A9A9A] max-w-2xl leading-relaxed">
+                      Our team stays updated with the latest regulatory requirements and
+                      implements robust compliance frameworks to ensure your organization
+                      meets all necessary standards.
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold text-md-on-surface mb-2">
-                    Comprehensive Compliance Assurance
-                  </h3>
-                  <p className="text-md-on-surface-variant max-w-2xl">
-                    Our team stays updated with the latest regulatory requirements and
-                    implements robust compliance frameworks to ensure your organization
-                    meets all necessary standards and maintains regulatory approval.
-                  </p>
-                </div>
+
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 h-14 px-8 rounded-full bg-white text-[#1A1A1A] hover:bg-[#9A1B21] hover:text-white transition-all duration-300 font-medium flex-shrink-0 shadow-lg"
+                >
+                  Get Compliance Assessment
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+              </div>
+
+              {/* Divider */}
+              <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mb-10" />
+
+              {/* Trust Indicators */}
+              <div className="grid sm:grid-cols-3 gap-6">
+                {trustIndicators.map((item, index) => (
+                  <motion.div
+                    key={item.label}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2 + index * 0.1, duration: 0.5 }}
+                    className="flex items-center gap-4"
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center">
+                      <item.icon className="w-6 h-6 text-[#9A1B21]" />
+                    </div>
+                    <div>
+                      <p className="text-white font-semibold">{item.label}</p>
+                      <p className="text-sm text-[#9A9A9A]">{item.description}</p>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
             </div>
           </div>
-        </BlurFade>
+        </motion.div>
       </div>
     </section>
   );

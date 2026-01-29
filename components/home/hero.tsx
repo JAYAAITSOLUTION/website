@@ -1,14 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Star } from "lucide-react";
+import { ArrowRight, Star, Shield, Users, Activity } from "lucide-react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Globe } from "@/components/ui/globe";
+import { NumberTicker } from "@/components/ui/number-ticker";
 
 const stats = [
-  { value: "24/7/365", label: "Real-Time Threat Monitoring" },
-  { value: "50+", label: "Enterprise Clients Protected" },
-  { value: "99.9%", label: "Compliance-Driven Uptime SLA" },
+  { value: 24, suffix: "/7/365", label: "Real-Time Threat Monitoring", icon: Shield },
+  { value: 50, suffix: "+", label: "Enterprise Clients Protected", icon: Users },
+  { value: 99.9, suffix: "%", label: "Compliance-Driven Uptime SLA", icon: Activity, decimalPlaces: 1 },
 ];
 
 export function Hero() {
@@ -148,15 +150,48 @@ export function Hero() {
           <p className="text-xs uppercase tracking-[0.2em] text-[#8A8A8A] mb-8 text-center">
             Trusted by Industry Leaders Worldwide
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-3xl lg:text-4xl font-semibold text-[#1A1A1A] mb-1">
-                  {stat.value}
-                </div>
-                <p className="text-sm text-[#6A6A6A]">{stat.label}</p>
-              </div>
-            ))}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {stats.map((stat, index) => {
+              const Icon = stat.icon;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                  className="group relative bg-white/50 backdrop-blur-sm rounded-2xl p-6 border border-[#E8E8E8] hover:border-[#9A1B21]/30 hover:shadow-lg hover:shadow-[#9A1B21]/5 transition-all duration-300"
+                >
+                  {/* Gradient background on hover */}
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#9A1B21]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                  <div className="relative flex items-center gap-4">
+                    {/* Icon */}
+                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-[#9A1B21]/10 to-[#9A1B21]/5 flex items-center justify-center group-hover:from-[#9A1B21]/20 group-hover:to-[#9A1B21]/10 transition-all duration-300">
+                      <Icon className="w-5 h-5 text-[#9A1B21]" />
+                    </div>
+
+                    {/* Content */}
+                    <div className="flex-1">
+                      <div className="flex items-baseline gap-0.5">
+                        <span className="text-3xl lg:text-4xl font-bold text-[#1A1A1A] tracking-tight">
+                          <NumberTicker
+                            value={stat.value}
+                            decimalPlaces={stat.decimalPlaces || 0}
+                            className="text-3xl lg:text-4xl font-bold text-[#1A1A1A]"
+                          />
+                        </span>
+                        <span className="text-xl lg:text-2xl font-semibold text-[#9A1B21]">
+                          {stat.suffix}
+                        </span>
+                      </div>
+                      <p className="text-sm text-[#6A6A6A] font-medium mt-0.5">{stat.label}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </div>
