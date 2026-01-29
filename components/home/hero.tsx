@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { ArrowRight, Star, Shield, Users, Activity } from "lucide-react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import { Globe } from "@/components/ui/globe";
 import { NumberTicker } from "@/components/ui/number-ticker";
 
@@ -16,61 +15,53 @@ const stats = [
 export function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-[#FAFAFA] pt-20">
-      {/* Geometric Background Shapes - z-0 to stay behind */}
+      {/* Subtle Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        {/* Large peach/orange block - top left */}
+        {/* Soft warm gradient - top left */}
         <div
-          className="absolute -left-20 top-0 w-[500px] h-[600px] opacity-60"
+          className="absolute -left-32 top-0 w-[600px] h-[700px] opacity-30"
           style={{
-            background: 'linear-gradient(135deg, #F5E6D3 0%, #E8D5C4 50%, #F0DDD0 100%)',
-            transform: 'skewX(-8deg) rotate(-5deg)',
+            background: 'radial-gradient(ellipse at center, rgba(245,230,211,0.8) 0%, rgba(245,230,211,0) 70%)',
+            filter: 'blur(60px)',
           }}
         />
 
-        {/* Lavender/purple block - top center-right */}
+        {/* Soft lavender - top center-right */}
         <div
-          className="absolute left-[35%] -top-20 w-[400px] h-[500px] opacity-50"
+          className="absolute left-[30%] -top-32 w-[500px] h-[600px] opacity-25"
           style={{
-            background: 'linear-gradient(180deg, #E8E0F0 0%, #DDD5E8 50%, #E5DDF0 100%)',
-            transform: 'skewX(5deg) rotate(3deg)',
+            background: 'radial-gradient(ellipse at center, rgba(232,224,240,0.8) 0%, rgba(232,224,240,0) 70%)',
+            filter: 'blur(60px)',
           }}
         />
 
-        {/* Light blue block - right side */}
+        {/* Soft blue - right side */}
         <div
-          className="absolute right-0 top-20 w-[350px] h-[550px] opacity-50"
+          className="absolute -right-20 top-10 w-[450px] h-[600px] opacity-25"
           style={{
-            background: 'linear-gradient(225deg, #E0E8F5 0%, #D5E0F0 50%, #E5EDF8 100%)',
-            transform: 'skewX(-3deg) rotate(5deg)',
+            background: 'radial-gradient(ellipse at center, rgba(224,232,245,0.8) 0%, rgba(224,232,245,0) 70%)',
+            filter: 'blur(60px)',
           }}
         />
 
-        {/* Additional geometric accents */}
+        {/* Brand color subtle accent - bottom left */}
         <div
-          className="absolute left-[20%] top-[40%] w-[200px] h-[300px] opacity-30"
+          className="absolute -left-20 bottom-0 w-[400px] h-[400px] opacity-10"
           style={{
-            background: 'linear-gradient(135deg, #F0E8D8 0%, #E5DDD0 100%)',
-            transform: 'skewX(8deg)',
+            background: 'radial-gradient(ellipse at center, rgba(154,27,33,0.6) 0%, rgba(154,27,33,0) 70%)',
+            filter: 'blur(80px)',
           }}
         />
 
+        {/* Very subtle grid texture */}
         <div
-          className="absolute right-[25%] top-[10%] w-[150px] h-[200px] opacity-40"
-          style={{
-            background: 'linear-gradient(180deg, #E5E0F0 0%, #D8D3E8 100%)',
-            transform: 'skewX(-5deg) rotate(-3deg)',
-          }}
-        />
-
-        {/* Subtle grid overlay for texture */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
+          className="absolute inset-0 opacity-[0.02]"
           style={{
             backgroundImage: `
               linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
               linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)
             `,
-            backgroundSize: '60px 60px',
+            backgroundSize: '80px 80px',
           }}
         />
       </div>
@@ -119,22 +110,19 @@ export function Hero() {
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4 mb-12">
-              <Button
-                asChild
-                className="h-12 px-8 rounded-full bg-[#9A1B21] hover:bg-[#7A1519] text-white text-base font-medium transition-all duration-300"
+              <Link
+                href="/solutions"
+                className="inline-flex items-center gap-2 h-12 px-8 rounded-full bg-gradient-to-r from-[#9A1B21] to-[#B83236] text-white hover:from-[#7A1519] hover:to-[#9A1B21] shadow-lg hover:shadow-xl hover:shadow-[#9A1B21]/25 transition-all duration-300 text-base font-medium"
               >
-                <Link href="/solutions" className="flex items-center gap-2">
-                  Explore Solutions
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                className="h-12 px-8 rounded-full border-[#D1D1D1] text-[#1A1A1A] hover:bg-[#F0F0F0] hover:border-[#9A1B21] transition-all duration-300 text-base"
+                Explore Solutions
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 h-12 px-8 rounded-full border-2 border-[#E8E8E8] text-[#1A1A1A] hover:border-[#9A1B21]/50 hover:bg-[#9A1B21]/5 transition-all duration-300 text-base font-medium"
               >
-                <Link href="/contact">Get Free Assessment</Link>
-              </Button>
+                Get Free Assessment
+              </Link>
             </div>
           </div>
 

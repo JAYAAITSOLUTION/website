@@ -31,10 +31,14 @@ const benefits = [
 export function WhyChooseUs() {
   return (
     <section className="py-20 lg:py-32 bg-gradient-to-b from-[#FAFAFA] via-white to-[#FAFAFA] relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/3 left-0 w-96 h-96 bg-gradient-to-br from-[#9A1B21]/5 to-transparent rounded-full blur-3xl" />
-        <div className="absolute bottom-1/3 right-0 w-96 h-96 bg-gradient-to-tl from-[#7A5C00]/5 to-transparent rounded-full blur-3xl" />
+      {/* Background decorative elements - soft and cohesive */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Soft warm - center left */}
+        <div className="absolute top-1/3 -left-32 w-[500px] h-[500px] bg-gradient-to-r from-[#F5E6D3]/50 via-[#E8D5C4]/20 to-transparent rounded-full blur-[100px]" />
+        {/* Soft lavender - center right */}
+        <div className="absolute bottom-1/4 -right-32 w-[500px] h-[500px] bg-gradient-to-l from-[#E8E0F0]/50 via-[#E5DDF0]/20 to-transparent rounded-full blur-[100px]" />
+        {/* Very subtle brand accent - center */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gradient-to-r from-transparent via-[#9A1B21]/5 to-transparent rounded-full blur-[100px]" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

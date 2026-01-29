@@ -66,10 +66,14 @@ const industries = [
 export function Industries() {
   return (
     <section className="py-20 lg:py-32 bg-gradient-to-b from-[#FAFAFA] via-white to-[#FAFAFA] relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-0 w-96 h-96 bg-gradient-to-br from-[#9A1B21]/5 to-transparent rounded-full blur-3xl" />
-        <div className="absolute top-1/4 right-0 w-96 h-96 bg-gradient-to-tl from-[#7A5C00]/5 to-transparent rounded-full blur-3xl" />
+      {/* Background decorative elements - soft and cohesive */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Soft blue - top left */}
+        <div className="absolute -top-20 -left-20 w-[500px] h-[500px] bg-gradient-to-br from-[#E0E8F5]/50 via-[#E5EDF8]/30 to-transparent rounded-full blur-[100px]" />
+        {/* Soft warm - bottom right */}
+        <div className="absolute -bottom-20 -right-20 w-[500px] h-[500px] bg-gradient-to-tl from-[#F5E6D3]/40 via-[#F0DDD0]/20 to-transparent rounded-full blur-[100px]" />
+        {/* Very subtle brand accent */}
+        <div className="absolute top-1/3 right-1/4 w-[400px] h-[300px] bg-[#9A1B21]/5 rounded-full blur-[100px]" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
-import { BlurFade } from "@/components/ui/blur-fade";
 import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
 
 const indicators = [
@@ -35,7 +35,12 @@ export function FinalCTA() {
         <div className="max-w-4xl mx-auto text-center">
 
           {/* Animated Indicators */}
-          <BlurFade inView>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             <div className="flex justify-center gap-4 mb-8">
               {indicators.map((indicator, index) => (
                 <div
@@ -48,48 +53,60 @@ export function FinalCTA() {
                 </div>
               ))}
             </div>
-          </BlurFade>
+          </motion.div>
 
-          <BlurFade inView delay={0.1}>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 leading-tight">
-              Ready to Transform Your{" "}
-              <span className="text-white/90">Business</span>?
-            </h2>
-          </BlurFade>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1, duration: 0.5 }}
+            className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 leading-tight"
+          >
+            Ready to Transform Your{" "}
+            <span className="text-white/90">Business</span>?
+          </motion.h2>
 
-          <BlurFade inView delay={0.2}>
-            <p className="text-lg lg:text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
-              Join hundreds of satisfied clients who trust JAYAA IT Solution for their digital transformation journey.
-            </p>
-          </BlurFade>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="text-lg lg:text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed"
+          >
+            Join hundreds of satisfied clients who trust JAYAA IT Solution for their digital transformation journey.
+          </motion.p>
 
-          <BlurFade inView delay={0.3}>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <ShimmerButton
-                className="h-14 px-10 rounded-full text-base font-medium"
-                shimmerColor="#ffffff"
-                background="rgba(255,255,255,0.2)"
-                borderRadius="9999px"
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+          >
+            <ShimmerButton
+              className="h-14 px-10 rounded-full text-base font-medium"
+              shimmerColor="#ffffff"
+              background="rgba(255,255,255,0.2)"
+              borderRadius="9999px"
+            >
+              <Link
+                href="/contact"
+                className="flex items-center gap-2 text-white"
               >
-                <Link
-                  href="/contact"
-                  className="flex items-center gap-2 text-white"
-                >
-                  Start Your Journey
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-              </ShimmerButton>
-              <Button
-                asChild
-                variant="ghost"
-                className="h-14 px-10 text-white hover:bg-white/10 border border-white/30 rounded-full text-base"
-              >
-                <Link href="/services">
-                  Explore Services
-                </Link>
-              </Button>
-            </div>
-          </BlurFade>
+                Start Your Journey
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </ShimmerButton>
+            <Button
+              asChild
+              variant="ghost"
+              className="h-14 px-10 text-white hover:bg-white/10 border border-white/30 rounded-full text-base"
+            >
+              <Link href="/services">
+                Explore Services
+              </Link>
+            </Button>
+          </motion.div>
         </div>
       </div>
     </section>

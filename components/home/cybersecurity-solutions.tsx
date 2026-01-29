@@ -68,10 +68,14 @@ const categories = [
 export function CybersecuritySolutions() {
   return (
     <section className="py-20 lg:py-32 bg-gradient-to-b from-[#FAFAFA] via-white to-[#FAFAFA] relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-[#9A1B21]/5 to-transparent rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-tl from-[#7A5C00]/5 to-transparent rounded-full blur-3xl" />
+      {/* Background decorative elements - soft and cohesive */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Soft warm gradient - top right */}
+        <div className="absolute -top-32 right-0 w-[500px] h-[600px] bg-gradient-to-bl from-[#F5E6D3]/40 via-[#F0E8D8]/20 to-transparent rounded-full blur-[100px]" />
+        {/* Soft lavender - bottom left */}
+        <div className="absolute -bottom-32 -left-20 w-[500px] h-[600px] bg-gradient-to-tr from-[#E8E0F0]/40 via-[#E5EDF8]/20 to-transparent rounded-full blur-[100px]" />
+        {/* Very subtle brand accent */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gradient-to-r from-[#9A1B21]/5 via-transparent to-[#9A1B21]/5 rounded-full blur-[120px]" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

@@ -28,7 +28,8 @@
       "mcp___magicuidesign_mcp__getBackgrounds",
       "mcp___magicuidesign_mcp__getComponents",
       "WebFetch(domain:magicui.design)",
-      "WebFetch(domain:cobe.vercel.app)"
+      "WebFetch(domain:cobe.vercel.app)",
+      "mcp__playwright__browser_wait_for"
     ]
   }
 }

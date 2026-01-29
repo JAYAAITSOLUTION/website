@@ -65,10 +65,14 @@ const trustIndicators = [
 export function RegulatoryCompliance() {
   return (
     <section className="py-20 lg:py-32 bg-gradient-to-b from-[#FAFAFA] via-white to-[#FAFAFA] relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-1/4 w-96 h-96 bg-gradient-to-bl from-[#9A1B21]/5 to-transparent rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-gradient-to-tr from-[#7A5C00]/5 to-transparent rounded-full blur-3xl" />
+      {/* Background decorative elements - soft and cohesive */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Soft lavender - top center */}
+        <div className="absolute -top-32 left-1/3 w-[600px] h-[500px] bg-gradient-to-br from-[#E8E0F0]/50 via-[#DDD5E8]/30 to-transparent rounded-full blur-[100px]" />
+        {/* Soft blue - bottom right */}
+        <div className="absolute -bottom-32 right-0 w-[500px] h-[500px] bg-gradient-to-tl from-[#E0E8F5]/50 via-[#D5E0F0]/30 to-transparent rounded-full blur-[100px]" />
+        {/* Very subtle warm accent - center left */}
+        <div className="absolute top-1/2 -left-20 w-[400px] h-[400px] bg-gradient-to-r from-[#F5E6D3]/30 to-transparent rounded-full blur-[100px]" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
