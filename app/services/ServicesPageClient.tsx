@@ -1,12 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Shield, Cloud, Cpu, Users, Sparkles, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Shield, Cloud, Cpu, Users, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { BlurFade } from "@/components/ui/blur-fade";
-import { FlickeringGrid } from "@/components/ui/flickering-grid";
-import { BorderBeam } from "@/components/ui/border-beam";
 import { motion } from "motion/react";
+import { FlickeringGrid } from "@/components/ui/flickering-grid";
 
 const services = [
   {
@@ -14,44 +12,40 @@ const services = [
     title: "Zero Trust Security Services",
     description: "Comprehensive Security Framework",
     href: "/services/zero-trust",
-    gradient: "from-red-500/20 via-red-600/10 to-transparent",
-    iconBg: "bg-red-500/10",
-    iconColor: "text-red-600",
+    gradient: "from-[#9A1B21]/20 via-[#B83236]/10 to-transparent",
+    iconBg: "bg-[#9A1B21]/10",
+    iconColor: "text-[#9A1B21]",
     borderColor: "#9A1B21",
-    accentColor: "bg-red-500",
   },
   {
     icon: Cloud,
     title: "Digital Transformation & Automation",
     description: "Modernize & Streamline Operations",
     href: "/services/digital-transformation",
-    gradient: "from-amber-500/20 via-amber-600/10 to-transparent",
-    iconBg: "bg-amber-500/10",
-    iconColor: "text-amber-600",
-    borderColor: "#7A5C00",
-    accentColor: "bg-amber-500",
+    gradient: "from-[#9A1B21]/20 via-[#B83236]/10 to-transparent",
+    iconBg: "bg-[#9A1B21]/10",
+    iconColor: "text-[#9A1B21]",
+    borderColor: "#9A1B21",
   },
   {
     icon: Cpu,
     title: "Advance IT Solutions",
     description: "Cutting-Edge Technology Solutions",
     href: "/services/advanced-it",
-    gradient: "from-orange-500/20 via-orange-600/10 to-transparent",
-    iconBg: "bg-orange-500/10",
-    iconColor: "text-orange-600",
-    borderColor: "#9A5A00",
-    accentColor: "bg-orange-500",
+    gradient: "from-[#9A1B21]/20 via-[#B83236]/10 to-transparent",
+    iconBg: "bg-[#9A1B21]/10",
+    iconColor: "text-[#9A1B21]",
+    borderColor: "#9A1B21",
   },
   {
     icon: Users,
     title: "Professional Services",
     description: "Expert Consulting & Support",
     href: "/services/professional",
-    gradient: "from-red-500/20 via-red-600/10 to-transparent",
-    iconBg: "bg-red-500/10",
-    iconColor: "text-red-600",
+    gradient: "from-[#9A1B21]/20 via-[#B83236]/10 to-transparent",
+    iconBg: "bg-[#9A1B21]/10",
+    iconColor: "text-[#9A1B21]",
     borderColor: "#9A1B21",
-    accentColor: "bg-red-500",
   },
 ];
 
@@ -63,89 +57,100 @@ const benefits = [
 
 export default function ServicesPageClient() {
   return (
-    <div className="min-h-screen bg-md-surface">
+    <div className="min-h-screen bg-[#FAFAFA]">
       {/* Hero Section */}
-      <section className="relative py-20 lg:py-32 bg-md-surface-container overflow-hidden">
-        {/* Flickering Grid Background */}
-        <FlickeringGrid
-          className="absolute inset-0 z-0 [mask-image:radial-gradient(600px_circle_at_center,white,transparent)]"
-          squareSize={4}
-          gridGap={6}
-          color="#9A1B21"
-          maxOpacity={0.12}
-          flickerChance={0.1}
-          height={800}
-          width={800}
-        />
+      <section className="relative py-20 lg:py-32 bg-gradient-to-b from-[#FAFAFA] via-white to-[#FAFAFA] overflow-hidden">
+        {/* MagicUI Flickering Grid Background */}
+        <div className="absolute inset-0 pointer-events-none">
+          <FlickeringGrid
+            className="absolute inset-0"
+            squareSize={4}
+            gridGap={6}
+            color="#9A1B21"
+            maxOpacity={0.15}
+            flickerChance={0.3}
+          />
+        </div>
+        {/* Soft Gradient Orbs */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute -top-20 -left-20 w-[500px] h-[500px] bg-gradient-to-br from-[#E0E8F5]/50 via-[#E5EDF8]/30 to-transparent rounded-full blur-[100px]" />
+          <div className="absolute -bottom-20 -right-20 w-[500px] h-[500px] bg-gradient-to-tl from-[#F5E6D3]/40 via-[#F0DDD0]/20 to-transparent rounded-full blur-[100px]" />
+          <div className="absolute top-1/3 right-1/4 w-[400px] h-[300px] bg-[#9A1B21]/5 rounded-full blur-[100px]" />
+        </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <BlurFade delay={0.1} inView>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-md-primary-container text-md-on-primary-container text-sm font-medium mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#9A1B21]/10 to-[#9A1B21]/5 text-[#9A1B21] text-sm font-medium mb-6 border border-[#9A1B21]/20">
                 <Sparkles className="w-4 h-4" />
                 <span>Our Services</span>
               </div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-md-on-surface mb-6">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#1A1A1A] mb-6">
                 Comprehensive{" "}
-                <span className="bg-gradient-to-r from-md-primary to-md-secondary bg-clip-text text-transparent">IT Solutions</span>
+                <span className="bg-gradient-to-r from-[#9A1B21] to-[#B83236] bg-clip-text text-transparent">IT Solutions</span>
               </h1>
-              <p className="text-lg text-md-on-surface-variant max-w-2xl mx-auto">
+              <p className="text-lg text-[#6A6A6A] max-w-2xl mx-auto">
                 Empowering businesses with cutting-edge technology, robust security, and expert guidance. Our comprehensive suite of services covers everything from zero trust security to digital transformation.
               </p>
             </div>
-          </BlurFade>
+          </motion.div>
         </div>
       </section>
 
       {/* Services Grid */}
       <section className="py-20 lg:py-32 relative">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Soft Gradient Orbs */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute top-1/4 -right-20 w-[400px] h-[400px] bg-gradient-to-l from-[#E8E0F0]/50 via-[#E5DDF0]/20 to-transparent rounded-full blur-[100px]" />
+        </div>
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid md:grid-cols-2 gap-8">
             {services.map((service, index) => (
-              <BlurFade key={service.href} delay={0.1 + index * 0.1} inView>
+              <motion.div
+                key={service.href}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+              >
                 <Link href={service.href} className="group block">
                   <motion.div
                     whileHover={{ y: -8, scale: 1.02 }}
                     transition={{ duration: 0.3 }}
-                    className="relative p-8 rounded-3xl bg-md-surface-container border border-md-outline-variant overflow-hidden h-full flex flex-col"
+                    className="relative p-8 rounded-3xl bg-white border border-[#E8E8E8] overflow-hidden h-full flex flex-col hover:border-[#9A1B21]/30 hover:shadow-xl hover:shadow-[#9A1B21]/5 transition-all duration-500"
                   >
                     {/* Gradient background on hover */}
                     <div
                       className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
                     />
 
-                    {/* Border beam */}
-                    <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <BorderBeam
-                        size={100}
-                        duration={5}
-                        colorFrom={service.borderColor}
-                        colorTo={service.borderColor}
-                        borderWidth={2}
-                      />
-                    </div>
-
                     <div className="relative z-10 flex flex-col h-full">
                       <motion.div
                         whileHover={{ scale: 1.1, rotate: 5 }}
                         transition={{ duration: 0.3 }}
-                        className={`w-16 h-16 rounded-2xl ${service.iconBg} flex items-center justify-center mb-6 backdrop-blur-sm border border-white/20`}
+                        className={`w-16 h-16 rounded-2xl ${service.iconBg} flex items-center justify-center mb-6 backdrop-blur-sm border border-[#9A1B21]/20`}
                       >
                         <service.icon className={`w-8 h-8 ${service.iconColor}`} />
                       </motion.div>
 
-                      <h2 className="text-2xl font-bold text-md-on-surface mb-2 group-hover:text-md-primary transition-colors duration-300">
+                      <h2 className="text-2xl font-bold text-[#1A1A1A] mb-2 group-hover:text-[#9A1B21] transition-colors duration-300">
                         {service.title}
                       </h2>
 
-                      <p className="text-md-on-surface-variant mb-6">
+                      <p className="text-[#6A6A6A] mb-6">
                         {service.description}
                       </p>
 
                       <Button
                         asChild
                         variant="outline"
-                        className="w-full h-12 rounded-full border-md-outline text-md-on-surface hover:bg-md-primary-container hover:text-md-on-primary-container hover:border-transparent transition-all duration-300 group/btn mt-auto"
+                        className="w-full h-12 rounded-full border-[#E8E8E8] text-[#1A1A1A] hover:bg-[#9A1B21]/5 hover:text-[#9A1B21] hover:border-[#9A1B21]/30 transition-all duration-300 group/btn mt-auto"
                       >
                         <div className="flex items-center justify-center">
                           <span>View All Services</span>
@@ -155,74 +160,88 @@ export default function ServicesPageClient() {
                     </div>
                   </motion.div>
                 </Link>
-              </BlurFade>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Benefits Section */}
-      <section className="relative py-20 lg:py-32 bg-md-surface-container overflow-hidden">
+      <section className="relative py-20 lg:py-32 bg-gradient-to-b from-[#FAFAFA] via-white to-[#FAFAFA] overflow-hidden">
+        {/* Soft Gradient Orbs */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute -bottom-20 -left-20 w-[500px] h-[500px] bg-gradient-to-tr from-[#E0E8F5]/50 via-[#D5E0F0]/20 to-transparent rounded-full blur-[100px]" />
+          <div className="absolute top-1/3 right-0 w-[400px] h-[300px] bg-[#9A1B21]/5 rounded-full blur-[100px]" />
+        </div>
+
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <BlurFade delay={0.1} inView>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
               <div className="space-y-6">
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-md-secondary-container text-md-on-secondary-container text-sm font-medium mb-4">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#9A1B21]/10 to-[#9A1B21]/5 text-[#9A1B21] text-sm font-medium border border-[#9A1B21]/20">
                   <Sparkles className="w-4 h-4" />
                   <span>Why Choose Us</span>
                 </div>
 
-                <h2 className="text-3xl sm:text-4xl font-bold text-md-on-surface">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1A1A1A]">
                   Our Core Service{" "}
-                  <span className="bg-gradient-to-r from-md-primary to-md-secondary bg-clip-text text-transparent">Pillars</span>
+                  <span className="bg-gradient-to-r from-[#9A1B21] to-[#B83236] bg-clip-text text-transparent">Pillars</span>
                 </h2>
-                <p className="text-md-on-surface-variant">
+                <p className="text-[#6A6A6A] text-lg leading-relaxed">
                   Comprehensive IT solutions designed to empower your business with cutting-edge technology and unmatched expertise.
                 </p>
 
                 <div className="flex flex-wrap gap-4 pt-4">
-                  <Button
-                    asChild
-                    className="h-12 px-8 rounded-full bg-md-primary text-md-on-primary hover:bg-md-primary/90"
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-2 h-12 px-8 rounded-full bg-gradient-to-r from-[#9A1B21] to-[#B83236] text-white hover:from-[#7A1519] hover:to-[#9A1B21] shadow-lg hover:shadow-xl hover:shadow-[#9A1B21]/25 transition-all duration-300 text-base font-medium"
                   >
-                    <Link href="/contact">
-                      Get Started Today
-                      <ArrowRight className="ml-2 w-5 h-5" />
-                    </Link>
-                  </Button>
-                  <Button
-                    asChild
-                    variant="ghost"
-                    className="h-12 px-8 text-md-on-surface hover:bg-md-primary-container rounded-full"
+                    Get Started Today
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
+                  <Link
+                    href="/solutions"
+                    className="inline-flex items-center gap-2 h-12 px-8 rounded-full border-2 border-[#E8E8E8] text-[#1A1A1A] hover:border-[#9A1B21]/50 hover:bg-[#9A1B21]/5 transition-all duration-300 text-base font-medium"
                   >
-                    <Link href="/solutions">Explore Solutions</Link>
-                  </Button>
+                    Explore Solutions
+                  </Link>
                 </div>
               </div>
-            </BlurFade>
+            </motion.div>
 
-            <BlurFade delay={0.2} inView>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+            >
               <div className="grid gap-4">
                 {benefits.map((benefit, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1, duration: 0.5 }}
                     whileHover={{ x: 8, scale: 1.02 }}
-                    className="flex items-center gap-4 p-6 rounded-2xl bg-md-surface border border-md-outline-variant hover:border-md-primary/30 hover:shadow-lg transition-all duration-300"
+                    className="flex items-center gap-4 p-6 rounded-2xl bg-white border border-[#E8E8E8] hover:border-[#9A1B21]/30 hover:shadow-lg hover:shadow-[#9A1B21]/5 transition-all duration-300"
                   >
-                    <div className="w-14 h-14 rounded-xl bg-md-primary-container flex items-center justify-center flex-shrink-0">
-                      <benefit.icon className="w-7 h-7 text-md-primary" />
+                    <div className="w-14 h-14 rounded-xl bg-[#9A1B21]/10 flex items-center justify-center flex-shrink-0">
+                      <benefit.icon className="w-7 h-7 text-[#9A1B21]" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-md-on-surface mb-1">{benefit.title}</h3>
-                      <p className="text-sm text-md-on-surface-variant">{benefit.description}</p>
+                      <h3 className="text-lg font-semibold text-[#1A1A1A] mb-1">{benefit.title}</h3>
+                      <p className="text-sm text-[#6A6A6A]">{benefit.description}</p>
                     </div>
                   </motion.div>
                 ))}
               </div>
-            </BlurFade>
+            </motion.div>
           </div>
         </div>
       </section>

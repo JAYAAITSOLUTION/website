@@ -29,7 +29,12 @@
       "mcp___magicuidesign_mcp__getComponents",
       "WebFetch(domain:magicui.design)",
       "WebFetch(domain:cobe.vercel.app)",
-      "mcp__playwright__browser_wait_for"
+      "mcp__playwright__browser_wait_for",
+      "mcp__playwright__browser_console_messages",
+      "Bash(grep -l:*)",
+      "Bash(for:*)",
+      "Bash(do:*)",
+      "Bash(if ! head -1 \"$file\")"
     ]
   }
 }

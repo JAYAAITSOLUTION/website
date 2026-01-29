@@ -215,7 +215,7 @@ export function Navbar() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300",
         isScrolled
-          ? "bg-md-surface/80 backdrop-blur-xl border-b border-md-outline-variant shadow-sm"
+          ? "bg-white/80 backdrop-blur-xl border-b border-[#E8E8E8] shadow-sm"
           : "bg-transparent"
       )}
     >
@@ -246,9 +246,9 @@ export function Navbar() {
                 className={cn(
                   "flex items-center gap-1 text-sm font-medium transition-colors duration-200 py-2",
                   isScrolled
-                    ? "text-md-on-surface hover:text-md-primary"
-                    : "text-md-on-surface hover:text-md-primary",
-                  activeDropdown === 'services' && "text-md-primary"
+                    ? "text-[#1A1A1A] hover:text-[#9A1B21]"
+                    : "text-[#1A1A1A] hover:text-[#9A1B21]",
+                  activeDropdown === 'services' && "text-[#9A1B21]"
                 )}
               >
                 Services
@@ -265,11 +265,11 @@ export function Navbar() {
                   onMouseEnter={() => handleDropdownEnter('services')}
                   onMouseLeave={handleDropdownLeave}
                 >
-                  <div className="bg-md-surface rounded-2xl shadow-2xl border border-md-outline-variant overflow-hidden min-w-[600px] p-6">
+                  <div className="bg-white rounded-2xl shadow-2xl border border-[#E8E8E8] overflow-hidden min-w-[600px] p-6">
                     <div className="grid grid-cols-2 gap-6">
                       {serviceCategories.map((category) => (
                         <div key={category.title} className="col-span-2">
-                          <h3 className="text-xs font-semibold text-md-on-surface-variant uppercase tracking-wider mb-4">
+                          <h3 className="text-xs font-semibold text-[#6A6A6A] uppercase tracking-wider mb-4">
                             {category.title}
                           </h3>
                           <div className="grid grid-cols-2 gap-3">
@@ -277,7 +277,7 @@ export function Navbar() {
                               <Link
                                 key={item.title}
                                 href={item.href}
-                                className="flex items-start gap-3 p-3 rounded-xl hover:bg-md-primary-container transition-colors group"
+                                className="flex items-start gap-3 p-3 rounded-xl hover:bg-[#9A1B21]/5 transition-colors group"
                               >
                                 <div className={cn(
                                   "w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0",
@@ -286,10 +286,10 @@ export function Navbar() {
                                   <item.icon className={cn("w-5 h-5", item.color)} />
                                 </div>
                                 <div>
-                                  <h4 className="text-sm font-semibold text-md-on-surface group-hover:text-md-primary transition-colors">
+                                  <h4 className="text-sm font-semibold text-[#1A1A1A] group-hover:text-[#9A1B21] transition-colors">
                                     {item.title}
                                   </h4>
-                                  <p className="text-xs text-md-on-surface-variant mt-0.5">
+                                  <p className="text-xs text-[#6A6A6A] mt-0.5">
                                     {item.description}
                                   </p>
                                 </div>
@@ -299,10 +299,10 @@ export function Navbar() {
                         </div>
                       ))}
                     </div>
-                    <div className="mt-4 pt-4 border-t border-md-outline-variant">
+                    <div className="mt-4 pt-4 border-t border-[#E8E8E8]">
                       <Link
                         href="/services"
-                        className="flex items-center justify-center gap-2 text-sm font-medium text-md-primary hover:text-md-primary/80 transition-colors"
+                        className="flex items-center justify-center gap-2 text-sm font-medium text-[#9A1B21] hover:text-[#7A1519] transition-colors"
                       >
                         View All Services
                         <ChevronDown className="w-4 h-4 -rotate-90" />
@@ -323,9 +323,9 @@ export function Navbar() {
                 className={cn(
                   "flex items-center gap-1 text-sm font-medium transition-colors duration-200 py-2",
                   isScrolled
-                    ? "text-md-on-surface hover:text-md-primary"
-                    : "text-md-on-surface hover:text-md-primary",
-                  activeDropdown === 'solutions' && "text-md-primary"
+                    ? "text-[#1A1A1A] hover:text-[#9A1B21]"
+                    : "text-[#1A1A1A] hover:text-[#9A1B21]",
+                  activeDropdown === 'solutions' && "text-[#9A1B21]"
                 )}
               >
                 Solutions
@@ -342,11 +342,11 @@ export function Navbar() {
                   onMouseEnter={() => handleDropdownEnter('solutions')}
                   onMouseLeave={handleDropdownLeave}
                 >
-                  <div className="bg-md-surface rounded-2xl shadow-2xl border border-md-outline-variant overflow-hidden min-w-[800px] p-6">
+                  <div className="bg-white rounded-2xl shadow-2xl border border-[#E8E8E8] overflow-hidden min-w-[800px] p-6">
                     <div className="grid grid-cols-3 gap-6">
                       {solutionCategories.map((category) => (
                         <div key={category.title}>
-                          <h3 className="text-xs font-semibold text-md-on-surface-variant uppercase tracking-wider mb-4">
+                          <h3 className="text-xs font-semibold text-[#6A6A6A] uppercase tracking-wider mb-4">
                             {category.title}
                           </h3>
                           <div className="space-y-2">
@@ -354,16 +354,16 @@ export function Navbar() {
                               <Link
                                 key={item.title}
                                 href={item.href}
-                                className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-md-primary-container transition-colors group"
+                                className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-[#9A1B21]/5 transition-colors group"
                               >
-                                <div className="w-9 h-9 rounded-lg bg-md-primary-container flex items-center justify-center flex-shrink-0 group-hover:bg-md-primary/20 transition-colors">
-                                  <item.icon className="w-4 h-4 text-md-primary" />
+                                <div className="w-9 h-9 rounded-lg bg-[#9A1B21]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#9A1B21]/20 transition-colors">
+                                  <item.icon className="w-4 h-4 text-[#9A1B21]" />
                                 </div>
                                 <div>
-                                  <h4 className="text-sm font-semibold text-md-on-surface group-hover:text-md-primary transition-colors leading-tight">
+                                  <h4 className="text-sm font-semibold text-[#1A1A1A] group-hover:text-[#9A1B21] transition-colors leading-tight">
                                     {item.title}
                                   </h4>
-                                  <p className="text-xs text-md-on-surface-variant mt-0.5">
+                                  <p className="text-xs text-[#6A6A6A] mt-0.5">
                                     {item.description}
                                   </p>
                                 </div>
@@ -373,10 +373,10 @@ export function Navbar() {
                         </div>
                       ))}
                     </div>
-                    <div className="mt-4 pt-4 border-t border-md-outline-variant">
+                    <div className="mt-4 pt-4 border-t border-[#E8E8E8]">
                       <Link
                         href="/solutions"
-                        className="flex items-center justify-center gap-2 text-sm font-medium text-md-primary hover:text-md-primary/80 transition-colors"
+                        className="flex items-center justify-center gap-2 text-sm font-medium text-[#9A1B21] hover:text-[#7A1519] transition-colors"
                       >
                         Explore All Solutions
                         <ChevronDown className="w-4 h-4 -rotate-90" />
@@ -397,9 +397,9 @@ export function Navbar() {
                 className={cn(
                   "flex items-center gap-1 text-sm font-medium transition-colors duration-200 py-2",
                   isScrolled
-                    ? "text-md-on-surface hover:text-md-primary"
-                    : "text-md-on-surface hover:text-md-primary",
-                  activeDropdown === 'products' && "text-md-primary"
+                    ? "text-[#1A1A1A] hover:text-[#9A1B21]"
+                    : "text-[#1A1A1A] hover:text-[#9A1B21]",
+                  activeDropdown === 'products' && "text-[#9A1B21]"
                 )}
               >
                 Products
@@ -416,15 +416,15 @@ export function Navbar() {
                   onMouseEnter={() => handleDropdownEnter('products')}
                   onMouseLeave={handleDropdownLeave}
                 >
-                  <div className="bg-md-surface rounded-2xl shadow-2xl border border-md-outline-variant overflow-hidden min-w-[400px] p-6">
-                    <h3 className="text-xs font-semibold text-md-on-surface-variant uppercase tracking-wider mb-4">
+                  <div className="bg-white rounded-2xl shadow-2xl border border-[#E8E8E8] overflow-hidden min-w-[400px] p-6">
+                    <h3 className="text-xs font-semibold text-[#6A6A6A] uppercase tracking-wider mb-4">
                       Our Products
                     </h3>
                     <div className="space-y-3">
                       {productItems.map((item) => (
                         <div
                           key={item.title}
-                          className="flex items-start gap-4 p-4 rounded-xl bg-md-primary-container/50 border border-md-outline-variant/50"
+                          className="flex items-start gap-4 p-4 rounded-xl bg-[#9A1B21]/5 border border-[#E8E8E8]"
                         >
                           <div className="relative w-16 h-16 rounded-xl bg-white flex items-center justify-center flex-shrink-0 overflow-hidden">
                             <Image
@@ -436,18 +436,18 @@ export function Navbar() {
                             />
                           </div>
                           <div className="flex-1">
-                            <h4 className="text-base font-semibold text-md-on-surface">
+                            <h4 className="text-base font-semibold text-[#1A1A1A]">
                               {item.title}
                             </h4>
-                            <p className="text-sm text-md-on-surface-variant mt-1 leading-relaxed">
+                            <p className="text-sm text-[#6A6A6A] mt-1 leading-relaxed">
                               {item.description}
                             </p>
                           </div>
                         </div>
                       ))}
                     </div>
-                    <div className="mt-4 pt-4 border-t border-md-outline-variant">
-                      <span className="flex items-center justify-center gap-2 text-sm font-medium text-md-on-surface-variant">
+                    <div className="mt-4 pt-4 border-t border-[#E8E8E8]">
+                      <span className="flex items-center justify-center gap-2 text-sm font-medium text-[#6A6A6A]">
                         More products coming soon
                       </span>
                     </div>
@@ -464,8 +464,8 @@ export function Navbar() {
                 className={cn(
                   "text-sm font-medium transition-colors duration-200 py-2",
                   isScrolled
-                    ? "text-md-on-surface hover:text-md-primary"
-                    : "text-md-on-surface hover:text-md-primary"
+                    ? "text-[#1A1A1A] hover:text-[#9A1B21]"
+                    : "text-[#1A1A1A] hover:text-[#9A1B21]"
                 )}
               >
                 {link.label}
@@ -490,14 +490,14 @@ export function Navbar() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="h-10 w-10 rounded-full hover:bg-md-primary-container"
+                className="h-10 w-10 rounded-full hover:bg-[#9A1B21]/10"
               >
-                <Menu className="h-5 w-5 text-md-on-surface" />
+                <Menu className="h-5 w-5 text-[#1A1A1A]" />
               </Button>
             </SheetTrigger>
             <SheetContent
               side="right"
-              className="w-[360px] bg-md-surface border-l border-md-outline-variant overflow-y-auto"
+              className="w-[360px] bg-white border-l border-[#E8E8E8] overflow-y-auto"
             >
               <div className="flex flex-col gap-6 mt-8 pb-8">
                 <Link
@@ -518,7 +518,7 @@ export function Navbar() {
 
                 {/* Mobile Services Section */}
                 <div className="space-y-3">
-                  <h3 className="px-4 text-xs font-semibold text-md-on-surface-variant uppercase tracking-wider">
+                  <h3 className="px-4 text-xs font-semibold text-[#6A6A6A] uppercase tracking-wider">
                     Services
                   </h3>
                   <nav className="flex flex-col gap-1">
@@ -527,7 +527,7 @@ export function Navbar() {
                         <SheetClose asChild key={item.title}>
                           <Link
                             href={item.href}
-                            className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-md-on-surface hover:text-md-primary hover:bg-md-primary-container rounded-xl transition-colors"
+                            className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-[#1A1A1A] hover:text-[#9A1B21] hover:bg-[#9A1B21]/5 rounded-xl transition-colors"
                           >
                             <div className={cn("w-8 h-8 rounded-lg flex items-center justify-center", item.bgColor)}>
                               <item.icon className={cn("w-4 h-4", item.color)} />
@@ -540,7 +540,7 @@ export function Navbar() {
                     <SheetClose asChild>
                       <Link
                         href="/services"
-                        className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-md-primary hover:text-md-primary/80 transition-colors"
+                        className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-[#9A1B21] hover:text-[#7A1519] transition-colors"
                       >
                         View All Services
                         <ChevronDown className="w-4 h-4 -rotate-90" />
@@ -551,7 +551,7 @@ export function Navbar() {
 
                 {/* Mobile Solutions Section */}
                 <div className="space-y-3">
-                  <h3 className="px-4 text-xs font-semibold text-md-on-surface-variant uppercase tracking-wider">
+                  <h3 className="px-4 text-xs font-semibold text-[#6A6A6A] uppercase tracking-wider">
                     Solutions
                   </h3>
                   <nav className="flex flex-col gap-1">
@@ -559,10 +559,10 @@ export function Navbar() {
                       <SheetClose asChild key={item.title}>
                         <Link
                           href={item.href}
-                          className="flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-md-on-surface hover:text-md-primary hover:bg-md-primary-container rounded-xl transition-colors"
+                          className="flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-[#1A1A1A] hover:text-[#9A1B21] hover:bg-[#9A1B21]/5 rounded-xl transition-colors"
                         >
-                          <div className="w-8 h-8 rounded-lg bg-md-primary-container flex items-center justify-center">
-                            <item.icon className="w-4 h-4 text-md-primary" />
+                          <div className="w-8 h-8 rounded-lg bg-[#9A1B21]/10 flex items-center justify-center">
+                            <item.icon className="w-4 h-4 text-[#9A1B21]" />
                           </div>
                           <span className="truncate">{item.title}</span>
                         </Link>
@@ -571,7 +571,7 @@ export function Navbar() {
                     <SheetClose asChild>
                       <Link
                         href="/solutions"
-                        className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-md-primary hover:text-md-primary/80 transition-colors"
+                        className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-[#9A1B21] hover:text-[#7A1519] transition-colors"
                       >
                         Explore All Solutions
                         <ChevronDown className="w-4 h-4 -rotate-90" />
@@ -582,14 +582,14 @@ export function Navbar() {
 
                 {/* Mobile Products Section */}
                 <div className="space-y-3">
-                  <h3 className="px-4 text-xs font-semibold text-md-on-surface-variant uppercase tracking-wider">
+                  <h3 className="px-4 text-xs font-semibold text-[#6A6A6A] uppercase tracking-wider">
                     Products
                   </h3>
                   <nav className="flex flex-col gap-1">
                     {productItems.map((item) => (
                       <div
                         key={item.title}
-                        className="flex items-center gap-3 px-4 py-3 rounded-xl bg-md-primary-container/30"
+                        className="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#9A1B21]/5"
                       >
                         <div className="relative w-10 h-10 rounded-lg bg-white flex items-center justify-center flex-shrink-0 overflow-hidden">
                           <Image
@@ -601,10 +601,10 @@ export function Navbar() {
                           />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h4 className="text-sm font-semibold text-md-on-surface">
+                          <h4 className="text-sm font-semibold text-[#1A1A1A]">
                             {item.title}
                           </h4>
-                          <p className="text-xs text-md-on-surface-variant truncate">
+                          <p className="text-xs text-[#6A6A6A] truncate">
                             {item.description}
                           </p>
                         </div>
@@ -613,13 +613,13 @@ export function Navbar() {
                   </nav>
                 </div>
 
-                <div className="border-t border-md-outline-variant pt-4">
+                <div className="border-t border-[#E8E8E8] pt-4">
                   <nav className="flex flex-col gap-1">
                     {navLinks.map((link) => (
                       <SheetClose asChild key={link.href}>
                         <Link
                           href={link.href}
-                          className="px-4 py-3 text-sm font-medium text-md-on-surface hover:text-md-primary hover:bg-md-primary-container rounded-xl transition-colors"
+                          className="px-4 py-3 text-sm font-medium text-[#1A1A1A] hover:text-[#9A1B21] hover:bg-[#9A1B21]/5 rounded-xl transition-colors"
                         >
                           {link.label}
                         </Link>

@@ -73,20 +73,20 @@ const BlogPostPage = async ({ params }: { params: Promise<{ id: string }> }) => 
   }
 
   const markdownComponents: Components = {
-    h1: ({ ...props }) => <h1 className="text-4xl md:text-5xl font-bold mt-8 mb-6 text-md-on-surface tracking-tight" {...props} />,
-    h2: ({ ...props }) => <h2 className="text-3xl font-bold mt-8 mb-5 text-md-on-surface" {...props} />,
-    h3: ({ ...props }) => <h3 className="text-2xl font-bold mt-6 mb-4 text-md-on-surface" {...props} />,
-    h4: ({ ...props }) => <h4 className="text-xl font-semibold mt-5 mb-3 text-md-on-surface" {...props} />,
-    p: ({ ...props }) => <p className="mb-4 text-md-on-surface-variant leading-relaxed" {...props} />,
-    a: ({ ...props }) => <a className="text-md-primary hover:underline" {...props} />,
-    ul: ({ ...props }) => <ul className="list-disc list-inside mb-4 pl-6 space-y-2 text-md-on-surface-variant" {...props} />,
-    ol: ({ ...props }) => <ol className="list-decimal list-inside mb-4 pl-6 space-y-2 text-md-on-surface-variant" {...props} />,
+    h1: ({ ...props }) => <h1 className="text-4xl md:text-5xl font-bold mt-8 mb-6 text-[#1A1A1A] tracking-tight" {...props} />,
+    h2: ({ ...props }) => <h2 className="text-3xl font-bold mt-8 mb-5 text-[#1A1A1A]" {...props} />,
+    h3: ({ ...props }) => <h3 className="text-2xl font-bold mt-6 mb-4 text-[#1A1A1A]" {...props} />,
+    h4: ({ ...props }) => <h4 className="text-xl font-semibold mt-5 mb-3 text-[#1A1A1A]" {...props} />,
+    p: ({ ...props }) => <p className="mb-4 text-[#4A4A4A] leading-relaxed" {...props} />,
+    a: ({ ...props }) => <a className="text-[#9A1B21] hover:underline" {...props} />,
+    ul: ({ ...props }) => <ul className="list-disc list-inside mb-4 pl-6 space-y-2 text-[#4A4A4A]" {...props} />,
+    ol: ({ ...props }) => <ol className="list-decimal list-inside mb-4 pl-6 space-y-2 text-[#4A4A4A]" {...props} />,
     li: ({ ...props }) => <li {...props} />,
-    strong: ({ ...props }) => <strong className="font-semibold text-md-on-surface" {...props} />,
-    blockquote: ({ ...props }) => <blockquote className="border-l-4 border-md-primary pl-4 py-2 mb-6 italic text-md-on-surface-variant bg-md-surface-container/50 rounded-r-md" {...props} />,
-    code: ({ ...props }) => <code className="bg-md-surface-container text-md-primary px-1.5 py-0.5 rounded text-sm font-mono" {...props} />,
-    pre: ({ ...props }) => <pre className="bg-md-surface-container-lowest rounded-md p-4 my-6 overflow-x-auto text-sm" {...props} />,
-    hr: ({ ...props }) => <hr className="my-8 border-t border-md-outline-variant" {...props} />,
+    strong: ({ ...props }) => <strong className="font-semibold text-[#1A1A1A]" {...props} />,
+    blockquote: ({ ...props }) => <blockquote className="border-l-4 border-[#9A1B21] pl-4 py-2 mb-6 italic text-[#4A4A4A] bg-[#FAFAFA] rounded-r-md" {...props} />,
+    code: ({ ...props }) => <code className="bg-[#FAFAFA] text-[#9A1B21] px-1.5 py-0.5 rounded text-sm font-mono" {...props} />,
+    pre: ({ ...props }) => <pre className="bg-white rounded-md p-4 my-6 overflow-x-auto text-sm border border-[#E8E8E8]" {...props} />,
+    hr: ({ ...props }) => <hr className="my-8 border-t border-[#E8E8E8]" {...props} />,
     img: ({ ...props }) => (
       <span className="flex justify-center my-8">
         <Image
@@ -101,48 +101,49 @@ const BlogPostPage = async ({ params }: { params: Promise<{ id: string }> }) => 
   };
 
   return (
-    <article className="min-h-screen bg-md-surface">
+    <article className="min-h-screen bg-[#FAFAFA]">
       {/* Hero with gradient orbs */}
-      <section className="relative h-[500px] md:h-[600px] bg-gradient-to-br from-md-surface-container to-md-surface">
-        <div className="absolute inset-0 bg-grid-pattern opacity-20" />
-
-        {/* Gradient Orbs */}
-        <div className="absolute top-20 left-10 w-[400px] h-[400px] bg-md-primary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-md-secondary/10 rounded-full blur-3xl" />
+      <section className="relative h-[500px] md:h-[600px] bg-gradient-to-br from-white to-[#FAFAFA]">
+        {/* Soft Gradient Orbs */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute -top-20 -left-20 w-[500px] h-[500px] bg-gradient-to-br from-[#E0E8F5]/50 via-[#E5EDF8]/30 to-transparent rounded-full blur-[100px]" />
+          <div className="absolute -bottom-20 -right-20 w-[500px] h-[500px] bg-gradient-to-tl from-[#F5E6D3]/40 via-[#F0DDD0]/20 to-transparent rounded-full blur-[100px]" />
+          <div className="absolute top-1/3 right-1/4 w-[400px] h-[300px] bg-[#9A1B21]/5 rounded-full blur-[100px]" />
+        </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 h-full flex items-center">
           <div className="max-w-4xl mx-auto text-center">
             {/* Category badge */}
             {blog.category && (
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase bg-md-primary-container text-md-on-primary-container mb-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase bg-[#9A1B21]/10 text-[#9A1B21] mb-6">
                 {blog.category}
               </div>
             )}
 
             {/* Title */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-md-on-surface mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#1A1A1A] mb-6 leading-tight">
               {blog.title}
             </h1>
 
             {/* Author info */}
             <div className="flex items-center justify-center gap-6 mb-8">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-md-primary-container flex items-center justify-center overflow-hidden">
+                <div className="w-12 h-12 rounded-full bg-[#9A1B21]/10 flex items-center justify-center overflow-hidden">
                   {blog.authorImage ? (
                     <Image src={blog.authorImage} alt={blog.author} width={48} height={48} className="object-cover" />
                   ) : (
-                    <User className="w-6 h-6 text-md-primary" />
+                    <User className="w-6 h-6 text-[#9A1B21]" />
                   )}
                 </div>
                 <div className="text-left">
-                  <p className="text-md-on-surface font-medium">{blog.author}</p>
-                  {blog.authorRole && <p className="text-md-on-surface-variant text-sm">{blog.authorRole}</p>}
+                  <p className="text-[#1A1A1A] font-medium">{blog.author}</p>
+                  {blog.authorRole && <p className="text-[#6A6A6A] text-sm">{blog.authorRole}</p>}
                 </div>
               </div>
 
-              <span className="text-md-on-surface-variant">|</span>
+              <span className="text-[#6A6A6A]">|</span>
 
-              <span className="text-md-on-surface-variant flex items-center gap-2">
+              <span className="text-[#6A6A6A] flex items-center gap-2">
                 <Calendar className="w-4 h-4" />
                 {new Date(blog.date).toLocaleDateString("en-US", {
                   year: "numeric",
@@ -153,8 +154,8 @@ const BlogPostPage = async ({ params }: { params: Promise<{ id: string }> }) => 
 
               {blog.readTime && (
                 <>
-                  <span className="text-md-on-surface-variant">|</span>
-                  <span className="text-md-on-surface-variant flex items-center gap-2">
+                  <span className="text-[#6A6A6A]">|</span>
+                  <span className="text-[#6A6A6A] flex items-center gap-2">
                     <Clock className="w-4 h-4" />
                     {blog.readTime}
                   </span>
@@ -184,7 +185,7 @@ const BlogPostPage = async ({ params }: { params: Promise<{ id: string }> }) => 
             {blog.tags && blog.tags.length > 0 && (
               <div className="flex flex-wrap gap-2 mb-8">
                 {blog.tags.map((tag) => (
-                  <span key={tag} className="px-3 py-1 rounded-full text-sm bg-md-surface-container text-md-on-surface-variant">
+                  <span key={tag} className="px-3 py-1 rounded-full text-sm bg-white text-[#6A6A6A] border border-[#E8E8E8]">
                     #{tag}
                   </span>
                 ))}
@@ -203,10 +204,10 @@ const BlogPostPage = async ({ params }: { params: Promise<{ id: string }> }) => 
             </div>
 
             {/* Back button */}
-            <div className="mt-12 pt-8 border-t border-md-outline-variant">
+            <div className="mt-12 pt-8 border-t border-[#E8E8E8]">
               <Link
                 href="/blogs"
-                className="inline-flex items-center gap-2 text-md-primary hover:text-md-on-primary font-medium transition-colors"
+                className="inline-flex items-center gap-2 text-[#9A1B21] hover:text-[#B83236] font-medium transition-colors"
               >
                 <ArrowLeft className="w-5 h-5" />
                 Back to Blog

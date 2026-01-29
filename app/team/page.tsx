@@ -1,6 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight, Sparkles, Shield, Users, Award } from "lucide-react";
-import { BlurFade } from "@/components/ui/blur-fade";
+import { motion } from "motion/react";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 
 const stats = [
@@ -9,56 +11,62 @@ const stats = [
   { value: "100%", label: "Client Success Rate" },
 ];
 
-export const metadata = {
-  title: "Our Team - Expert IT Professionals & Leaders",
-  description: "Meet the leadership team behind JAYAA IT Solution - experienced professionals dedicated to your security.",
-};
 
 export default function TeamPage() {
   return (
-    <div className="min-h-screen bg-md-surface">
+    <div className="min-h-screen bg-[#FAFAFA]">
       {/* Hero Section */}
-      <section className="relative py-20 lg:py-32 bg-md-surface-container overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 bg-grid-pattern opacity-30" />
-
-        {/* Gradient Orbs */}
-        <div className="absolute top-20 right-10 w-[500px] h-[500px] bg-md-primary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 left-10 w-[400px] h-[400px] bg-md-secondary/10 rounded-full blur-3xl" />
+      <section className="relative py-20 lg:py-32 bg-white overflow-hidden">
+        {/* Soft Gradient Orbs */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute -top-20 -left-20 w-[500px] h-[500px] bg-gradient-to-br from-[#E0E8F5]/50 via-[#E5EDF8]/30 to-transparent rounded-full blur-[100px]" />
+          <div className="absolute -bottom-20 -right-20 w-[500px] h-[500px] bg-gradient-to-tl from-[#F5E6D3]/40 via-[#F0DDD0]/20 to-transparent rounded-full blur-[100px]" />
+          <div className="absolute top-1/3 right-1/4 w-[400px] h-[300px] bg-[#9A1B21]/5 rounded-full blur-[100px]" />
+        </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <BlurFade delay={0.1} inView>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-md-primary-container text-md-on-primary-container text-sm font-medium border border-md-primary/20 mb-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#9A1B21]/10 text-[#9A1B21] text-sm font-medium border border-[#9A1B21]/20 mb-6">
                 <span>Our Leadership Team</span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-md-on-surface leading-[1.1] tracking-tight mb-6">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#1A1A1A] leading-[1.1] tracking-tight mb-6">
                 The Minds Behind{" "}
-                <span className="gradient-text">JAYAA IT Solution</span>
+                <span className="bg-gradient-to-r from-[#9A1B21] to-[#B83236] bg-clip-text text-transparent">JAYAA IT Solution</span>
               </h1>
 
-              <p className="text-lg text-md-on-surface-variant max-w-2xl mx-auto leading-relaxed mb-8">
+              <p className="text-lg text-[#4A4A4A] max-w-2xl mx-auto leading-relaxed mb-8">
                 Our exceptional team combines decades of industry experience with cutting-edge expertise to deliver innovative IT solutions that drive business transformation.
               </p>
-            </BlurFade>
+            </motion.div>
 
             {/* Team Stats */}
-            <BlurFade delay={0.2} inView>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
               <div className="grid grid-cols-3 gap-4 max-w-2xl mx-auto">
                 {stats.map((stat, index) => (
                   <div
                     key={index}
-                    className="p-6 rounded-2xl bg-md-surface border border-md-outline-variant text-center"
+                    className="p-6 rounded-3xl bg-white border border-[#E8E8E8] text-center"
                   >
-                    <div className="text-3xl lg:text-4xl font-bold text-md-primary mb-1">
+                    <div className="text-3xl lg:text-4xl font-bold text-[#9A1B21] mb-1">
                       {stat.value}
                     </div>
-                    <p className="text-sm text-md-on-surface-variant">{stat.label}</p>
+                    <p className="text-sm text-[#4A4A4A]">{stat.label}</p>
                   </div>
                 ))}
               </div>
-            </BlurFade>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -81,27 +89,47 @@ export default function TeamPage() {
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <BlurFade inView>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 text-white text-sm font-medium mb-8 backdrop-blur-sm">
                 <Sparkles className="w-4 h-4" />
                 <span>Work With Us</span>
               </div>
-            </BlurFade>
+            </motion.div>
 
-            <BlurFade inView delay={0.1}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
               <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 leading-tight">
                 Ready to Work with Our{" "}
                 <span className="text-white/90">Expert Team</span>?
               </h2>
-            </BlurFade>
+            </motion.div>
 
-            <BlurFade inView delay={0.2}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
               <p className="text-lg lg:text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
                 Let our experienced professionals guide your organization through digital transformation with innovative IT solutions tailored to your unique needs.
               </p>
-            </BlurFade>
+            </motion.div>
 
-            <BlurFade inView delay={0.3}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <ShimmerButton
                   className="h-14 px-10 rounded-full text-base font-medium"
@@ -124,7 +152,7 @@ export default function TeamPage() {
                   Learn About Us
                 </Link>
               </div>
-            </BlurFade>
+            </motion.div>
           </div>
         </div>
       </section>

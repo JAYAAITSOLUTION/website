@@ -3,11 +3,11 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle2, Sparkles, ArrowRight, Shield } from "lucide-react";
+import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { BlurFade } from "@/components/ui/blur-fade";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 
 const contactInfo = [
@@ -84,32 +84,37 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-md-surface">
+    <div className="min-h-screen bg-[#FAFAFA]">
       {/* Hero Section */}
-      <section className="relative py-20 lg:py-32 bg-md-surface-container overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 bg-grid-pattern opacity-30" />
-
-        {/* Gradient Orbs */}
-        <div className="absolute top-20 right-10 w-[500px] h-[500px] bg-md-primary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 left-10 w-[400px] h-[400px] bg-md-secondary/10 rounded-full blur-3xl" />
+      <section className="relative py-20 lg:py-32 bg-white overflow-hidden">
+        {/* Soft Gradient Orbs */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute -top-20 -left-20 w-[500px] h-[500px] bg-gradient-to-br from-[#E0E8F5]/50 via-[#E5EDF8]/30 to-transparent rounded-full blur-[100px]" />
+          <div className="absolute -bottom-20 -right-20 w-[500px] h-[500px] bg-gradient-to-tl from-[#F5E6D3]/40 via-[#F0DDD0]/20 to-transparent rounded-full blur-[100px]" />
+          <div className="absolute top-1/3 right-1/4 w-[400px] h-[300px] bg-[#9A1B21]/5 rounded-full blur-[100px]" />
+        </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <BlurFade delay={0.1} inView>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-md-primary-container text-md-on-primary-container text-sm font-medium border border-md-primary/20 mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#9A1B21]/10 text-[#9A1B21] text-sm font-medium border border-[#9A1B21]/20 mb-6">
                 <span>Get in Touch</span>
               </div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-md-on-surface mb-6 leading-[1.1] tracking-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#1A1A1A] mb-6 leading-[1.1] tracking-tight">
                 Let&apos;s Start Your{" "}
-                <span className="gradient-text">Digital Journey</span>
+                <span className="bg-gradient-to-r from-[#9A1B21] to-[#B83236] bg-clip-text text-transparent">Digital Journey</span>
               </h1>
-              <p className="text-lg text-md-on-surface-variant max-w-2xl mx-auto leading-relaxed mb-8">
+              <p className="text-lg text-[#4A4A4A] max-w-2xl mx-auto leading-relaxed mb-8">
                 Ready to transform your business with cutting-edge IT solutions? Our expert team is here to help you every step of the way. Reach out today for a free consultation.
               </p>
               <Button
                 asChild
-                className="h-12 px-8 bg-md-primary text-white hover:bg-md-primary/90 rounded-full"
+                className="h-12 px-8 bg-gradient-to-r from-[#9A1B21] to-[#B83236] text-white hover:opacity-90 rounded-full"
               >
                 <Link href="tel:+918268949507" className="flex items-center gap-2">
                   <Phone className="w-4 h-4" />
@@ -117,40 +122,48 @@ export default function ContactPage() {
                 </Link>
               </Button>
             </div>
-          </BlurFade>
+          </motion.div>
 
           {/* Quick Stats */}
-          <BlurFade delay={0.2} inView>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
             <div className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-3xl mx-auto">
               {quickStats.map((stat, index) => (
                 <div
                   key={index}
-                  className="p-4 rounded-2xl bg-md-surface border border-md-outline-variant text-center"
+                  className="p-4 rounded-3xl bg-white border border-[#E8E8E8] text-center"
                 >
-                  <div className="text-2xl font-bold text-md-primary mb-1">{stat.value}</div>
-                  <p className="text-sm text-md-on-surface-variant">{stat.label}</p>
+                  <div className="text-2xl font-bold text-[#9A1B21] mb-1">{stat.value}</div>
+                  <p className="text-sm text-[#4A4A4A]">{stat.label}</p>
                 </div>
               ))}
             </div>
-          </BlurFade>
+          </motion.div>
         </div>
       </section>
 
       {/* Contact Section */}
       <section className="py-20 lg:py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid-pattern opacity-20" />
-
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
             {/* Contact Info */}
-            <BlurFade delay={0.1} inView>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
               <div className="space-y-8">
                 <div>
-                  <h2 className="text-3xl sm:text-4xl font-bold text-md-on-surface mb-4">
+                  <h2 className="text-3xl sm:text-4xl font-bold text-[#1A1A1A] mb-4">
                     Contact{" "}
-                    <span className="gradient-text">Information</span>
+                    <span className="bg-gradient-to-r from-[#9A1B21] to-[#B83236] bg-clip-text text-transparent">Information</span>
                   </h2>
-                  <p className="text-md-on-surface-variant leading-relaxed">
+                  <p className="text-[#4A4A4A] leading-relaxed">
                     Have questions about our services? Need a security assessment? Our team is here to help you navigate your cybersecurity journey.
                   </p>
                 </div>
@@ -160,31 +173,31 @@ export default function ContactPage() {
                     <a
                       key={item.title}
                       href={item.href}
-                      className="group flex items-center gap-4 p-4 rounded-2xl bg-md-surface-container border border-md-outline-variant hover:border-md-primary/50 hover:shadow-md transition-all duration-300"
+                      className="group flex items-center gap-4 p-4 rounded-3xl bg-white border border-[#E8E8E8] hover:border-[#9A1B21]/50 hover:shadow-md transition-all duration-300"
                     >
-                      <div className="w-12 h-12 rounded-xl bg-md-primary-container flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                        <item.icon className="w-6 h-6 text-md-primary" />
+                      <div className="w-12 h-12 rounded-xl bg-[#9A1B21]/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <item.icon className="w-6 h-6 text-[#9A1B21]" />
                       </div>
                       <div className="flex-1">
-                        <p className="text-sm text-md-on-surface-variant">{item.title}</p>
-                        <p className="font-medium text-md-on-surface">{item.value}</p>
-                        <p className="text-xs text-md-primary">{item.available}</p>
+                        <p className="text-sm text-[#6A6A6A]">{item.title}</p>
+                        <p className="font-medium text-[#1A1A1A]">{item.value}</p>
+                        <p className="text-xs text-[#9A1B21]">{item.available}</p>
                       </div>
                     </a>
                   ))}
                 </div>
 
                 {/* Office Hours */}
-                <div className="p-6 rounded-2xl bg-md-surface-container border border-md-outline-variant">
-                  <h3 className="text-lg font-semibold text-md-on-surface mb-4 flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-md-primary" />
+                <div className="p-6 rounded-3xl bg-white border border-[#E8E8E8]">
+                  <h3 className="text-lg font-semibold text-[#1A1A1A] mb-4 flex items-center gap-2">
+                    <Clock className="w-5 h-5 text-[#9A1B21]" />
                     Office Hours
                   </h3>
                   <div className="space-y-2">
                     {officeHours.map((schedule) => (
                       <div key={schedule.day} className="flex justify-between text-sm">
-                        <span className="text-md-on-surface-variant">{schedule.day}</span>
-                        <span className="text-md-on-surface font-medium">{schedule.hours}</span>
+                        <span className="text-[#6A6A6A]">{schedule.day}</span>
+                        <span className="text-[#1A1A1A] font-medium">{schedule.hours}</span>
                       </div>
                     ))}
                   </div>
@@ -192,7 +205,7 @@ export default function ContactPage() {
 
                 {/* Social Links */}
                 <div className="pt-4">
-                  <p className="text-sm text-md-on-surface-variant mb-4">Follow us on social media</p>
+                  <p className="text-sm text-[#6A6A6A] mb-4">Follow us on social media</p>
                   <div className="flex flex-wrap gap-3">
                     {socialLinks.map((link) => (
                       <a
@@ -200,7 +213,7 @@ export default function ContactPage() {
                         href={link.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-4 py-2 rounded-full bg-md-surface-container border border-md-outline-variant text-md-on-surface-variant hover:border-md-primary/50 hover:text-md-primary transition-all duration-300 text-sm"
+                        className="px-4 py-2 rounded-full bg-white border border-[#E8E8E8] text-[#6A6A6A] hover:border-[#9A1B21]/50 hover:text-[#9A1B21] transition-all duration-300 text-sm"
                       >
                         {link.name}
                       </a>
@@ -209,39 +222,44 @@ export default function ContactPage() {
                 </div>
 
                 {/* Why Choose Us */}
-                <div className="p-6 rounded-2xl bg-md-primary-container/30 border border-md-primary/20">
-                  <h3 className="text-lg font-semibold text-md-on-surface mb-4">Why Choose JAYAA IT</h3>
+                <div className="p-6 rounded-3xl bg-[#9A1B21]/10 border border-[#9A1B21]/20">
+                  <h3 className="text-lg font-semibold text-[#1A1A1A] mb-4">Why Choose JAYAA IT</h3>
                   <div className="grid grid-cols-2 gap-2">
                     {whyChooseUs.map((item) => (
-                      <div key={item} className="flex items-center gap-2 text-sm text-md-on-surface-variant">
-                        <Shield className="w-4 h-4 text-md-primary" />
+                      <div key={item} className="flex items-center gap-2 text-sm text-[#4A4A4A]">
+                        <Shield className="w-4 h-4 text-[#9A1B21]" />
                         {item}
                       </div>
                     ))}
                   </div>
                 </div>
               </div>
-            </BlurFade>
+            </motion.div>
 
             {/* Contact Form */}
-            <BlurFade delay={0.2} inView>
-              <div className="relative p-8 rounded-3xl bg-md-surface-container border border-md-outline-variant shadow-lg">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <div className="relative p-8 rounded-3xl bg-white border border-[#E8E8E8] shadow-lg">
                 {isSubmitted ? (
                   <div className="flex flex-col items-center justify-center py-12 text-center">
-                    <div className="w-16 h-16 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mb-4">
-                      <CheckCircle2 className="w-8 h-8 text-green-600 dark:text-green-400" />
+                    <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-4">
+                      <CheckCircle2 className="w-8 h-8 text-green-600" />
                     </div>
-                    <h3 className="text-xl font-semibold text-md-on-surface mb-2">
+                    <h3 className="text-xl font-semibold text-[#1A1A1A] mb-2">
                       Message Sent!
                     </h3>
-                    <p className="text-md-on-surface-variant">
+                    <p className="text-[#4A4A4A]">
                       We&apos;ll get back to you within 24 hours.
                     </p>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="space-y-2">
-                      <Label htmlFor="name" className="text-md-on-surface">
+                      <Label htmlFor="name" className="text-[#1A1A1A]">
                         Your Name *
                       </Label>
                       <Input
@@ -252,12 +270,12 @@ export default function ContactPage() {
                         onChange={(e) =>
                           setFormData({ ...formData, name: e.target.value })
                         }
-                        className="h-12 rounded-xl border-md-outline bg-md-surface focus-visible:ring-md-primary"
+                        className="h-12 rounded-xl border-[#E8E8E8] bg-white focus-visible:ring-[#9A1B21]"
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="email" className="text-md-on-surface">
+                      <Label htmlFor="email" className="text-[#1A1A1A]">
                         Your Email *
                       </Label>
                       <Input
@@ -269,13 +287,13 @@ export default function ContactPage() {
                         onChange={(e) =>
                           setFormData({ ...formData, email: e.target.value })
                         }
-                        className="h-12 rounded-xl border-md-outline bg-md-surface focus-visible:ring-md-primary"
+                        className="h-12 rounded-xl border-[#E8E8E8] bg-white focus-visible:ring-[#9A1B21]"
                       />
                     </div>
 
                     <div className="grid sm:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <Label htmlFor="phone" className="text-md-on-surface">
+                        <Label htmlFor="phone" className="text-[#1A1A1A]">
                           Phone Number
                         </Label>
                         <Input
@@ -286,11 +304,11 @@ export default function ContactPage() {
                           onChange={(e) =>
                             setFormData({ ...formData, phone: e.target.value })
                           }
-                          className="h-12 rounded-xl border-md-outline bg-md-surface focus-visible:ring-md-primary"
+                          className="h-12 rounded-xl border-[#E8E8E8] bg-white focus-visible:ring-[#9A1B21]"
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="company" className="text-md-on-surface">
+                        <Label htmlFor="company" className="text-[#1A1A1A]">
                           Company Name
                         </Label>
                         <Input
@@ -300,13 +318,13 @@ export default function ContactPage() {
                           onChange={(e) =>
                             setFormData({ ...formData, company: e.target.value })
                           }
-                          className="h-12 rounded-xl border-md-outline bg-md-surface focus-visible:ring-md-primary"
+                          className="h-12 rounded-xl border-[#E8E8E8] bg-white focus-visible:ring-[#9A1B21]"
                         />
                       </div>
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="subject" className="text-md-on-surface">
+                      <Label htmlFor="subject" className="text-[#1A1A1A]">
                         Subject *
                       </Label>
                       <Input
@@ -317,12 +335,12 @@ export default function ContactPage() {
                         onChange={(e) =>
                           setFormData({ ...formData, subject: e.target.value })
                         }
-                        className="h-12 rounded-xl border-md-outline bg-md-surface focus-visible:ring-md-primary"
+                        className="h-12 rounded-xl border-[#E8E8E8] bg-white focus-visible:ring-[#9A1B21]"
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="message" className="text-md-on-surface">
+                      <Label htmlFor="message" className="text-[#1A1A1A]">
                         Tell us about your project requirements... *
                       </Label>
                       <Textarea
@@ -334,7 +352,7 @@ export default function ContactPage() {
                         onChange={(e) =>
                           setFormData({ ...formData, message: e.target.value })
                         }
-                        className="rounded-xl border-md-outline bg-md-surface focus-visible:ring-md-primary resize-none"
+                        className="rounded-xl border-[#E8E8E8] bg-white focus-visible:ring-[#9A1B21] resize-none"
                       />
                     </div>
 
@@ -352,43 +370,58 @@ export default function ContactPage() {
                   </form>
                 )}
               </div>
-            </BlurFade>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Map Section */}
-      <section className="py-20 lg:py-32 bg-md-surface-container relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid-pattern opacity-20" />
+      <section className="py-20 lg:py-32 bg-white relative overflow-hidden">
+        {/* Soft Gradient Orbs */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute -top-20 -left-20 w-[500px] h-[500px] bg-gradient-to-br from-[#E0E8F5]/50 via-[#E5EDF8]/30 to-transparent rounded-full blur-[100px]" />
+          <div className="absolute -bottom-20 -right-20 w-[500px] h-[500px] bg-gradient-to-tl from-[#F5E6D3]/40 via-[#F0DDD0]/20 to-transparent rounded-full blur-[100px]" />
+          <div className="absolute top-1/3 right-1/4 w-[400px] h-[300px] bg-[#9A1B21]/5 rounded-full blur-[100px]" />
+        </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <BlurFade delay={0.1} inView>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             <div className="text-center max-w-3xl mx-auto mb-12">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase bg-md-primary-container text-md-on-primary-container mb-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase bg-[#9A1B21]/10 text-[#9A1B21] mb-6">
                 <MapPin className="w-4 h-4" />
                 <span>Our Location</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-md-on-surface mb-6">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1A1A1A] mb-6">
                 Visit Our{" "}
-                <span className="gradient-text">Office</span>
+                <span className="bg-gradient-to-r from-[#9A1B21] to-[#B83236] bg-clip-text text-transparent">Office</span>
               </h2>
             </div>
-          </BlurFade>
+          </motion.div>
 
-          <BlurFade delay={0.2} inView>
-            <div className="relative rounded-3xl overflow-hidden border border-md-outline-variant shadow-lg bg-md-surface">
-              <div className="aspect-[21/9] bg-gradient-to-br from-md-primary-container to-md-secondary-container/30 flex items-center justify-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <div className="relative rounded-3xl overflow-hidden border border-[#E8E8E8] shadow-lg bg-white">
+              <div className="aspect-[21/9] bg-gradient-to-br from-[#9A1B21]/10 to-[#B83236]/5 flex items-center justify-center">
                 <div className="text-center p-8">
-                  <div className="w-16 h-16 rounded-2xl bg-md-surface flex items-center justify-center mx-auto mb-4 shadow-lg">
-                    <MapPin className="w-8 h-8 text-md-primary" />
+                  <div className="w-16 h-16 rounded-2xl bg-white flex items-center justify-center mx-auto mb-4 shadow-lg">
+                    <MapPin className="w-8 h-8 text-[#9A1B21]" />
                   </div>
-                  <h3 className="text-xl font-semibold text-md-on-surface mb-2">JAYAA IT Solution Pvt. Ltd.</h3>
-                  <p className="text-md-on-surface-variant">803/8, Ekatva Onyx, Wagle Estate Thane West-400604, Maharashtra, India</p>
-                  <p className="text-sm text-md-on-surface-variant mt-2">www.jayaaitsolution.com</p>
+                  <h3 className="text-xl font-semibold text-[#1A1A1A] mb-2">JAYAA IT Solution Pvt. Ltd.</h3>
+                  <p className="text-[#4A4A4A]">803/8, Ekatva Onyx, Wagle Estate Thane West-400604, Maharashtra, India</p>
+                  <p className="text-sm text-[#6A6A6A] mt-2">www.jayaaitsolution.com</p>
                 </div>
               </div>
             </div>
-          </BlurFade>
+          </motion.div>
         </div>
       </section>
 
@@ -410,27 +443,47 @@ export default function ContactPage() {
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <BlurFade inView>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 text-white text-sm font-medium mb-8 backdrop-blur-sm">
                 <Shield className="w-4 h-4" />
                 <span>Start Today</span>
               </div>
-            </BlurFade>
+            </motion.div>
 
-            <BlurFade inView delay={0.1}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
               <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 leading-tight">
                 Ready to Transform Your{" "}
                 <span className="text-white/90">Business</span>?
               </h2>
-            </BlurFade>
+            </motion.div>
 
-            <BlurFade inView delay={0.2}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
               <p className="text-lg lg:text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
                 Don&apos;t wait to start your digital transformation journey. Our expert team is ready to provide you with a free consultation and customized IT solutions that drive real results.
               </p>
-            </BlurFade>
+            </motion.div>
 
-            <BlurFade inView delay={0.3}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <ShimmerButton
                   className="h-14 px-10 rounded-full text-base font-medium"
@@ -447,7 +500,7 @@ export default function ContactPage() {
                   </Link>
                 </ShimmerButton>
               </div>
-            </BlurFade>
+            </motion.div>
           </div>
         </div>
       </section>

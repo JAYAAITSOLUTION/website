@@ -1,6 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { Shield, Award, Users, Heart, Lightbulb, Star } from "lucide-react";
-import { BlurFade } from "@/components/ui/blur-fade";
+import { motion } from "motion/react";
 import { FlickeringGrid } from "@/components/ui/flickering-grid";
 import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern";
 import { cn } from "@/lib/utils";
@@ -38,16 +40,18 @@ const highlights = [
   "ISO Certified & Industry Compliant solutions.",
 ];
 
-export const metadata = {
-  title: "About Us - Premier IT Service Provider",
-  description: "Learn about JAYAA IT Solution's mission, values, and commitment to delivering enterprise-grade cybersecurity and IT solutions.",
-};
-
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-md-surface">
+    <div className="min-h-screen bg-[#FAFAFA]">
       {/* Hero Section */}
-      <section className="relative py-20 lg:py-32 bg-md-surface-container overflow-hidden">
+      <section className="relative py-20 lg:py-32 bg-white overflow-hidden">
+        {/* Soft Gradient Orbs */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute -top-20 -left-20 w-[500px] h-[500px] bg-gradient-to-br from-[#E0E8F5]/50 via-[#E5EDF8]/30 to-transparent rounded-full blur-[100px]" />
+          <div className="absolute -bottom-20 -right-20 w-[500px] h-[500px] bg-gradient-to-tl from-[#F5E6D3]/40 via-[#F0DDD0]/20 to-transparent rounded-full blur-[100px]" />
+          <div className="absolute top-1/3 right-1/4 w-[400px] h-[300px] bg-[#9A1B21]/5 rounded-full blur-[100px]" />
+        </div>
+
         {/* Animated Grid Pattern Background */}
         <AnimatedGridPattern
           numSquares={30}
@@ -60,35 +64,40 @@ export default function AboutPage() {
           )}
         />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <BlurFade delay={0.1} inView>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-md-primary-container text-md-on-primary-container text-sm font-medium mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#9A1B21]/10 text-[#9A1B21] text-sm font-medium mb-6">
                 <span>Premier IT Service Provider</span>
               </div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-md-on-surface mb-6">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#1A1A1A] mb-6">
                 Transforming Businesses Through{" "}
-                <span className="text-md-primary">Innovation</span>
+                <span className="bg-gradient-to-r from-[#9A1B21] to-[#B83236] bg-clip-text text-transparent">Innovation</span>
               </h1>
-              <p className="text-lg text-md-on-surface-variant max-w-2xl mx-auto mb-8">
+              <p className="text-lg text-[#4A4A4A] max-w-2xl mx-auto mb-8">
                 Jayaa IT Solution is a premier IT service provider, renowned for delivering innovative, cutting-edge technology solutions to businesses globally. With a strong focus on IT security, infrastructure management, consultancy, and support, we empower organizations to meet their operational and strategic goals with precision, efficiency, and innovation.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Button
                   asChild
-                  className="h-12 px-8 bg-md-primary text-white hover:bg-md-primary/90 rounded-full"
+                  className="h-12 px-8 bg-gradient-to-r from-[#9A1B21] to-[#B83236] text-white hover:opacity-90 rounded-full"
                 >
                   <Link href="/contact">Get Started Today</Link>
                 </Button>
                 <Button
                   asChild
                   variant="ghost"
-                  className="h-12 px-8 text-md-on-surface hover:bg-md-primary-container rounded-full"
+                  className="h-12 px-8 text-[#1A1A1A] hover:bg-[#9A1B21]/10 rounded-full"
                 >
                   <Link href="/services">Explore Services</Link>
                 </Button>
               </div>
             </div>
-          </BlurFade>
+          </motion.div>
         </div>
       </section>
 
@@ -96,91 +105,119 @@ export default function AboutPage() {
       <section className="py-20 lg:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <BlurFade delay={0.1} inView>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
               <div className="space-y-6">
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-md-primary-container text-md-on-primary-container text-sm font-medium">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#9A1B21]/10 text-[#9A1B21] text-sm font-medium">
                   <span>Who We Are</span>
                 </div>
-                <h2 className="text-3xl sm:text-4xl font-bold text-md-on-surface">
+                <h2 className="text-3xl sm:text-4xl font-bold text-[#1A1A1A]">
                   Digital. Secure.{" "}
-                  <span className="text-md-primary">Resilient.</span>
+                  <span className="bg-gradient-to-r from-[#9A1B21] to-[#B83236] bg-clip-text text-transparent">Resilient.</span>
                 </h2>
-                <p className="text-md-on-surface-variant">
+                <p className="text-[#4A4A4A]">
                   At Jayaa IT Solution, we are a team of dedicated IT professionals driven by a passion for leveraging technology to transform businesses.
                 </p>
-                <p className="text-md-on-surface-variant">
+                <p className="text-[#4A4A4A]">
                   We take pride in empowering organizations to stay ahead in an ever-evolving digital landscape by providing innovative, secure, and scalable IT solutions.
                 </p>
-                <p className="text-md-on-surface-variant">
+                <p className="text-[#4A4A4A]">
                   Trusted by industry leaders across BFSI, Healthcare, Government, and Technology.
                 </p>
                 <div className="flex flex-wrap gap-4 pt-4">
                   {highlights.map((highlight, index) => (
-                    <div key={index} className="flex items-center gap-2 px-4 py-2 rounded-full bg-md-primary-container text-md-on-primary-container">
+                    <div key={index} className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#9A1B21]/10 text-[#9A1B21]">
                       <Award className="w-4 h-4" />
                       <span className="text-sm font-medium">{highlight}</span>
                     </div>
                   ))}
                 </div>
               </div>
-            </BlurFade>
+            </motion.div>
 
-            <BlurFade delay={0.2} inView>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
               <div className="grid grid-cols-3 gap-4">
-                <div className="p-6 rounded-2xl bg-md-surface-container border border-md-outline-variant text-center">
-                  <div className="text-3xl font-bold text-md-primary mb-1">24/7/365</div>
-                  <p className="text-sm text-md-on-surface-variant">Real-Time Threat Monitoring</p>
+                <div className="p-6 rounded-3xl bg-white border border-[#E8E8E8] text-center">
+                  <div className="text-3xl font-bold text-[#9A1B21] mb-1">24/7/365</div>
+                  <p className="text-sm text-[#4A4A4A]">Real-Time Threat Monitoring</p>
                 </div>
-                <div className="p-6 rounded-2xl bg-md-surface-container border border-md-outline-variant text-center">
-                  <div className="text-3xl font-bold text-md-primary mb-1">50+</div>
-                  <p className="text-sm text-md-on-surface-variant">Enterprise Clients Protected</p>
+                <div className="p-6 rounded-3xl bg-white border border-[#E8E8E8] text-center">
+                  <div className="text-3xl font-bold text-[#9A1B21] mb-1">50+</div>
+                  <p className="text-sm text-[#4A4A4A]">Enterprise Clients Protected</p>
                 </div>
-                <div className="p-6 rounded-2xl bg-md-surface-container border border-md-outline-variant text-center">
-                  <div className="text-3xl font-bold text-md-primary mb-1">99.9%</div>
-                  <p className="text-sm text-md-on-surface-variant">Compliance-Driven Uptime SLA</p>
+                <div className="p-6 rounded-3xl bg-white border border-[#E8E8E8] text-center">
+                  <div className="text-3xl font-bold text-[#9A1B21] mb-1">99.9%</div>
+                  <p className="text-sm text-[#4A4A4A]">Compliance-Driven Uptime SLA</p>
                 </div>
               </div>
-            </BlurFade>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="py-20 lg:py-32 bg-md-surface">
+      <section className="py-20 lg:py-32 bg-[#FAFAFA]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <BlurFade delay={0.1} inView>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-md-primary-container text-md-on-primary-container text-sm font-medium mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#9A1B21]/10 text-[#9A1B21] text-sm font-medium mb-6">
                 <Shield className="w-4 h-4" />
                 <span>Our Expertise</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-md-on-surface mb-6">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1A1A1A] mb-6">
                 Technology with Trust. Transformation with{" "}
-                <span className="text-md-primary">Purpose.</span>
+                <span className="bg-gradient-to-r from-[#9A1B21] to-[#B83236] bg-clip-text text-transparent">Purpose.</span>
               </h2>
-              <p className="text-lg text-md-on-surface-variant">
+              <p className="text-lg text-[#4A4A4A]">
                 JAYAA IT Solution Pvt. Ltd. is your trusted partner in delivering next-generation IT infrastructure and cybersecurity services. We empower enterprises with secure, scalable, and compliance-ready solutions that drive digital excellence.
               </p>
             </div>
-          </BlurFade>
+          </motion.div>
 
           <div className="grid sm:grid-cols-2 gap-6">
             {features.map((feature, index) => (
-              <BlurFade key={feature} delay={0.1 + index * 0.1} inView>
-                <div className="p-6 rounded-2xl bg-md-surface-container border border-md-outline-variant hover:border-md-primary/50 hover:shadow-lg transition-all duration-300 flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-md-primary-container flex items-center justify-center shrink-0">
-                    <Shield className="w-6 h-6 text-md-primary" />
+              <motion.div
+                key={feature}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <div className="p-6 rounded-3xl bg-white border border-[#E8E8E8] hover:border-[#9A1B21]/50 hover:shadow-lg transition-all duration-300 flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-[#9A1B21]/10 flex items-center justify-center shrink-0">
+                    <Shield className="w-6 h-6 text-[#9A1B21]" />
                   </div>
-                  <span className="text-lg font-medium text-md-on-surface">{feature}</span>
+                  <span className="text-lg font-medium text-[#1A1A1A]">{feature}</span>
                 </div>
-              </BlurFade>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Core Values */}
-      <section className="relative py-20 lg:py-32 bg-md-surface-container overflow-hidden">
+      <section className="relative py-20 lg:py-32 bg-white overflow-hidden">
+        {/* Soft Gradient Orbs */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute -top-20 -left-20 w-[500px] h-[500px] bg-gradient-to-br from-[#E0E8F5]/50 via-[#E5EDF8]/30 to-transparent rounded-full blur-[100px]" />
+          <div className="absolute -bottom-20 -right-20 w-[500px] h-[500px] bg-gradient-to-tl from-[#F5E6D3]/40 via-[#F0DDD0]/20 to-transparent rounded-full blur-[100px]" />
+          <div className="absolute top-1/3 right-1/4 w-[400px] h-[300px] bg-[#9A1B21]/5 rounded-full blur-[100px]" />
+        </div>
+
         {/* Flickering Grid Background */}
         <FlickeringGrid
           className="absolute inset-0 z-0 [mask-image:radial-gradient(700px_circle_at_center,white,transparent)]"
@@ -193,49 +230,65 @@ export default function AboutPage() {
           width={900}
         />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <BlurFade delay={0.1} inView>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-md-primary-container text-md-on-primary-container text-sm font-medium mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#9A1B21]/10 text-[#9A1B21] text-sm font-medium mb-6">
                 <span>Our Core Values</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-md-on-surface mb-6">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1A1A1A] mb-6">
                 Guiding{" "}
-                <span className="text-md-primary">Principles</span>
+                <span className="bg-gradient-to-r from-[#9A1B21] to-[#B83236] bg-clip-text text-transparent">Principles</span>
               </h2>
-              <p className="text-lg text-md-on-surface-variant">
+              <p className="text-lg text-[#4A4A4A]">
                 Our core values shape every decision we make and guide us in delivering exceptional IT solutions that drive your business forward.
               </p>
             </div>
-          </BlurFade>
+          </motion.div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {values.map((value, index) => (
-              <BlurFade key={value.title} delay={0.1 + index * 0.1} inView>
-                <div className="p-6 rounded-2xl bg-md-surface border border-md-outline-variant hover:border-md-primary/50 hover:shadow-lg transition-all duration-300 h-full">
-                  <div className="w-12 h-12 rounded-xl bg-md-primary-container flex items-center justify-center mb-4">
-                    <value.icon className="w-6 h-6 text-md-primary" />
+              <motion.div
+                key={value.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <div className="p-6 rounded-3xl bg-white border border-[#E8E8E8] hover:border-[#9A1B21]/50 hover:shadow-lg transition-all duration-300 h-full">
+                  <div className="w-12 h-12 rounded-xl bg-[#9A1B21]/10 flex items-center justify-center mb-4">
+                    <value.icon className="w-6 h-6 text-[#9A1B21]" />
                   </div>
-                  <h3 className="text-lg font-semibold text-md-on-surface mb-2">
+                  <h3 className="text-lg font-semibold text-[#1A1A1A] mb-2">
                     {value.title}
                   </h3>
-                  <p className="text-sm text-md-on-surface-variant">
+                  <p className="text-sm text-[#4A4A4A]">
                     {value.description}
                   </p>
                 </div>
-              </BlurFade>
+              </motion.div>
             ))}
           </div>
 
-          <BlurFade delay={0.4} inView>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
             <div className="text-center mt-12">
               <Button
                 asChild
-                className="h-12 px-8 bg-md-primary text-white hover:bg-md-primary/90 rounded-full"
+                className="h-12 px-8 bg-gradient-to-r from-[#9A1B21] to-[#B83236] text-white hover:opacity-90 rounded-full"
               >
                 <Link href="/team">Meet Our Team</Link>
               </Button>
             </div>
-          </BlurFade>
+          </motion.div>
         </div>
       </section>
     </div>
