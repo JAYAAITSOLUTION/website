@@ -45,8 +45,8 @@ const organizationSchema = {
 };
 
 export const metadata: Metadata = {
-  title: "JAYAA IT Solution Pvt. Ltd. | Enterprise Cybersecurity & IT Solutions",
-  description: "JAYAA IT Solution delivers enterprise-grade cybersecurity, Zero Trust architecture, digital transformation, and IT consulting services for BFSI, Healthcare, and Government sectors.",
+  title: "JAYAA IT Solution | Enterprise Cybersecurity & IT Solutions",
+  description: "JAYAA IT Solution delivers enterprise-grade cybersecurity and IT consulting services. Transform your business with innovative security solutions.",
   keywords: ["cybersecurity", "Zero Trust", "IT solutions", "digital transformation", "enterprise security", "JAYAA IT"],
   authors: [{ name: "JAYAA IT Solution" }],
   icons: {
