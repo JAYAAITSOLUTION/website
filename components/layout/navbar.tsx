@@ -85,7 +85,7 @@ const productItems = [
     icon: Box,
     title: "Vulsphere",
     description: "Enterprise-grade Vulnerability Lifecycle Management System (VMS) with advanced orchestration and Nessus integration.",
-    href: "#",
+    href: "/products/vulsphere",
     logo: "/logos/products/vulsphere.png",
   },
 ];
@@ -422,9 +422,10 @@ export function Navbar() {
                     </h3>
                     <div className="space-y-3">
                       {productItems.map((item) => (
-                        <div
+                        <Link
                           key={item.title}
-                          className="flex items-start gap-4 p-4 rounded-xl bg-[#9A1B21]/5 border border-[#E8E8E8]"
+                          href={item.href}
+                          className="flex items-start gap-4 p-4 rounded-xl bg-[#9A1B21]/5 border border-[#E8E8E8] hover:bg-[#9A1B21]/10 hover:border-[#9A1B21]/30 transition-all cursor-pointer group"
                         >
                           <div className="relative w-16 h-16 rounded-xl bg-white flex items-center justify-center flex-shrink-0 overflow-hidden">
                             <Image
@@ -436,14 +437,14 @@ export function Navbar() {
                             />
                           </div>
                           <div className="flex-1">
-                            <h4 className="text-base font-semibold text-[#1A1A1A]">
+                            <h4 className="text-base font-semibold text-[#1A1A1A] group-hover:text-[#9A1B21] transition-colors">
                               {item.title}
                             </h4>
                             <p className="text-sm text-[#6A6A6A] mt-1 leading-relaxed">
                               {item.description}
                             </p>
                           </div>
-                        </div>
+                        </Link>
                       ))}
                     </div>
                     <div className="mt-4 pt-4 border-t border-[#E8E8E8]">
@@ -587,28 +588,30 @@ export function Navbar() {
                   </h3>
                   <nav className="flex flex-col gap-1">
                     {productItems.map((item) => (
-                      <div
-                        key={item.title}
-                        className="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#9A1B21]/5"
-                      >
-                        <div className="relative w-10 h-10 rounded-lg bg-white flex items-center justify-center flex-shrink-0 overflow-hidden">
-                          <Image
-                            src={item.logo}
-                            alt={item.title}
-                            width={32}
-                            height={32}
-                            className="object-contain"
-                          />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <h4 className="text-sm font-semibold text-[#1A1A1A]">
-                            {item.title}
-                          </h4>
-                          <p className="text-xs text-[#6A6A6A] truncate">
-                            {item.description}
-                          </p>
-                        </div>
-                      </div>
+                      <SheetClose asChild key={item.title}>
+                        <Link
+                          href={item.href}
+                          className="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#9A1B21]/5 hover:bg-[#9A1B21]/10 transition-colors"
+                        >
+                          <div className="relative w-10 h-10 rounded-lg bg-white flex items-center justify-center flex-shrink-0 overflow-hidden">
+                            <Image
+                              src={item.logo}
+                              alt={item.title}
+                              width={32}
+                              height={32}
+                              className="object-contain"
+                            />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <h4 className="text-sm font-semibold text-[#1A1A1A]">
+                              {item.title}
+                            </h4>
+                            <p className="text-xs text-[#6A6A6A] truncate">
+                              {item.description}
+                            </p>
+                          </div>
+                        </Link>
+                      </SheetClose>
                     ))}
                   </nav>
                 </div>

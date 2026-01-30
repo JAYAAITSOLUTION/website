@@ -34,7 +34,10 @@
       "Bash(grep -l:*)",
       "Bash(for:*)",
       "Bash(do:*)",
-      "Bash(if ! head -1 \"$file\")"
+      "Bash(if ! head -1 \"$file\")",
+      "Bash(if [ -d \"C:/Users/jaisw/OneDrive/Desktop/JayaIT/VulSphere/landing/public/product\" ])",
+      "Bash(then cp \"C:/Users/jaisw/OneDrive/Desktop/JayaIT/VulSphere/landing/public/product\"/*.png public/images/products/vulsphere/)",
+      "Bash(fi)"
     ]
   }
 }
