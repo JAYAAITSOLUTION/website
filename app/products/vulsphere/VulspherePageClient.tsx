@@ -247,10 +247,10 @@ export default function VulspherePageClient() {
                   <ArrowRight className="w-5 h-5" />
                 </Link>
                 <Link
-                  href="#documentation"
+                  href="#capabilities"
                   className="inline-flex items-center gap-2 h-12 px-8 rounded-full border-2 border-[#E8E8E8] text-[#1A1A1A] hover:border-[#9A1B21]/50 hover:bg-[#9A1B21]/5 transition-all duration-300 text-base font-medium"
                 >
-                  View Documentation
+                  View Features
                 </Link>
               </div>
             </motion.div>
@@ -352,7 +352,7 @@ export default function VulspherePageClient() {
       </section>
 
       {/* Platform Capabilities Section */}
-      <section className="py-20 lg:py-32 relative overflow-hidden">
+      <section id="capabilities" className="py-20 lg:py-32 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute top-1/4 -right-20 w-[400px] h-[400px] bg-gradient-to-l from-[#E8E0F0]/50 via-[#E5DDF0]/20 to-transparent rounded-full blur-[100px]" />
         </div>
